@@ -1,0 +1,2 @@
+/usr/bin/ar qc libabstractTriangulation.a  CMakeFiles/abstractTriangulation.dir/AbstractTriangulation.cpp.o
+/usr/bin/ranlib libabstractTriangulation.a

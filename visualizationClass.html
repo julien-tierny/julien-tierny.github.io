@@ -1,0 +1,689 @@
+<html>
+  <head>
+    <title> Julien Tierny - Visualization Class </title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+
+
+
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  <meta name="keywords" content="
+    VTK Tutorial, VTK Exercise, ParaView Tutorial, ParaView Exercise,
+      Visualization, Paris, France,
+        Scientific Visualization, Sorbonne Universites, UMPC, LIP6, 
+          Computational Topology, Topological Data Analysis, Morse Theory,
+            Scalar Field Topology, Reeb graph, Contour Tree, Scientific
+            Computing, 
+              Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+                Online classes, Online exercises" />
+
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <div id='teaser'>
+    <table width='100%' background="img/teaserVisualizationClass.png">
+        <tr>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Scientific Visualization</h1><br><br>
+            <h2 class="teaser">
+<!--              <a class="teaser" 
+                href="http://www.ensta-paristech.fr/en/home" target='new'>
+                ENSTA ParisTech</a><br>
+              <a class="teaser" 
+                href="http://www.maisondelasimulation.fr/m2s/"
+                target='new'>
+                Master2 Modeling and Simulation</a><br><br><br>
+ -->
+              <br><br><br>
+              Head Instructor:<br>
+              <a href="index.html" target='new' class="teaser">
+              Julien Tierny</a><br> 
+              <a class="teaser" href="mailto:julien dot tierny at lip6
+              dot fr">
+              julien dot tierny at lip6 dot fr</a>
+            </h2>
+          </td>
+          <td width='35%'>
+            <img src='img/alpha.png' width='100%'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+
+    <h3 class="title">What?</h3>
+    Scientific Visualization is a field of Computer Science that studies the
+    process of generating intelligible and interactive graphical 
+    representations of
+    scientific data-sets, either obtained from numerical simulations 
+    (computational fluid dynamics, mechanical design, cosmology, chemistry, 
+    etc.) 
+    or acquisition 
+    (medicine, seismology, etc.).<br><br>
+
+    As such, visualization is an essential component of the modern scientific 
+    methodology pipeline, which plays a key role in research and development
+    activities through:<br>
+    &nbsp;&middot; The visual exploration of scientific data
+    for 
+    <a href="http://www2.cnrs.fr/presse/communique/2929.htm" target="new">
+    hypothesis formulation</a>, model verification or intuition validation;<br>
+    &nbsp;&middot; The geometrical analysis and interpretation of numerical
+    results;<br>
+    &nbsp;&middot; The communication of scientific results through graphical and
+    interactive material.<br>
+
+    <br>
+    Scientific Visualization covers several topics of computer science,
+    including for example:
+    <br>
+    &nbsp;&middot; 3D Rendering,<br>
+    &nbsp;&middot; User interactions,<br>
+    &nbsp;&middot; And most importantly <b>geometrical and topological 
+    analysis</b> of discrete
+    scientific data.
+
+
+    <h3 class="title">Who?</h3>
+    This class targets students (Master level) following computer science 
+    tracks, covering topics such as:<br>
+    &nbsp;&middot; Scientific Engineering,<br> 
+    &nbsp;&middot; Modeling and Simulation, <br>
+    &nbsp;&middot; Applied Mathematics,<br>
+    &nbsp;&middot; Computer Graphics or<br>
+    &nbsp;&middot; Multimedia Engineering.<br>
+
+    <br>
+    The instructors for this class are:<br>
+    &nbsp;&middot; 
+    <a href="index.html" target="new">
+    Julien Tierny</a>, CNRS, Head instructor;<br>
+    &nbsp;&middot; 
+    <a href="http://tobias.isenberg.cc/" target="new">
+    Tobias Isenberg</a>, INRIA;<br>
+    &nbsp;&middot; 
+    <a href="mailto:charles.gueunet@lip6.fr" target="new">
+    Charles Gueunet</a>, LIP6 - Kitware.<br>
+<!--    &nbsp;&middot; Thierry Carrard, 
+    <a href="mailto: thierry at carrard at cea dot fr">
+    thierry dot carrard at cea dot fr
+    </a>,
+    CEA;<br>-->
+<!--    &nbsp;&middot; Jean-Philippe Nominé, 
+    <a href="mailto: jean dash philippe dot nomine at cea dot fr">
+    jean dash philippe dot nomine at cea dot fr
+    </a>,
+    CEA.<br>-->
+
+    <h3 class="title">What for?</h3>
+    The content of this class is useful for any student targeting research and
+    development activities (either in the academy or the industry) in physical 
+    sciences, numerical simulation,
+    scientific engineering or software engineering. <br>
+    It provides knowledge that is complementary to numerical simulation classes,
+    as visualization is an essential component of the simulation pipeline.<br>
+    It is also a "must-select" for students targeting jobs in <b>3D</b> 
+    modeling,
+    simulation, analysis and rendering software industry.
+
+    <h3 class="title">Detailed syllabus</h3>
+
+    The class is composed of 6 lectures (1h30 each), covering the following
+    topics:
+
+<table>
+      
+      <tr height="30pt"/>
+     
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_introduction_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="intro">
+                <a target='new'
+            href="stuff/teaching/tierny_visualization_introduction.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_visualization_introduction.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/tierny_visualization_introduction.pdf_standard']);"
+
+                >
+<b>
+        Introduction to scientific visualization</b>
+        </a>
+        </a>
+        <br>
+        
+        <i>Instructor: Julien Tierny.</i><br><br>
+        This lecture presents a general introduction to scientific
+        visualization, its purpose, its motivations and its scope.<br>
+        <a href="visualizationExercise3dProgramming.html" target="new">
+        Exercise package.
+        </a>
+        </td>
+      </tr>
+      </a>
+
+      <tr height="30pt"/>
+<!--
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_color.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <b>
+                <a target='new'
+            href="stuff/teaching/nomine_visualization_perception.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/nomine_visualization_perception.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/nomine_visualization_perception.pdf_standard']);"
+                >
+<b>
+        Color and Perception</b>
+        </a>
+        </b><br>
+        <i>Instructor: Jean-Philippe Nominé.</i><br><br>
+        This lecture presents an introduction to the good usage of color and
+        perception studies in the design of visualizations.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>-->
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_domains_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="domainRep">
+                        <a target='new'
+            href="stuff/teaching/tierny_visualization_domainRepresentations.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_visualization_domainRepresentations.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/tierny_visualization_domainRepresentations.pdf_standard']);"
+
+                >
+<b>
+        Domain representations</b></a>
+        </a>
+        <br>
+        <i>Instructor: Julien Tierny.</i><br><br>
+        This lecture presents the formalisms, data-structures and algorithms for
+        the representation and manipulation of numerical domains and shapes:<br>
+        &nbsp;&middot; Euclidean sub-spaces: 1D, 2D, 3D and nD regular grids;
+        <br>
+        &nbsp;&middot; Non-euclidean spaces: 1D, 2D, 3D and nD 
+        piecewise-linear manifolds (triangulations).
+        <br>
+        <a href="visualizationExerciseParaviewConversion.html" target="new">
+        Exercise package</a>.
+        </td>
+      </tr>
+      </a>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_scalarFields_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="scalarFields">
+                        <a target='new'
+            href="stuff/teaching/tierny_visualization_scalarFields.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_visualization_scalarFields.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/tierny_visualization_scalarFields.pdf_standard']);"
+
+                >
+        <b>Scalar field visualization</b></a>
+        </a>
+        <br>
+        <i>Instructor: Julien Tierny.</i><br><br>
+        This lecture presents the fundamental techniques for the graphical
+        representation of scalar fields (usually found in all types of numerical
+        simulations):<br>
+        &nbsp;&middot; Color maps and volume rendering;<br>
+        &nbsp;&middot; Level-set extraction;<br> 
+        &nbsp;&middot; Accelerating structures;<br>
+        &nbsp;&middot; Scalar field topology and simplification;<br>
+        <a href="visualizationExerciseIso.html" target="new">Exercise
+        package</a>.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_vectorFields_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="vectorFields">
+                        <a target='new'
+            href="stuff/teaching/tierny_visualization_vectorFields.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_visualization_vectorFields.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/tierny_visualization_vectorFields.pdf_standard']);"
+
+                >
+        <b>Vector field visualization</b></a>
+        </a></a>
+        <br>
+        <i>Instructor: Julien Tierny.</i><br><br>
+        This lecture presents the fundamental techniques for the graphical
+        representation of vector fields (usually found in computational fluid
+        dynamics):<br>
+        &nbsp;&middot; Integral line and integral surface computation;<br>
+        &nbsp;&middot; Integral line convolution;<br>
+        &nbsp;&middot; Derived scalar fields;<br>
+        &nbsp;&middot; Vector field topology;<br>
+        <a href="visualizationExerciseParaView.html" target="new">
+        Exercise package</a>.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_tensorFields_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+       <a name="tensorFields">
+                        <a target='new'
+            href="stuff/teaching/tierny_visualization_tensorFields.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_visualization_tensorFields.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/tierny_visualization_tensorFields.pdf_standard']);"
+
+                >
+        <b>Tensor field visualization</b></a>
+        </a></a>
+        <br>
+        <i>Instructor: Julien Tierny.</i><br><br>
+        This lecture presents the fundamental techniques for the graphical
+        representation of tensor fields (usually found in mechanical design,
+        meshing, diffusion simulations, etc.):<br>
+        &nbsp;&middot; Glyph generation and packing;<br>
+        &nbsp;&middot; Derived scalar and vector fields;<br>
+        &nbsp;&middot; Hyper integral lines;<br>
+        &nbsp;&middot; Hyper integral line convolution;<br>
+        &nbsp;&middot; Tensor field topology;<br>
+        <a href="visualizationExerciseDataParty.html" target="new">
+        Exercise package</a>.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_illustrative.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <b>
+                <a target='new'
+            href="stuff/teaching/isenberg_illustrativeVisualization.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/isenberg_illustrative_visualization.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/isenberg_illustrative_visualization.pdf_standard']);"
+                >
+<b>
+        Illustrative visualization</b>
+        </a>
+        </b><br>
+        <i>Instructor: Tobias Isenberg.</i><br><br>
+        This lecture presents an introduction to illustrative visualization for 
+scientific data.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+</table>
+
+      There will also be 4 practical sessions (2 hours each), where the students
+      will learn the usage of the <a href="http://www.paraview.org"
+      target="new">Paraview</a> visualization system, as well as the C++
+      programming of visualization applications with the <a
+      href="http://www.vtk.org" target="new">Visualization ToolKit</a>
+      library.<br>
+      <i>Instructor: Charles Gueunet.</i>
+      <br>
+      <br>
+
+      <table>
+        <tr>
+          <td width='50%' align="center">
+            <img align='center' width="95%"src="img/teaching_vis_paraview.jpg">
+          </td>
+          <td width='50%' align="center">
+            <img align="center" width="95%" src="img/teaching_vis_vtk.jpg">
+          </td>
+        </tr>
+      </table>
+      
+      <br>
+      These sessions will re-visit from a practical perspective the topics
+      covered during the lectures, including:<br>
+      &nbsp;&middot; Introduction to Paraview and review of the  conversion of 
+      numerical data-sets to Paraview and VTK formats;<br>
+      &nbsp;&middot; Isosurface extraction in scalar fields;<br>
+      &nbsp;&middot; Integral line computation;<br>
+      &nbsp;&middot; Glyphs representation and packing.<br>
+
+
+
+    <h3 class="title">Personal work</h3>
+    The grading of this class is based on three evaluations:<br>
+    &nbsp;&middot; A written exam (last session of the class, 33% of the global
+    grade);<br>
+    &nbsp;&middot; A scientific seminar where each student presents a recent
+    scientific paper on visualization for 15 minutes (last session of the class,
+    33% of the global grade);<br>
+    &nbsp;&middot; Programming exercises (33% of the global grade);<br>
+    Last year's average global grade for the class was: 14.07/20.
+    <br>
+      <h4 class="title">Programming exercises</h4>
+      Each programming exercise will be graded. 
+      At the beginning of each 
+      exercise session, students are expected to return their complete 
+      implementation   of the previous exercise session.<br>
+      Last year's exercise average grade was: 13.66/20.
+
+      <h4 class="title">Seminar</h4>
+      &nbsp;&middot; 
+      At the beginning of the class, a list of recent scientific papers on
+      visualization is presented to the students. Each student must select one
+      paper to present. <br>
+      &nbsp;&middot; 
+      A written abstract of the paper (up to 2 pages) must be
+      sent to the instructors a week prior to the actual seminar. This abstract
+      accounts for 25% of the seminar grade.<br>
+      &nbsp;&middot; 
+      During the last session of the class, each student presents his/her paper,
+      explaining what the contributions of the paper are, what its
+      strengths and weaknesses are and why he/she personally chose to present
+      this paper.<br>
+      &nbsp;&middot; 
+      Each presentation is followed by a 5 minutes QA session.<br> 
+      Last year's seminar average grade was: 14.15/20.
+      
+
+      <br><br>
+      <a href="private/seminar.html" target="new">
+      >>> Seminar webpage</a>.<br>
+      
+      <h4 class="title">Exam</h4>
+      A 20-minute written exam will be given at the beginning of the last
+      session of the class (multiple choice test).<br>
+      <a href="stuff/teaching/tierny_vis_exam2013.pdf">
+      Last year's exam (pdf)</a>.<br>
+      Last year's exam average grade was: 14.38/20.<br>
+
+<!--    <h3 class="title">Where?</h3>
+    This class takes place in the buildings of 
+    <a href="http://www.ensta-paristech.fr/en/home" target="new">
+    ENSTA ParisTech</a>.
+    
+    <h3 class="title">When?</h3>
+    The class takes place from early 
+    September to mid-October (6 weeks).
+ -->
+    <h3 class="title">References</h3>
+    &nbsp;&middot; 
+    <a href="http://www.paraview.org" target="new">Paraview</a><br>
+    &nbsp;&middot; 
+    <a href="http://www.vtk.org" target="new">The Visualization Tool Kit</a><br>
+    &nbsp;&middot; 
+    <a href="http://www.vtk.org/VTK/help/book.html" target="new">
+    The Visualization Tool Kit Textbook</a><br>
+
+
+
+    <h3 class="title">Internships, Ph.D. Thesis, permanent positions in 
+visualization</h3>
+    Each year, several research internships on visualization topics (topology 
+    analysis,
+    rendering, data-exploration) are proposed (either in academic or industrial
+    environments). These internships can usually be
+    followed by a Ph.D. thesis. Please contact the instructors for more
+    information.<br><br>
+     <h4 class="title">2018-2019</h4>
+     
+     <a href="stuff/openPositions/2019_cintoo1.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_cintoo1.pdf']);"">
+    Open research engineer position 1 at Cintoo (Nice, France) 
+    </a><br>
+    <a href="stuff/openPositions/2019_cintoo2.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_cintoo2.pdf']);"">
+    Open research engineer position 2 at Cintoo (Nice, France) 
+    </a><br><br>
+     
+     <a href="stuff/openPositions/engineer2019.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/engineer2019.pdf']);"">
+    Open research engineer position 
+    on topological data analysis and visualization at Sorbonne 
+    </a><br><br>
+     
+      <a href="stuff/openPositions/internship2019a.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019a.pdf']);"">
+    Open Master Internship 1 on topological data analysis and visualization at 
+Sorbonne 
+    (with Ph.D. continuation)</a><br>
+    <a href="stuff/openPositions/internship2019b.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019b.pdf']);"">
+    Open Master Internship 2 on topological data analysis and visualization at 
+Sorbonne 
+    (with Ph.D. continuation)</a><br>
+    <a href="stuff/openPositions/internship2019c.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019c.pdf']);"">
+    Open Master Internship 3 on topological data analysis and visualization at 
+Sorbonne 
+    (with Ph.D. continuation)</a><br>
+    <a href="stuff/openPositions/internship2019d.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019d.pdf']);"">
+    Open Master Internship 4 on topological data analysis and visualization at 
+Sorbonne 
+    (with Ph.D. continuation)</a><br><br>
+     
+     
+         <a href="stuff/openPositions/2019_total.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_total.pdf']);"">
+    Open Master2 Internship on topological data analysis and visualization of 
+3D scientific data at Total (Pau, France)</a><br>
+<br>
+     <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-1.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-1.pdf']);""
+>
+    Open Master2 Internship 1 on topological data analysis at BMW (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-2.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-2.pdf']);""
+>
+    Open Master2 Internship 2 on topological data analysis at BMW (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-3.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-3.pdf']);""
+>
+    Open Master2 Internship 3 on topological data analysis at BMW  (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-4.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-4.pdf']);""
+>
+    Open Master2 Internship 4 on topological data analysis at BMW  (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-5.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-5.pdf']);""
+>
+    Open Master2 Internship 5 on topological data analysis at BMW  (Munchen, 
+Germany)</a><br><br>
+    <a href="stuff/openPositions/2019_cea.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_cea.pdf']);"">
+    Open Master2 Internship on topological data analysis and visualization of 
+3D scientific data at CEA (Le Barp, France)</a><br>
+<br>
+    <a 
+href="https://krb-sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=30080&
+siteid=6559#jobDetails=1184120_6559" target="new"
+ onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/total18']);"
+>
+  One permanent engineer position in 3D data analysis and 
+visualization at Total! (Saclay, France)
+</a><br>
+    
+     <h4 class="title">2017-2018</h4>
+    <a href="stuff/openPositions/internship2018a.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018a.pdf']);"">
+    Open Master Internship 1 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018b.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018b.pdf']);"">
+    Open Master Internship 2 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018c.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018c.pdf']);"">
+    Open Master Internship 3 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018d.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018d.pdf']);"">
+    Open Master Internship 4 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018e.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018e.pdf']);"">
+    Open Master Internship 5 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018f.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018f.pdf']);"">
+    Open Master Internship 6 (at UPMC)</a><br>
+<!--    <a href="stuff/openPositions/internship2016b.html" target="new">
+    Open Master Internship 2</a><br>
+    <a href="stuff/openPositions/internship2016c.html" target="new">
+    Open Master Internship 3</a><br>-->
+    <a 
+href="stuff/openPositions/inria_aviz2017.pptx" 
+target="new">
+    Open Master Internship 7 (at INRIA, Aviz team)</a><br>
+<a 
+href="stuff/openPositions/iscd_2017_1.pdf" 
+target="new">
+    Open Master Internship 8 (at ISCD)</a><br>
+    <a 
+href="stuff/openPositions/iscd_2017_2.pdf" 
+target="new">
+    Open Master Internship 9 (at ISCD)</a><br>
+
+    <br>
+    <a href="stuff/openPositions/tulane.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/tulane.pdf']);"">
+    Open Ph.D. position in New Orleans (at Tulane University)</a>
+    <br><br>
+<!--    <a href="stuff/openPositions/postDocPosition2015.html" target="new">
+    Open Post-doctoral position</a><br>-->
+<a href="https://www.kitware.fr/company/jobs" target="new"
+ onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/kitware']);"
+>
+  Five permanent software engineer positions in 3D data analysis and 
+visualization and HPC at Kitware! (Lyon, France)
+</a><br>
+<a href="stuff/openPositions/cea.pdf" target="new"
+ onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/cea']);"
+>
+  One permanent software engineer position in 3D data analysis and 
+visualization at CEA! (Bordeaux, France)
+</a><br>
+<a 
+href="http://www.coventor.com/careers/2d3d-modeling-software-engineer-for-cadcae
+-applications-paris-france/" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/coventor']);">
+One permanent software engineer position in 3D modeling and mesh generation at 
+Coventor (Paris, France)</a>
+    <br><br>
+
+    <br>
+    <div align="center">
+      Updated on February 26, 2019.
+    </div>
+
+  </body>
+
+</html>

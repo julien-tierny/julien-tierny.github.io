@@ -1,0 +1,67 @@
+Bonjour,  (English version below)
+
+J'ai le plaisir de vous inviter à ma soutenance d'habilitation à diriger des recherches le 29 Avril 2016 à 14h à l'UPMC, salle 25-26/105.
+
+Titre: "Contributions à l'Analyse Topologique de Données pour la Visualisation Scientifique"
+
+Rapporteurs:
+- Hans Hagen, Professeur à TU Kaiserslautern 
+- Chris Johnson, Professeur à l'University of Utah 
+- Bruno Lévy, Directeur de Recherche à l'INRIA 
+
+Composition du jury:
+- Isabelle Bloch, Professeur à Télécom ParisTech (Examinatrice)
+- Jean-Daniel Fekete, Directeur de Recherche à l'INRIA (Examinateur)
+- Pascal Frey, Professeur à l'UPMC (Examinateur)
+- Hans Hagen, Professeur à TU Kaiserslautern (Rapporteur)
+- Bruno Lévy, Directeur de Recherche à l'INRIA (Rapporteur)
+- Philippe Ricoux, Direction Scientifique de Total (Examinateur)
+- Will Schroeder, Directeur de Kitware Inc. (Examinateur)
+
+La présentation sera donnée en Anglais.
+
+Résumé: 
+La visualisation scientifique est un domaine qui vise à aider les utilisateurs à (i) représenter, (ii) explorer et (iii) analyser des données géométriques acquises ou simulées, à des fins d'interprétation, de validation ou de communication. Parmi les techniques existantes, les algorithmes inspirés par la théorie de Morse ont démontré leur utilité dans ce contexte pour l'extraction efficace et robuste de structures d'intérêts, et ce à plusieurs échelles d'importance.
+
+Dans cette présentation, je décrirai les principaux résultats de ma recherche dans ce domaine, avec des contributions à l'analyse topologique de données dans chacun des sujets décrits ci-dessus (abstraction, interaction et analyse). 
+Premièrement, je donnerai un bref tutoriel sur l'analyse topologique de champs scalaires, en introduisant quelques concepts clés comme celui de graphe de Reeb, de complexe de Morse-Smale ou de diagramme de persistance. 
+Deuxièmement, je présenterai mes contributions à: 
+(i) l'abstraction de données, avec la descriptions d'algorithmes rapides en pratique pour le calcul de graphes de Reeb et la simplification de champs scalaires;
+(ii) l'interaction, avec la présentation de techniques interactives de segmentation de données basées sur le complexe de Morse-Smale et le graphe de Reeb;
+(iii) l'analyse, avec la spécialisation d'approches d'analyse topologique à des applications en combustion et chimie.
+Troisièmement, je discuterai certaines problématiques pratiques ayant récemment émergé avec le développement des ressources de calcul haute-performance. Ces problématiques induisent non seulement des jeux de données d'une taille inédite, mais également des types nouveaux de données, comme les champs scalaires multivariés ou incertains. Ces difficultés ne sont pas uniquement intéressantes pour la communauté de recherche à cause de leur forte importance pratique, mais aussi parce qu'elles nécessitent un redémarrage complet de l'effort de recherche entrepris dans ce domaine ces vingts dernières années. En particulier, je présenterai de nouvelles directions de recherche, étayées par des résultats préliminaires récents concernant l'analyse topologique de champs scalaires incertains et bivariés.
+
+=
+Dear all,
+
+It is my pleasure to invite you to my habilitation defense, on April 29th at 2pm, at UPMC, room 25-26/105.
+
+Title: "Contributions to Topological Data Analysis for Scientific Visualization"
+
+Manuscript reviewers:
+- Hans Hagen, Professor at TU Kaiserslautern 
+- Chris Johnson, Professor at the University of Utah 
+- Bruno Lévy, Research Director at INRIA 
+
+Committee members:
+- Isabelle Bloch, Professor at Télécom ParisTech (Examiner)
+- Jean-Daniel Fekete, Research Director at INRIA (Examiner)
+- Pascal Frey, Professor at UPMC (Examiner)
+- Hans Hagen, Professor at TU Kaiserslautern (Reviewer)
+- Bruno Lévy, Research Director at INRIA (Reviewer)
+- Philippe Ricoux, Scientific Headquarters of TOTAL (Examiner)
+- Will Schroeder, CEO at Kitware Inc. (Examiner)
+
+The presentation will be given in English.
+
+Abstract:
+Scientific visualization aims at helping users (i) abstract, (ii) interact with and (iii) analyze simulated or acquired geometrical data for interpretation, validation and communication purposes. Among existing techniques, algorithms inspired by Morse theory have demonstrated their utility to robustly and efficiently capture and summarize the structure of the studied phenomena, at multiple scales of importance.
+
+In this talk, I will review the main results of my research over the last seven years in this area, with contributions to topological data analysis for each of the topics described above (abstraction, interaction and analysis).
+First, I will give a short tutorial on the topological analysis of scalar fields, introducing key concepts such as the Reeb graph, the Morse-Smale complex and the persistence diagram.
+Second, I will present my contributions to:
+(i) data abstraction, including fast practical algorithms for the computation of the Reeb graph and the simplification of scalar fields;
+(ii) interaction, including interactive segmentation techniques based on the Morse-Smale complex and the Reeb graph;
+(iii) analysis, including specializations of topological data analysis approaches to combustion and chemistry applications.
+Third, I will discuss practical challenges that recently arose with the ongoing development of high performance computing resources. Not only do these challenges yield data-sets of unprecedented size, but also new types of data such as multivariate or uncertain scalar fields. These difficulties are particularly exciting for the research community because of their practical importance, and also because they require complete reboots of the research effort that has been achieved in this area over the last two decades. In particular, I will present new research directions, supported by recent preliminary results for the topological analysis of uncertain and bivariate scalar fields.
+

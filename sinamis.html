@@ -1,0 +1,477 @@
+<html>
+	<head>
+		<title>
+			Julien Tierny - SINAMIS Is Not A Mesh Indexing System
+		</title>
+		<link rel='stylesheet' href='oldStyle.css' type='text/css' />
+		<meta name='keywords' content='Julien Tierny,
+			partial retrieval, partial 3D shape retrieval, download,
+			implementation, program, benchmark, SHREC 2007, reeb pattern
+			unfolding, Reeb graphs, shape signature'>
+		<style></style>
+	</head>
+
+	<body>
+		
+		<div id='trailer' valign='center' align='center'>
+			<h1>SINAMIS Is Not A Mesh Indexing System</h1>
+			<br>
+
+			<a href='index.html'>Julien Tierny</a>,
+			<a href='http://www.telecom-lille1.eu/people/vandeborre' 
+				target='new'>
+			Jean-Philippe Vandeborre</a> and
+			<a href='http://www.telecom-lille1.eu/people/daoudi' target='new'>
+			Mohamed Daoudi</a>
+
+			<h5>Benchmarking tools and partial 3D shape retrieval system</h5>
+<!--			<a
+			href='stuff/software/sinamis.tar.gz'>Download
+			package</a> -->
+		</div>
+
+		<br>
+		<div align='right'>
+			<a href='index.html'>>> Back to my research page</a>
+		</div>
+		<br>
+
+		<h2>Foreword</h2>
+		This package contains benchmarking tools for <b>partial</b> 3D shape
+		retrieval system evaluation along with a partial 3D shape retrieval 
+		system that implements the method described in the paper 
+<!--		<a
+		href='cgf08.html'>Partial 3D shape retrieval by Reeb pattern
+		unfolding</a> -->
+		<a href='cgf08.html'>Partial 3D shape retrieval by Reeb pattern
+		unfolding</a>
+		<a href='sinamis.html#4'>[4]</a>.
+
+		<br>
+		Before downloading the package, to keep track of its distribution, we
+		would be very grateful if you could <b>acknowledge</b> 
+		us your download by 
+		email: <a
+		href='mailto: julien dot tierny at telecom-lille1 dot eu'>julien dot tierny at
+		telecom-lille1 dot eu</a>.
+
+		<br>
+		If you ever exploit experimental results obtained with this
+		package in a scientific publication, <b>please reference</b> the 
+		following
+		paper:
+		<a
+		href='cgf08.html'>Partial 3D shape retrieval by Reeb pattern
+		unfolding</a> <a href='sinamis.html#4'>[4]</a>.
+
+		<br><br>
+
+		<div align='center'><h3>
+			<a target='new'
+			href='sinamis_download.html'>
+			Download SINAMIS package</a>
+		</h3></div><br>
+
+		<h2>System requirements</h2>
+			<h3>Operating system</h3>
+			SINAMIS is entirely written in C and is only released as a binary
+			version, compiled for <b>GNU/Linux</b> 
+			systems (with gcc 4.1.2) running on i386 like CPUs.
+
+			<h3>Third party libraries</h3>
+			SINAMIS runs on top of two third party libraries:
+			<br>
+			<b>- GNU Scientific Library (libgsl):</b><br>
+			<table>
+				<tr>
+					<td width='15cm'></td>
+					<td>Required version: 1.9</td></tr>
+				<tr>
+					<td width='15cm'></td>
+					<td><a href='http://www.gnu.org/software/gsl/'
+					target='new'>GSL project homepage</a></td></tr>
+				<tr><td width='15cm'></td>
+					<td>Installation: please refer to the package management
+					system of your GNU/Linux distribution.</td></tr>
+				</tr>
+			</table>
+			<b>- GNU Triangulated Surface (libgts):</b><br>
+			<table>
+				<tr><td width='15cm'></td>
+					<td>Required version: 0.7.6</td></tr>
+				<tr><td width='15cm'></td>
+					<td><a href='http://gts.sourceforge.net/' 
+					target='new'>GTS project homepage</a></td></tr>
+				<tr><td width='15cm'></td>
+					<td>Installation: please refer to the package management
+					system of your GNU/Linux distribution.</td></tr>
+			</table>
+
+		<h2>Package content</h2>
+			<h3>bin/ directory</h3>
+			<b>- ndcg:</b> NDCG score computation program.<br>
+			<b>- sinamis:</b> Partial 3D shape retrieval system (see paper
+			 <a
+			href='cgf08.html'>Partial 3D shape retrieval by Reeb
+			pattern unfolding</a>).</br>
+			<b>- wrl2gts:</b> WRL to GTS file format convertor.
+
+			<h3>data/ directory</h3>
+			
+			<b>- shrec07_cornea_ndcg.plot:</b> NDCG vector score of 
+			<a href='sinamis.html#2'>[2]</a> on SHREC
+			2007 partial matching track data-set (extracted from 
+			<a href='sinamis.html#3'>[3]</a>).<br>
+			
+			<b>- shrec07_dataset_rpu.idx:</b> SHREC 2007 partial matching track
+			data-set index file generated with 
+			<a href='sinamis.html#4'>[4]</a>.<br>
+
+			<b>- shrec07_erg_ndcg.plot:</b> NDCG vector score of <a
+			href='sinamis.html#1'>[1]</a> on SHREC 2007 partial matching track
+			data-set (extracted from <a href='sinamis.html#3'>[3]</a>).<br>
+
+			<b>- shrec07_groundtruth.txt:</b>
+			SHREC 2007 partial matching track
+			query-set ground-truth (see <a href='sinamis.html#3'>[3]</a>).<br>
+
+			<b>- shrec07_rpu_ndcg.plot:</b>
+			NDCG vector score of <a href='sinamis.html#4'>[4]</a> on SHREC 2007
+			partial matching track data-set (see <a
+			href='sinamis.html#3'>[3]</a>).<br>
+
+			<b>- shrec07_rpu_score.txt:</b>
+			Matrix score file generated with <a href='sinamis.html#4'>[4]</a> on
+			SHREC 2007 partial matching track query-set (see <a
+			href='sinamis.html#3'>[3]</a>).
+
+			<h3>scripts/ directory</h3>
+
+			<b>- index.sh:</b> Bourne-shell script for data-set off-line
+			indexing with SINAMIS <a href='sinamis.html#4'>[4]</a>.<br>
+			<b>- scores.sh:</b> Bourne-shell script for query-set matrix score
+			file generation with SINAMIS <a href='sinamis.html#4'>[4]</a>.
+
+		<h2>Data-sets</h2>
+			<b>SINAMIS package comes with no data-set!</b>
+			SHREC 2007 data and query sets are courtesy of AIM@SHAPE. 
+			<!--
+			Please
+			contact Simone MARINI for a copy: <a href='mailto:simone at ge dot
+			imati dot cnr dot it'> simone at ge dot imati dot cnr dot it</a>.
+			-->
+			<h3>SHREC 2007 partial matching track data-set</h3>
+			Performance evaluation reported in <a href='sinamis.html#4'>[4]</a>
+			has been achieved on the SHREC 2007 partial matching track query and
+			data sets.<br>
+			This data-set is a pre-classified collection of 400 manifold meshes.
+			It 	exhibits diverse geometry (pose change) and topology variations
+			within classes.<br>
+			The query-set is composed of 30 manifold meshes. Each of them shares
+			visually similar sub-parts with at least two classes of the
+			data-set.<br>
+			SHREC 2007 data and query sets are courtesy of AIM@SHAPE. 
+			<!--
+			Please
+			contact Simone MARINI for a copy: <a href='mailto:simone at ge dot
+			imati dot cnr dot it'> simone at ge dot imati dot cnr dot it</a>.
+			-->
+
+			<h3>Other data-sets</h3>
+			SINAMIS package provides sufficient softwares and data samples to
+			extend experiments to any other data-set. All you need to have is
+			<b>a pre-classified data-set</b>, a <b>query-set</b> sharing similar
+			sub-parts with classes of the data-set and a <b>query-set
+			ground-truth</b> (see below).<br>
+			Please notice SINAMIS can only process closed manifold meshes.
+
+		<h2>Usage</h2>
+			<h3>Package decompression</h3>
+			Just un-compress the package tarball with the following command:
+			<table>
+				<tr>
+					<td width='15cm'></td>
+					<td><b>$ tar xvzf sinamis.tar.gz</b><td>
+				</tr>
+			</table>
+			In the rest of the document, we assume you only change directory to:
+			<table>
+				<tr>
+					<td width='15cm'></td>
+					<td><b>$ cd sinamis</b><td>
+				</tr>
+			</table>
+
+			<h3>Data conversion</h3>
+			SINAMIS partial 3D shape retrieval system (<b>bin/sinamis</b>) 
+			takes GTS
+			files as an input. 
+			All data must be converted to GTS format first before using
+			SINAMIS.<br>
+			You will find a minimalist WRL to GTS mesh file format
+			convertor in the <b>bin</b> directory. Example usage:
+			<table><tr><td width='15cm'></td>
+				<td><b>$ bin/wrl2gts mymesh.wrl</b><td>
+			</tr></table>
+			GTS meshes can be displayed with the <a
+			href='http://mview.sourceforge.net/' 
+				target='new'>mview software</a>.
+			<h3>Classification, ground-truth and score matrices</h3>
+				<h4>Classification</h4>
+				In order to use SINAMIS NDCG score computation program
+				(<b>bin/ndcg</b>), the filename of the
+				data-set entries must begin with their class name in capital
+				letters, followed by an underscore. Here are valid examples:
+				<table><tr><td width='15cm'></td>
+					<td><b>ARMADILLO_dataset_entry127.gts</b><td></tr>
+					<tr><td width='15cm'></td>
+					<td><b>ARMADILLO_127.wrl</b><td>
+				</tr></table>
+
+				<a name='scores' id='scores'></a>
+				<h4>Ground-truth</h4>
+				The ground-truth file is an ASCII file that lists for each 
+				query the sets of <i>Highly
+				Relevant</i> (HR) and <i>Marginally Relevant</i> (MR) 
+				corresponding
+				classes of the data-set as
+				well as the total number of related data-set entries
+				(please see <a href='sinamis.html#3'>[3]</a> for more details
+				about the NDCG vector computation).<br>
+				If a query has no particular corresponding class, just use the
+				keyword "<b>NONE</b>".<br>
+				The format for query entries is the following (one line per
+				query):
+				<table><tr><td width='15cm'></td>
+					<td><b>&lt;QUERY_ID>;&lt;TOTAL NUMBER FOR HR CLASSES>,
+						&lt;HR CLASS 1>, ... &lt;HR CLASS n>;
+						&lt;TOTAL NUMBER FOR MR CLASSES>, &lt;MR CLASS 1>,
+						... &lt;MR CLASS n>
+					</b><td></tr>
+				</tr></table>
+				Here are valid examples:
+				<table>
+					<tr><td width='15cm'></td>
+					<td><b>
+						11;40,FISH,HAND;0,NONE
+					</b><td></tr>
+					<tr><td width='15cm'></td>
+					<td><b>
+						19;40,PLANE,ARMADILLO;60,HUMAN,BIRD,PLIER
+					</b><td></tr>
+					<tr><td width='15cm'></td>
+					<td><b>
+						30;40,FOUR,HUMAN;40,ARMADILLO,TEDDY
+					</b><td></tr>
+					</b><td></tr>
+				</tr></table>
+				SINAMIS package already contains the ground-truth file 
+				for the SHREC 2007 partial matching query and data sets
+				(<b>data/shrec07_groundtruth.txt</b>).
+
+				<h4>Score matrices</h4>
+				In order to use SINAMIS NDCG score computation program
+				(<b>bin/ndcg</b>), your system must output ASCII score matrix
+				files using the following format.<br>
+				Each line of the score file must correspond to the same 
+				line of the ground-truth file (results for query appearing line
+				3 of the ground-truth file must appear
+				at the third line).<br>
+				Each line must contain the filename of the data-set entries
+				sorted by
+				decreasing similarity (top results first)
+				separated by the "<b>;</b>" character.<br>
+				SINAMIS package already contains the score matrix file on SHREC
+				2007 partial matching track query set, generated with the
+				method described in <a href='sinamis.html#4'>[4]</a>
+				(<b>data/shrec07_rpu_score.txt</b>).
+
+			<h3>Off-line indexing</h3>
+				<h4>Indexing a whole data-set</h4>
+				The Bourne-shell script <b>bin/index.sh</b> allows you to easily
+				index a data-set with SINAMIS. Please edit this file and fill
+				the following variables (as indicated in the file):<br>
+				<b>- DATASET_PATH:</b> directory containing your GTS
+				data-set;<br> 
+				<b>- SINAMIS_PATH:</b> directory containing the 
+				<b>sinamis</b> binary;<br>
+				<b>- INDEX_FILE:</b> name of the output index file.<br>
+				Then, just run:
+				<table>
+					<tr><td width='15cm'></td>
+					<td><b>
+						$ scripts/index.sh
+					</b><td></tr>
+				</table>
+				... and go make some coffee :)
+
+				<h4>Indexing standalone entries</h4>
+				To append a new standalone entry to the index file, just:
+				<table>
+					<tr><td width='15cm'></td>
+					<td><b>
+						$ bin/sinamis -i &lt;INDEX FILE> -n &lt;STANDALONE GTS
+						ENTRY>
+					</b><td></tr>
+				</table>
+				<br>
+				SINAMIS package already contains the index file generated with
+				the method described in <a href='sinamis.html#4'>[4]</a> for the
+				SHREC 2007 partial matching track data-set
+				(<b>data/shrec07_dataset_rpu.idx</b>).
+			<h3>On-line querying</h3>
+			To run a partial similarity query against an indexed data-set, just:
+			<table>
+				<tr><td width='15cm'></td>
+					<td><b>
+						$ bin/sinamis -i &lt;INDEX FILE> -q &lt;GTS QUERY>
+					</b><td></tr>
+				</b><td></tr>
+			</table>
+			Data-set entries will be displayed by increasing similarity
+			(top results at the end).
+			<h3>NDCG score computation</h3>
+			To compute NDCG vector scores (see <a
+			href='sinamis.html#3'>[3]</a>), you will need a query-set
+			ground-truth file and a score matrix (generated by the partial shape
+			retrieval system) as described <a
+			href='sinamis.html#scores'>above</a>.<br>
+
+			<h4>Computing score files with SINAMIS</h4>
+			To compute a new score matrix file with SINAMIS, use the 
+			Bourne-shell script <b>scripts/scores.sh</b>. Please edit this file
+			and fill the following variables (as indicated in the file):<br>
+			<b>- QUERYSET_PATH:</b> directory containing your GTS query-set;<br>
+			<b>- SINAMIS_PATH:</b> directory containing the <b>sinamis</b>
+			binary;<br>
+			<b>- INDEX_FILE:</b> full path to the data-set index file;<br>
+			<b>- SCORE_FILE:</b> name of the output score file.<br>
+			Then, just run:
+			<table>
+				<tr><td width='15cm'></td>
+					<td><b>
+						$ scripts/scores.sh
+					</b><td></tr>
+				</b><td></tr>
+			</table>
+			... and go make some coffee :) <br>
+			SINAMIS package already contains the score file generated with the
+			method described in <a href='sinamis.html#4'>[4]</a> for the SHREC
+			2007 partial matching track data-set
+			(<b>data/shrec07_rpu_score.txt</b>).
+
+			<h4>Computing NDCG vector files</h4>
+			To compute NDCG vector files (generated with SINAMIS or other
+			systems), run:
+			<table>
+				<tr><td width='15cm'></td>
+					<td><b>
+						$ bin/ndcg -g &lt;GROUND-TRUTH FILE> -s &lt;SCORE FILE>
+					</b><td></tr>
+				</b><td></tr>
+			</table>
+			This command will output as many NDCG vector files as query-set
+			entries plus a global NDCG which averages all the queries (see
+			<a href='sinamis.html#3'>[3]</a>). These plots can be displayed with
+			a software like <a href="http://www.gnuplot.info" target='new'>GNU
+			Plot</a>.
+
+			<h3>Examples</h3>
+			To reproduce the experimental results presented in the paper
+			 <a
+			href='cgf08.html'>Partial 3D shape retrieval by Reeb
+			pattern unfolding</a> <a href='sinamis.html#4'>[4]</a>, run the
+			following commands:<br>
+			<i>- Figure 13, page 8:</i>
+				<table>
+					<tr><td width='15cm'></td>
+						<td><b>
+							$ bin/sinamis -i data/shrec07_dataset_rpu.idx -q
+							&lt;PATH TO SHREC 2007 QUERY 30 (GTS)>
+						</b><td></tr>
+					</b><td></tr>
+				</table>
+			<i>- Figure 14, page 8:</i>
+				<table>
+					<tr><td width='15cm'></td>
+						<td><b>
+							$ bin/sinamis -i data/shrec07_dataset_rpu.idx -q
+							&lt;PATH TO SHREC 2007 QUERY 21 (GTS)>
+						</b><td></tr>
+					</b><td></tr>
+				</table>
+			<i>- Figure 15, page 9:</i>
+				<table>
+					<tr><td width='15cm'></td>
+						<td><b>
+							$ bin/sinamis -i data/shrec07_dataset_rpu.idx -q
+							&lt;PATH TO SHREC 2007 QUERY 19 (GTS)>
+						</b><td></tr>
+					</b><td></tr>
+				</table>
+			<i>- Figure 16, page 8:</i>
+				<table>
+					<tr><td width='15cm'></td>
+						<td><b>
+							$ bin/ndcg -g data/shrec07_groundtruth.txt -s
+							data/shrec07_rpu_score.txt
+						</b><td></tr>
+					</b><td></tr>
+				</table>
+			Then, you can view with <a href="http://www.gnuplot.info"
+			target='new'>GNU Plot</a> the generated file <b>NDCG.plot</b> along
+			with the NDCG vector files for the other methods <a
+			href='sinamis.html#1'>[1]</a><a href='sinamis.html#2'>[2]</a>
+			(respectively <b>data/shrec07_erg_ndcg.plot</b> and
+			<b>data/shrec07_cornea_ndcg.plot</b>).
+
+		<h2>Bugs</h2>
+		Because sh*t happens, please feel free to send any bug report or comment
+		to: <a href='mailto: julien dot tierny at telecom-lille1 dot eu'>julien dot tierny
+		at telecom-lille1 dot eu</a>.
+
+		<h2>References</h2>
+		<a name='1' id='1'></a>
+		[1] BIASOTTI S., MARINI S., SPAGNUOLO M., FALCIDIENO B.:<br> <b>Sub-part
+		correspondence by structural descriptors of 3D shapes.</b>
+		<i>Computer-Aided
+		Design Journal 38</i> (2006), pp. 1002-1019.<br>
+		<a name='2' id='2'></a>
+		[2] CORNEA N. D., DEMIRCI M. F., SILVER D., SHOKOUFANDEH A., DICKINSON 
+		S.,
+		KANTOR P. B.:<br> <b>3D object retrieval using many-to-many matching of 
+		curve skeletons.</b>
+		In <i>IEEE Shape Modeling International</i> (2005), pp.
+		366-371.<br>
+		<a name='3' id='3'></a>
+		[3] MARINI S., PARABOSCHI L., BIASOTTI S.: <br>
+		<b>SHape REtrieval Contest 2007:
+		Partial matching track.</b> In <i>SHREC (in conjunction with IEEE Shape
+		Modeling International)</i> (2007), pp. 13-16.<br>
+		<a name='4' id='4'></a>
+		[4] Tierny J., Vandeborre J.-P., Daoudi M.:<br> <b>Partial 3D shape 
+		retrieval
+		by Reeb pattern unfolding.</b> <i>Computer Graphics Forum, To appear
+		(2008)</i>.
+
+		<br>
+		<br>
+		<div align='right'>
+			<a href='index.html'>>> Back to my research page</a>
+		</div>
+
+		<br>
+		<div align='center' valign='center'>
+			Updated on July 24th, 2008.
+		</div>
+
+		<!-- google stats -->
+		<script src="http://www.google-analytics.com/urchin.js"
+			type="text/javascript">
+		</script>
+		<script type="text/javascript">
+			_uacct = "UA-3022193-1";
+			urchinTracker();
+		</script>
+	</body>
+</html>

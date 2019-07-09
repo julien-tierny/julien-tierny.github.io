@@ -1,0 +1,713 @@
+<html>
+  <head>
+    <title> Julien Tierny - Visualization Exercise - Converting Data to Paraview
+</title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  <meta name="keywords" content="
+    VTK Tutorial, VTK Exercise, ParaView Tutorial, ParaView Exercise,
+      Visualization, Paris, France,
+        Scientific Visualization, Sorbonne Universites, UMPC, LIP6, 
+          Computational Topology, Topological Data Analysis, Morse Theory,
+            Scalar Field Topology, Reeb graph, Contour Tree, Scientific
+            Computing, 
+              Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+                Online classes, Online exercises" />
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <div id='teaser'>
+    <table width='100%' background="img/teaserVisualizationClass.png">
+        <tr>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Scientific Visualization</h1>
+            <br>
+            <h2 class="teaser">
+                Practical Exercise:<br>
+              <b>Converting Data to Paraview</b>
+              <br><br>
+              Corresponding lecture:<br>
+              <a href="visualizationClass.html#domainRep" target="new"
+              class="teaser">
+              Domain representations</a>
+              <br>
+              <br>
+              <a href="index.html" target='new' class="teaser">
+              Julien Tierny</a><br> 
+              <a class="teaser" href="mailto:julien dot tierny at lip6 dot fr">
+              julien dot tierny at lip6 dot fr</a>
+            </h2>
+          </td>
+          <td width='35%'>
+            <img src='img/alpha.png' width='100%'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+    <h3 class="title">Goals</h3>
+    The goal of this exercise is to get familiar with the first practical step
+    of any visualization task: data conversion.<br>
+    Each scientific field has its own traditions in term of data generation,
+    leading to a variety of data file formats. Given a data-set that has been
+    brought to you by a domain expert, prior to loading it into a visualization
+    system (such as <a href="http://www.paraview.org" target="new">
+    ParaView</a>), most of the time it is necessary to convert it to a file
+    format that is supported by the visualization system.<br>
+    In this exercise, you will implement a data importer that converts input
+    data files into VTK file formats, which will later enable you to load these
+    data-sets in the <a href="visualizationExerciseParaView.html" target="new">
+    ParaView exercise</a> session and in the 
+    <a href="visualizationExerciseDataParty.html" target="new">Data Party!</a>
+    session.<br><br>
+    This exercise will enable you to review the concepts introduced in the
+    lecture dedicated to <a
+    href="visualizationClass.html#domainRep" target="new">
+    Domain Representations</a>.<br>
+    After completing this exercise, you will be able to convert any data-set you
+    generate in other classes and projects to produce insightful 
+    visualizations with ParaView.
+
+    <br>
+    <!--<b>Duration:</b> 2 hours<br>-->
+
+    <h3 class="title">Software prerequisites</h3>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.vtk.org" target="new">VTK</a> (runtime libraries
+    <i>and</i> headers) should be installed
+    (6.0 or higher);<br>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.cmake.org" target="new">CMake</a> should be installed
+    (2.8 or higher). <br>
+
+    <br>
+    The remainder of these exercise instructions assumes that the employed 
+    IDE is
+    <a href="http://www.kdevelop.org" target="new">KDevelop</a> 
+    (version 4.5 or higher) under
+    Linux. However, this exercise can be achieved with any IDE under any OS.
+    For non-Linux users, an easy alternative consists in installing a Linux 
+    system (such as 
+    <a href="http://www.kubuntu.org" target="new">Kubuntu</a>) within a 
+    virtual machine (such as 
+    <a href="http://www.virtualbox.org" target="new">VirtualBox</a>, 
+    a readily configured virtual machine is available 
+<a target="new"
+    href="stuff/teaching/ttk_exerciseMachine.ova"
+    >HERE</a> (md5sum: a59d9cf610ef5ddb7f0f6b338316df0a, password: ttk).
+<!--    <a 
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/teaching/tierny_exerciseMachine.ova'])"
+    href="stuff/teaching/tierny_exerciseMachine.ova">HERE</a>,
+    md5sum:
+    a9a051e6381a13fcd1e3093d3a5c004f).
+ -->
+    <h3 class="title">Documentation</h3>
+    &nbsp;&middot; An up-to-date documentation of the VTK library can be found 
+    <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+    target="new">HERE</a>.<br>
+    &nbsp;&middot; A light-speed introduction to C++ programming can be found
+    <a href="stuff/teaching/tierny_visualization_introductionC++.pdf" 
+      target="new">HERE</a>.
+
+    <h3 class="title">Getting started</h3>
+
+      <h4 class="title">Exercise package</h4>
+      &nbsp;&middot; Download the exercise package 
+      <a href="stuff/teaching/tierny_visualizationExercise_dataConversion.zip"> 
+      HERE</a> and extract it under your home
+      directory.
+
+      <h4 class="title">Importing the project in KDevelop</h4>
+      &nbsp;&middot; Import the CMake project: 
+      <i>Project</i> -> 
+      <i>Open / Import Project...</i> 
+      and select the file <i>CMakeLists.txt</i>;<br>
+      &nbsp;&middot; Build the program.<br>
+      <h4 class="title">Project basic configuration</h4>
+      <a name="launch"></a>
+      &nbsp;&middot; Under
+      <i>Run</i> ->
+      <i>Configure Launches...</i><br>
+      &nbsp;&middot; Click on <i>paraviewConversion</i>;<br>
+      &nbsp;&middot; Click on the <i>"Add new"</i> icon button and select
+      <i>"Application"</i> from the rolling menu;<br>
+      &nbsp;&middot; On the right,
+      <i>Project Target:</i>paraviewConversion/paraviewConversion;<br>
+      &nbsp;&middot; Under
+      <i>Behavior</i>, <i>Working Directory</i>, enter the path to the
+      directory where the file <i>CMakeLists.txt</i> is located;<br>
+      &nbsp;&middot; Under 
+      <i>Behavior</i>, <i>Arguments</i>, enter: <i>-t
+      data/scalarFields/2-triangulation/data.tri</i> (to load a scalar field
+      defined on a 2-triangulation);<br>
+      &nbsp;&middot; Click on the <i>OK</i> button.
+
+
+      <h4 class="title">KDevelop basic usage</h4>
+      &nbsp;&middot; To access the source files of the project, click on
+      <i>Projects</i> tab on the left. Double-click on a source file to open and
+      edit it;<br>
+      &nbsp;&middot; To compile the code, press <i>F8</i>;<br>
+      &nbsp;&middot; To run the code, press <i>Shift+F9</i>;<br>
+      &nbsp;&middot; To run the code in debug mode, press <i>F9</i> 
+      <br>
+      <br>
+
+      <a href="img/visualizationExercise_data1.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data1.jpg"></a>
+      <br><br>
+      If you followed the previous instructions, at this point, your screen 
+      should look like the above screen-shot.
+      <br>
+
+      <h4 class="title">Data collection</h4>
+      The directory <i>data/</i> contains 11 data-sets to import in 
+      VTK/ParaView.
+      They are organized into sub-directories per type of field (scalar, vector,
+      tensor)  and domain type/dimension. To load a different data-set in your
+      program, you need to edit the <i>Arguments</i> options of your project
+      launch configuration (see 
+      <a href="#launch">
+      above</a>). 
+      Alternatively, you can add a new launch per
+      data-set. Then, each of the different launches can be selected through the
+      menu <i>Run -> Current Launch Configuration</i><br>
+
+      <h4 class="title">Code skeleton</h4>
+      The code skeleton provided with the exercise package is mainly composed 
+      of 1 class:<br>
+      &nbsp;&middot; <i>Importer</i>: 
+      This class is dedicated to the loading of the input data and its storage
+      into a VTK file format.<br>
+      At this point, the code skeleton provides the following features:<br>
+      &nbsp;&middot; Parsing of the command line arguments (i.e. the file name o
+      the input data) in the <i>main.cpp</i> file;<br>
+      &nbsp;&middot; Place-holder functions:<br> 
+      &nbsp;&nbsp;&nbsp;&middot;<i>Importer::readTriangulation()</i> to 
+      read a
+      triangulation;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>Importer::writeVtkTriangulation()</i> to 
+      write
+      a triangulation in VTK file format;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>Importer::readRegularGrid()</i> to read a
+      regular grid;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>Importer::writeVtkRegularGrid()</i> to write
+      a regular grid in VTK file format.<br>
+      You will write the content of these place-holder functions during this
+      exercise.
+      <br>
+      <br>
+      Now, let's get the exercise started.
+
+      <h3 class="title">Importing data defined on triangulations</h3>
+      First, we will take care of the import of triangulations.<br>
+      Some scientists generated different data-sets (scalar fields, vector
+      fields and tensor fields) defined on triangulations (see the <i>data/</i>
+      directory).<br>
+      Hopefully for us, their data-sets are stored in a pretty simple file
+      format which is ASCII-based (which can be opened with any text editor).
+      <br>
+      This file format is organized as follows:<br>
+      &nbsp;&middot; First line:<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>(Dimension of the domain)</i>: 2 for triangle
+      meshes, 3 for tetrahedral meshes;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>(Number of vertex attributes)</i>: at least 3
+      (for the x,y,z coordinates) plus additional attributes (1 for scalar
+      fields, 3 for vector fields, 9 for tensor fields);<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>(Number of vertices)</i>;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>(Number of highest dimensional
+      cells)</i>: number of triangles for triangle meshes, of tetrahedra for
+      tetrahedral meshes.<br>
+      &nbsp;&middot;Next, <i>(Number of vertices)</i> lines follow, one line per
+      vertex. Each line stores in order the x, y, z coordinates of the vertex,
+      then the additional attributes.<br>
+      &nbsp;&middot;Next, <i>(Number of highest dimensional cells)</i> lines
+      follow, one line per cell. Each line represents the Identifiers (Ids, 
+      i.e., order
+      of appearance in the previous list) of the vertices contained in the
+      cell.<br>
+
+
+      <h4>Question 1: Reading a triangulation</h4>
+      &nbsp;&middot;
+      Complete the function <i>Importer::readTriangulation()</i>. Given a
+      file path stored in its argument <i>fileName</i>, this function should
+      read the corresponding file (with an <i>ifstream</i> object) and fill the
+      following internal variables of the <i>Importer</i> class (see
+      <i>Importer.h</i>):<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>dimension_</i> stores the dimension of the
+      data-set;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>numberOfComponents_</i> stores the number of
+      vertex attributes;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>vertexData_</i> this vector should contain
+      one entry per vertex, each entry containing a vector of attributes;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>cellData_</i> this vector should contain one
+      entry per highest dimensional cell, each entry containing a vector of
+      vertex Ids.<br>
+      If you answered correctly this question, you should now see the following
+      result:<br><br>
+      <a href="img/visualizationExercise_data2.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data2.jpg"></a>
+      <br><br>
+
+      <h4>Question 2: Importing a scalar field</h4>
+      &nbsp;&middot; 
+      Complete the function <i>Importer::writeVtkTriangulation()</i>. Given a
+      file path stored in its argument <i>fileName</i>, this function should use
+      the information stored in the internal variables of the <i>Importer</i>
+      class to:<br>
+      &nbsp;&nbsp;&nbsp;&middot;To create a VTK object representing a
+      triangulation (<i>vtkUnstructuredGrid</i> class);<br>
+      &nbsp;&nbsp;&nbsp;&middot;To fill this data structure with the information
+      read in the previous question;<br>
+      &nbsp;&nbsp;&nbsp;&middot;To write it into a VTK file with VTK
+      Input/Output features (<i>vtkXMLUnstructuredGridWriter</i> class).<br>
+      Each of these steps is detailed in the following sub-questions.
+
+      <h4>Question 2.1: Object declarations</h4>
+      To create a VTK triangulation, one needs to declare objects of the
+      following types:<br>
+      <a name="objectList"></a>
+      &nbsp;&nbsp;&nbsp;&middot;<i>vtkUnstructuredGrid</i>: a class that
+      can represent triangulations in 2D or 3D;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>vtkPoints</i>: a class that
+      represents a set of points (vertices);<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>vtkDoubleArray</i>: a class that
+      represents multi-dimensional arrays of real numbers;<br>
+      Note that for each of these, the appropriate header file (<i>*.h</i>)
+      should be included in <i>Importer.h</i>.
+      <br><br>
+
+      VTK uses its own memory allocation and management system. This means that
+      VTK objects <i>cannot</i> 
+      be declared directly. Instead, <i>pointers</i> to VTK
+      objects must be declared and memory needs to be <i>dynamically</i>
+      allocated as follows:<br>
+      &nbsp;&nbsp;&nbsp;&middot;
+      <i>vtkUnstructuredGrid *triangulation = vtkUnstructuredGrid::New();</i>
+      <br>
+      The above line allocates the necessary memory for a
+      <i>vtkUnstructuredGrid</i> object (with the call to the function
+      <i>New()</i>) and declares a pointer (named <i>triangulation</i>) pointing
+      to it.<br>
+      <b>Warning!</b> Dynamic memory allocation requires some attention. Each
+      object which has been dynamically allocated must be de-allocated when it
+      is no longer used in order to free the corresponding memory. With VTK, 
+      for each dynamically allocated object,
+      one typically needs to free its memory
+      at the end of the function where it has been used (here at the end of
+      <i>Importer::writeVtkTriangulation()</i>) with the following
+      instruction:<br>
+      &nbsp;&nbsp;&nbsp;&middot;
+      <i>(*triangulation).Delete();</i><br><br>
+
+      <h4>Question 2.2: Triangulation construction</h4>
+      Once all of the required objects (cf. list <a
+      href="#objectList">above</a>) have been allocated, the construction of a
+      <i>vtkUnstructuredGrid</i> is done as follows:<br>
+      &nbsp;&nbsp;&nbsp;&middot;
+      Fill the <i>vtkPoints</i> object with the content of the 
+      <i>vertexData_</i> vector, with the function of the <i>vtkPoints</i>
+      object
+      called <i>InsertNextPoint()</i> which should be called for each vertex
+      (each entry of <i>vertexData_</i>) with its x,y,z coordinates as
+      arguments.<br>
+      &nbsp;&nbsp;&nbsp;&middot;
+      Link the <i>vtkPoints</i> pointer to the triangulation 
+      (function <i>SetPoints()</i> of the
+      <i>vtkUnstructuredGrid</i> object);<br>
+      &nbsp;&nbsp;&nbsp;&middot;
+      For each entry of the <i>cellData_</i> vector, insert a new cell in the
+      triangulation. This is done by using the function <i>InsertNextCell()</i>
+      of a <i>vtkUnstructuredGrid</i> object. This function takes as arguments a
+      type of cell (<i>VTK_TRIANGLE</i> for triangles, see the following 
+      <a target="new"
+      href="http://www.vtk.org/doc/nightly/html/vtkCellType_8h_source.html">
+      documentation page</a> for other types of cells) and the address of a
+      <i>vtkIdList</i> object containing the indices of the vertices of the
+      cell.<br>
+      &nbsp;&nbsp;&nbsp;&middot;For each vertex of the input mesh, each
+      of its attributes should be stored in the global <i>vtkDoubleArray</i> 
+      object. Beforehand, this object should be initialized with the right
+      number of attributes (function <i>SetNumberOfComponents()</i>, 1 for
+      scalars, 3 for vectors, 9 for tensors) and with the right
+      number of entries (function <i>SetNumberOfTuples()</i>, this number should
+      be equal to the number of vertices).
+      To assign an entry to the global
+      <i>vtkDoubleArray</i>, one needs to use its function called
+      <i>SetTuple()</i> (see its documentation 
+      <a target="new" 
+      href="http://www.vtk.org/doc/nightly/html/classvtkDataArray.html#a3c220749574343904d380e3b428a497f">here</a>).<br>
+      &nbsp;&nbsp;&nbsp;&middot;Finally, one needs to link the global
+      <i>vtkDoubleArray</i> object to the <i>vtkUnstructuredGrid</i> object.
+      For scalar fields, this would be done as follows:<br>
+      &nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp;
+      <i>(*(*triangulation).GetPointData()).SetScalars(dataArray);</i><br>
+      if <i>triangulation</i> points to a <i>vtkUnstructuredGrid</i> object and
+      <i>dataArray</i> points to a <i>vtkDoubleArray</i> object.
+
+     
+      <h4>Question 2.3: Writing an output VTK file</h4>
+      To write into a VTK file a <i>vtkUnstructuredGrid</i> object, one
+      needs to use a special object of the type
+      <i>vtkXMLUnstructuredGridWriter</i>.
+      &nbsp;&nbsp;&nbsp;&middot; To specify the file name of the output file,
+      use the function <i>SetFileName()</i> which takes as argument a character
+      string containing the file path. The internal variable
+      <i>outputFileName_</i> should already contain a default path (see the
+      constructor <i>Importer::Importer()</i> which sets it to a default value) 
+      which should be extended with a valid extension (such as <i>.vtu</i>).<br>
+      &nbsp;&nbsp;&nbsp;&middot; To link our triangulation object to the writer,
+      one should use the function <i>SetInputData()</i>, which takes as argument
+      the address of a <i>vtkUnstructuredGrid</i> object.<br>
+      &nbsp;&nbsp;&nbsp;&middot; Finally, to trigger the writing, one should use
+      the function <i>Write()</i>.<br>
+
+      If you answered correctly this question, you should now see the following
+      result:<br><br>
+      <a href="img/visualizationExercise_data3.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data3.jpg"></a>
+      <br><br>
+
+      <h4>Question 2.4: Let's visualize something!</h4>
+      If you carefully followed the instructions above, your program should 
+      have created a
+      file named "output.vtu" in the directory containing the file
+      CMakeLists.txt. From this directory, enter the following command (omit the
+      "$" character):<br>
+      &nbsp;&nbsp;&nbsp;<i>$ paraview output.vtu</i><br>
+      Once ParaView is loaded, click on the "Apply" green button in the left
+      banner. If you converted the file right, here is what you should be
+      visualizing:<br><br>
+      <a href="img/visualizationExercise_data4.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data4.jpg"></a>
+      <br><br>
+      If this is the case, congratulations!<br>
+      You've just imported your first data-set into ParaView!
+      We'll learn more about ParaView in a 
+      <a href="visualizationExerciseParaView.html" target="new">
+      following exercise</a>.
+
+      
+      <h4>Question 3: Importing a vector field</h4>
+      &nbsp;&middot;Modify your function
+      <i>Importer::writeVtkTriangulation()</i> to support vector fields:
+      In particular:<br>
+      &nbsp;&nbsp;&nbsp;&middot;The number of components for the
+      <i>vtkDoubleArray</i> object should be set to an appropriate value;<br>
+      &nbsp;&nbsp;&nbsp;&middot;The function <i>SetVectors()</i> should be used
+      instead of <i>SetScalars()</i> if the user provided a vector field
+      data-set in the input;<br>
+      &nbsp;&nbsp;&nbsp;&middot;Add a new launch configuration to your project
+      (see the instructions <a href="#launch">above</a>) with the following
+      <i>"Arguments"</i>:<br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>-t data/vectorFields/2-triangulation/data.tri</i><br>
+      &nbsp;&nbsp;&nbsp;&middot;Select this launch through <i>Run -> Current
+      Launch Configuration</i> and run the program.<br>
+      &nbsp;&middot;If you answered correctly this question, you should now see
+      the following result:<br><br>
+      <a href="img/visualizationExercise_data5.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data5.jpg"></a>
+      <br><br>
+      You can also verify that your output file is formatted correctly by
+      opening it with ParaView (see the previous question).
+
+
+      <h4>Question 4: Importing a tensor field</h4>
+      &nbsp;&middot;Modify your function
+      <i>Importer::writeVtkTriangulation()</i> to support tensor fields:
+      In particular:<br>
+      &nbsp;&nbsp;&nbsp;&middot;The number of components for the
+      <i>vtkDoubleArray</i> object should be set to an appropriate value;<br>
+      &nbsp;&nbsp;&nbsp;&middot;The function <i>SetTensors()</i> should be used
+      instead of <i>SetScalars()</i> or <i>SetVectors()</i> if the user 
+      provided a tensor field
+      data-set in the input;<br>
+      &nbsp;&nbsp;&nbsp;&middot;Add a new launch configuration to your project
+      (see the instructions <a href="#launch">above</a>) with the following
+      <i>"Arguments"</i>:<br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>-t data/tensorFields/2-triangulation/data.tri</i><br>
+      &nbsp;&nbsp;&nbsp;&middot;Select this launch through <i>Run -> Current
+      Launch Configuration</i> and run the program.<br>
+      &nbsp;&middot;If you answered correctly this question, you should now see
+      the following result:<br><br>
+      <a href="img/visualizationExercise_data6.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data6.jpg"></a>
+      <br><br>
+      You can also verify that your output file is formatted correctly by
+      opening it with ParaView.
+
+
+      <h4>Question 5: Importing volume triangulations</h4>
+      &nbsp;&middot;Modify your functions <i>Importer::readTriangulation()</i>
+      and <i>Importer::writeVtkTriangulation()</i> to make sure that they
+      support volume triangulations.<br>
+      &nbsp;&middot;Verify that your program is now able to handle volume
+      triangulations with each of one of the fields (scalar, vector, tensor)
+      defined on volume triangulations in the <i>data/</i> directory. For
+      instance:<br>
+      &nbsp;&nbsp;&nbsp;&middot;Add a new launch configuration to your project
+      (see the instructions <a href="#launch">above</a>) with the following
+      <i>"Arguments"</i>:<br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>-t data/scalarFields/3-triangulation/data.tri</i><br>
+      &nbsp;&nbsp;&nbsp;&middot;Select this launch through <i>Run -> Current
+      Launch Configuration</i> and run the program.<br>
+      &nbsp;&middot;If you answered correctly this question, you should now see
+      the following result:<br><br>
+      <a href="img/visualizationExercise_data7.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data7.jpg"></a>
+      <br><br>
+      You can also verify that your output files are formatted correctly by
+      opening them with ParaView.<br><br>
+
+      <h3 class="title">Importing data defined on regular grids</h3>
+
+      Some scientists generated different data-sets (scalar fields, vector
+      fields and tensor fields) defined on regular grids (see the <i>data/</i>
+      directory).<br>
+      Regular grids are traditionally stored as binary files. These files just
+      contain the vertex attributes, line by line, slice by slice.<br>
+      To be able to read these raw binary files, one need to know:<br>
+      &nbsp;&middot;The type of variable stored in the file (int, float, double,
+      char, unsigned_char, etc.);<br>
+      &nbsp;&middot;The dimensionality of the grid (2D or 3D);<br>
+      &nbsp;&middot;The grid dimensions (width, height, depth).<br>
+      For each data set defined on a regular grid, this information is stored in
+      an ASCII file (directly readable with any text editor) named
+      <i>data.txt</i>. 
+      Depending on the type of data (scalar, vector, tensor), several raw binary
+      files need to be considered (one per vertex attribute).<br>
+      
+      <h4>Question 6: Setting up KDevelop</h4>
+      &nbsp;&nbsp;&nbsp;&middot;Add a new launch configuration to your project
+      (see the instructions <a href="#launch">above</a>) with the following
+      <i>"Arguments"</i>:<br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>-g data/scalarFields/2-grid/data.txt -g0
+      data/scalarFields/2-grid/data.raw</i><br>
+      <b>Important note:</b>
+      Note that for regular grids, each raw binary file
+      needs to be specified on the command line with the <i>-gi</i> option
+      (where <i>i</i> relates to the i-th raw binary file). For instance, for
+      vector fields on 3D regular grids, the arguments <i>-g0</i>, <i>-g1</i>
+      and <i>-g2</i> need to be specified with appropriate paths.<br>
+      &nbsp;&nbsp;&nbsp;&middot;Select this launch through <i>Run -> Current
+      Launch Configuration</i>.<br>
+      &nbsp;&middot;If you configured KDevelop correctly, when running your
+      program, you should now see the following result:<br><br>
+      <a href="img/visualizationExercise_data8.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data8.jpg"></a>
+      <br><br>
+
+      <h4>Question 7: Reading regular grid specifications</h4> 
+      &nbsp;&middot;Modify the function <i>Importer::readRegularGrid()</i> to
+      read specification of the input regular grid (ASCII file). The path to
+      this file should be set in the first entry of the vector <i>fileNames</i>
+      (argument of the function).<br>
+      &nbsp;&middot;This function should store the file information into the
+      variables:<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>dimension_</i>: 2 for 2D or 3 for 3D;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>numberOfComponents_</i>: 1 for a scalar
+      field for instance;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>gridSize_</i>: width, height (depth if
+      applicable);<br>
+      &nbsp;&middot;It should also  resize the vector
+      <i>vertexData_</i> (and each of its entries) to the appropriate size.
+      Note that the number of vertex attributes can be inferred by the number of
+      file paths specified by the user on the command line. In particular, the
+      vector <i>fileNames</i> contains <i>(Number of vertex attributes) + 1</i>
+      paths that are non empty.
+      <br>
+      &nbsp;&middot;If you answered correctly this question, you should now see
+      the following result:<br><br>
+      <a href="img/visualizationExercise_data9.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data9.jpg"></a>
+      <br><br>
+
+      <h4>Question 8: Reading vertex attributes</h4>
+      &nbsp;&middot;Modify the function <i>Importer::readRegularGrid()</i> to
+      read the content of the raw binary files. This content should be stored in
+      the internal variable <i>vertexData_</i>.
+
+      <h4>Question 9: Writing an output VTK file</h4>
+      &nbsp;&middot;Complete the function
+      <i>Importer::writeVtkRegularGrid()</i>. 
+      Given a
+      file path stored in its argument <i>fileName</i>, this function should use
+      the information stored in the internal variables of the <i>Importer</i>
+      class to:<br>
+      &nbsp;&nbsp;&nbsp;&middot;To create a VTK object representing a
+      regular grid (<i>vtkImageData</i> class);<br>
+      &nbsp;&nbsp;&nbsp;&middot;To fill this data structure with the information
+      read in the previous question;<br>
+      &nbsp;&nbsp;&nbsp;&middot;To write it into a VTK file with VTK
+      Input/Output features (<i>vtkXMLImageDataWriter</i> class).<br>
+      Each of these steps is detailed in the following sub-questions.
+
+      <h4>Question 9.1: Object declarations</h4>
+      To create a VTK regular grid, one needs to declare
+      objects of the following
+      types:<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>vtkImageData</i>: a class that can represent
+      2D or 3D regular grids;<br>
+      &nbsp;&nbsp;&nbsp;&middot;<i>vtkDoubleArray</i>: a class that represents
+      multi-dimensional arrays of real numbers.<br>
+      Note that for each of these, the appropriate header file (<i>*.h</i>) 
+      should be included in <i>Importer.h</i>. 
+
+      <h4>Question 9.2: Grid construction</h4>
+      Once the above objects have been allocated, one needs to:<br>
+      &nbsp;&nbsp;&nbsp;&middot;Specify the grid dimensions with the function
+      <i>SetDimensions()</i>;<br>
+      &nbsp;&nbsp;&nbsp;&middot;Specify the number of components and the number
+      of entries for the <i>vtkDoubleArray</i> object (as it was done for
+      triangulations);<br>
+      &nbsp;&nbsp;&nbsp;&middot;Assign the vertex attributes read in the
+      previous question to each entry of the <i>vtkDoubleArray</i> object (as it
+      was done for triangulations);<br>
+      &nbsp;&nbsp;&nbsp;&middot;Finally, link the <i>vtkDoubleArray</i> to the
+      <i>vtkImageData</i> object (as it was done for triangulations).<br>
+
+      <h4>Question 9.3: Writing an output VTK file</h4>
+      To write into a VTK file a <i>vtkImageData</i> object, one
+      needs to use a special object of the type
+      <i>vtkXMLImageDataWriter</i>.
+      &nbsp;&nbsp;&nbsp;&middot; To specify the file name of the output file,
+      use the function <i>SetFileName()</i> which takes as argument a character
+      string containing the file path. The internal variable
+      <i>outputFileName_</i> should already contain a default path (see the
+      constructor <i>Importer::Importer()</i> which sets it to a default value) 
+      which should be extended with a valid extension (such as <i>.vti</i>).<br>
+      &nbsp;&nbsp;&nbsp;&middot; To link our triangulation object to the writer,
+      one should use the function <i>SetInputData()</i>, which takes as argument
+      the address of a <i>vtkImageData</i> object.<br>
+      &nbsp;&nbsp;&nbsp;&middot; Finally, to trigger the writing, one should use
+      the function <i>Write()</i>.<br>
+
+      If you answered correctly this question, you should now see the following
+      result:<br><br>
+      <a href="img/visualizationExercise_data10.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data10.jpg"></a>
+      <br><br>
+
+      <h4>Question 9.4: Let's visualize something!</h4>
+      If you carefully followed the instructions above, your program should 
+      have created a
+      file named "output.vti" in the directory containing the file
+      CMakeLists.txt. From this directory, enter the following command (omit the
+      "$" character):<br>
+      &nbsp;&nbsp;&nbsp;<i>$ paraview output.vti</i><br>
+      Once ParaView is loaded, click on the "Apply" green button in the left
+      banner. If you converted the file right, here is what you should be
+      visualizing:<br><br>
+      <a href="img/visualizationExercise_data11.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data11.jpg"></a>
+      <br><br>
+      If this is the case, congratulations!<br>
+      You've just imported your first regular grid into ParaView!
+      We'll learn more about ParaView in a 
+      <a href="visualizationExerciseParaView.html" target="new">
+      following exercise</a>.
+
+      <h4>Question 10: Importing a volume vector field</h4>
+      &nbsp;&middot;Modify your function
+      <i>Importer::readRegularGrid</i> to make sure that:<br>
+      &nbsp;&nbsp;&nbsp;&middot;It can support 3D regular grids;<br>
+      &nbsp;&nbsp;&nbsp;&middot;It can support various data types (float,
+      double, unisgned_char);<br>
+      &nbsp;&nbsp;&nbsp;&middot;It can support multiple attributes per
+      vertex.<br>
+      &nbsp;&middot;Modify your function 
+      <i>Importer::writeVtkRegularGrid</i> to make sure that:<br>
+      &nbsp;&nbsp;&nbsp;&middot;It can support multiple attributes per vertex
+      (as it was done for triangulations);<br>
+      &nbsp;&nbsp;&nbsp;&middot;It can write to disk scalars as well vectors or
+      tensors, depending on the type of data-set provided by the user in the
+      input (as it was done for triangulations).<br>
+
+      &nbsp;&nbsp;&nbsp;&middot;Add a new launch configuration to your project
+      (see the instructions <a href="#launch">above</a>) with the following
+      <i>"Arguments"</i>:<br> 
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>-g data/vectorFields/3-grid/data.txt
+      -g0 data/vectorFields/3-grid/u.raw -g1 data/vectorFields/3-grid/v.raw 
+      -g2 data/vectorFields/3-grid/w.raw
+      </i><br>
+      &nbsp;&nbsp;&nbsp;&middot;Select this launch through <i>Run -> Current
+      Launch Configuration</i> and run the program.<br>
+      &nbsp;&middot;If you answered correctly this question, you should now see
+      the following result:<br><br>
+      <a href="img/visualizationExercise_data12.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_data12.jpg"></a>
+      <br><br>
+      You can also verify that your output file is formatted correctly by
+      opening it with ParaView.<br>
+      At this point, you can go ahead and convert to VTK file formats all the
+      data sets provided in the <i>data/</i> directory!<br>
+      This can be achieved by entering the following command line in the
+      directory that contains the file CMakeLists.txt (omit the <i>$</i>
+      character):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $ ./convertAllData.sh
+
+    <br>
+    <br>
+    <div align="center">
+      Updated on December 13th, 2017.
+    </div>
+

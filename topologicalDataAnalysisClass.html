@@ -1,0 +1,1011 @@
+<html>
+  <head>
+    <title> Julien Tierny - Topological Data Analysis Class </title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+
+
+
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  <meta name="keywords" content="
+    VTK Tutorial, VTK Exercise, ParaView Tutorial, ParaView Exercise,
+      Visualization, Paris, France,
+        Scientific Visualization, Sorbonne Universites, UMPC, LIP6, 
+          Computational Topology, Topological Data Analysis, Morse Theory,
+            Scalar Field Topology, Reeb graph, Contour Tree, Scientific
+            Computing, 
+              Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+                Online classes, Online exercises" />
+
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <div id='teaser'>
+    <table width='100%' background="img/teaserTopology.png">
+        <tr>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Topological<br>Data Analysis</h1><br><br>
+            <h2 class="teaser">
+<!--              <a class="teaser" 
+                href="http://www.ensta-paristech.fr/en/home" target='new'>
+                ENSTA ParisTech</a><br>
+              <a class="teaser" 
+                href="http://www.maisondelasimulation.fr/m2s/"
+                target='new'>
+                Master2 Modeling and Simulation</a><br><br><br>
+ -->
+              <br>
+              Instructors:<br>
+              <a href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/" 
+              target='new' class="teaser">
+              Frédéric Chazal</a><br> 
+              <a class="teaser" href="mailto:frederic dot chazal at inria
+              dot fr">
+              frederic dot chazal at inria dot fr</a><br>
+              <a href="index.html" target='new' class="teaser">
+              Julien Tierny</a><br> 
+              <a class="teaser" href="mailto:julien dot tierny at sorbonne-universite
+              dot fr">
+              julien dot tierny at sorbonne-universite dot fr</a>
+            </h2>
+          </td>
+          <td width='35%'>
+            <img src='img/alpha.png' width='100%'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+
+    <h3 class="title">What?</h3>
+
+    Topological Data Analysis <a href="#ref-mywhyu">[1]</a><a 
+href="#ref1">[2]</a><a href="#ref2">[3]</a> is 
+is a sound family of techniques that is 
+gaining an increasing importance for the interactive analysis and visualization 
+of data in imaging and machine learning applications. Given the increasing 
+complexity and size of current collections of acquired or simulated data-sets 
+(2D, 3D and nD), these approaches aim at helping users understand the 
+complexity of their data by providing insights about its topological and 
+geometric structure.<br><br>
+<!-- a class of computational techniques that  -->
+<!-- is gaining an increasing importance for the interactive analysis  -->
+<!-- and visualization of scalar data in imaging as well as machine learning  -->
+<!-- applications.<br><br> -->
+
+<!--     <h3 class="title">Why?</h3> -->
+<!--Given the increasing complexity and size of current collections of acquired or 
+simulated data-sets (2D, 3D and nD), it is important to develop interactive 
+visual analytics techniques that enable users to apprehend and understand their 
+data through interactive exploration. In many industrial processes, in 
+particular involving large-scale simulations (for instance at the CEA, EDF or 
+Total), such visual analytics solutions become prominent strategies to overcome 
+such a data overflow ("geometrical big data") by enabling initial insights 
+helping users make sense out of so much data, prior to any subsequent automatic 
+post-process.<br><br>-->
+
+In low dimensions (typically 2 or 3), Topological Data Analysis enables users 
+to rapidly extract, interact with, and classify geometric features defined by 
+level sets or integral lines
+<a href="#ref3">[4]</a>
+<a href="#ref4">[5]</a>
+<a href="#ref5">[6]</a>
+<a href="#ref6">[7]</a>
+<a href="#ref7">[8]</a>
+<a href="#ref8">[9]</a>
+<a href="#ref9">[10]</a>. 
+Thanks to simplification 
+mechanisms based on Persistent Homology, such algorithms additionally construct 
+multi-scale topological representations of the data, that enable users to 
+perform robust analyses and comparisons despite the presence of noise. The 
+soundness, efficiency and robustness of this class of approaches made it 
+increasingly popular in the last few years in a variety of 2D and 3D imaging 
+analysis applications
+<a href="#ref10">[11]</a>
+<a href="#ref11">[12]</a> 
+<a href="#ref12">[13]</a>
+<a href="#ref13"> [14]</a>
+<a href="#ref14"> [15]</a>
+<a href="#ref15"> [16]</a>. 
+In higher dimensions, these 
+techniques 
+have recently been adapted to form the basis of new clustering algorithms 
+and data analysis tools
+<a href="#ref16">[17]</a>
+<a href="#ref17">[18]</a>
+<a href="#ref18"> [19]</a>
+<a href="#ref19"> [20]</a>
+<a href="#ref20"> [21]</a> 
+<a href="#ref21">[22]</a>
+<a href="#ref22"> [23]</a>
+<a href="#ref23"> [24]</a>
+<a href="#ref24"> [25]</a>.<br><br>
+ 
+The purpose of this course is to introduce the main concepts of the recent 
+field of Topological Data Analysis and illustrate their use in imaging 
+(scientific visualization) and machine learning applications, both from a 
+mathematical and practical point of view.
+
+    <h3 class="title">Who?</h3>
+This class targets students (Master level) following 
+applied mathematics or  computer science  tracks, covering topics such as:<br>
+    &nbsp;&middot; Image Processing,<br>
+    &nbsp;&middot; Computer Vision,<br>
+    &nbsp;&middot; Machine Learning,<br>
+    &nbsp;&middot; Scientific Visualization,<br>
+    &nbsp;&middot; Scientific Engineering,<br> 
+    &nbsp;&middot; Modeling and Simulation, <br>
+    &nbsp;&middot; Computer Graphics, <br>
+    &nbsp;&middot; Multimedia Engineering <br><br>.
+It requires no specific prior knowledge, except a bachelor-level 
+knowledge in mathematics and a working knowledge of programming (ideally with 
+Python and/or C++).<br>
+
+    <br>
+    The instructors for this class are:<br>
+    &nbsp;&middot; 
+    <a href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/" target="new">
+    Frédéric Chazal</a>, INRIA,<br>
+    &nbsp;&middot; 
+    <a href="index.html" target="new">
+    Julien Tierny</a>, CNRS.<br>
+<!--    &nbsp;&middot; Thierry Carrard, 
+    <a href="mailto: thierry at carrard at cea dot fr">
+    thierry dot carrard at cea dot fr
+    </a>,
+    CEA;<br>-->
+
+    <h3 class="title">What for?</h3>
+The content of this class is useful for any 
+student targeting research and development activities (either in 
+the academy or 
+the industry) in imaging or machine learning applications, scientific 
+engineering,  numerical simulation, 
+physical sciences or software engineering. It is a 
+must-select for students targeting 
+jobs in 3D modeling, simulation and analysis software industry (Kitware, Amira, 
+etc.). Finally, computational topology techniques recently gained an important 
+popularity among data analytics companies <a href="#ref25"> [26]</a>.<br><br>
+
+    Topological Data Analysis is also a well established class of techniques in 
+the field of scientific data visualization and analysis. As such, it becomes a 
+key ingredient in any application dealing with geometrical data (acquired or 
+simulated) for their interactive analysis. French industrial actors of that 
+area such as the CEA, EDF, TOTAL and ONERA have therefore a strong interest in 
+this topic. 
+
+    <h3 class="title">Detailed syllabus</h3>
+
+    The class is composed of 6 lectures (2 hours each), 6 programming exercises 
+(2 hours each) and one scientific seminar (3 hour long).
+<br><br>
+Tentative, incomplete course notes can be found 
+<a 
+href="stuff/teaching/tierny_topologicalDataAnalysis.pdf" target="new"
+onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/teaching/tierny_topologicalDataAnalysis.pdf']);">
+HERE</a>.
+A reference text book on the topic <a 
+href="#ref1">[2]</a> can be found 
+<a
+target="new"
+onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/teaching/tda_textBook.pdf']);"
+href=https://github.com/lotzma/TDA/raw/master/docs/Edels_Book.pdf>
+THERE</a>.<br>
+A 
+<a target="new"
+href="https://www.virtualbox.org/">
+virtual box</a> image containing all the software packages required for the 
+practical exercises (TTK, etc.) can be downloaded 
+<a target="new"
+href="http://sci.utah.edu/~jtierny/ttk.ova"
+>HERE</a> (md5sum: 
+f8084dd1be17084e327247509d9f45db
+<!-- 51c0a219868becf0a5cb0dd6ed880c17 -->
+).
+<br><br>
+
+    The lectures will cover the following topics:
+<table>
+<tr height="30pt"/>
+     
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_tda_intro.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="intro">
+                <a target='new'
+            href=""
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_homology.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/terny_homology.pdf_standard']);"
+
+                ><b>
+        Simplicial homology - J. Tierny
+        </b>
+        </a>
+        </a>
+        <br>
+        This lecture introduces the key concepts for representing a geometric 
+domain with a simplicial complex. Basic notions of topology on these simplicial 
+complexes will be presented and the notion of homology groups will be 
+introduced with examples. 
+<br><br>
+        <a target="new" href="stuff/teaching/tda_intro.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_homology.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/terny_homology.pdf_standard']);"
+        >
+        Intro slides </a>
+        -
+        <a target="new" href="stuff/teaching/homologyGroups_notes.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_homology.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/terny_homology.pdf_standard']);"
+        >
+        Notes on homology groups
+        </a>
+        <br>
+        <a href="https://topology-tool-kit.github.io/bettiNumbers.html" 
+target="new">
+        Exercise package 1</a>
+        </td>
+      </tr>
+      </a>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_tda_persistence.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="domainRep">
+                        <a target='new'
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/chazal_persistence.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/chazal_persistence.pdf_standard']);"
+
+                >
+<b>
+        Persistent homology - F. Chazal
+        </b></a>
+        </a>
+        <br>
+This lecture introduces a fundamental tool in topological data analysis for the 
+evaluation of the stability of topological features, namely persistent homology. 
+The notions of filtration and persistent homology groups will be introduced and 
+discussed. Based on that, constructions such as the persistence diagrams will be 
+described and stability results will be discussed. Finally, a computation 
+strategy will be described.
+        <br>
+        <br>
+        <a target="new" 
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/chazal_persistence.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/chazal_persistence.pdf_standard']);"
+        >
+        Slides </a><br>
+        <a 
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+target="new">
+        Exercise package 2</a>
+        </td>
+      </tr>
+      </a>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_vis_scalarFields_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <b>
+                <a target='new'
+            href=""
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/nomine_visualization_perception.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/nomine_visualization_perception.pdf_standard']);"
+                >
+<b> 
+        Morse functions and Reeb graphs - J. Tierny
+</b>
+        </a>
+        </b><br>
+        This lecture introduces piecewise linear (PL) Morse functions, 
+typically used to represent some input scalar data attached to the input 
+geometrical domain. Barycentric coordinates and their properties will be 
+reviewed. Geometrical features (such as level sets, integral lines) will be 
+introduced as well as algorithms for their computation. PL critical points (and 
+their relation to their smooth counterparts) will be introduced, along with 
+algorithms for their computation. PL Morse function will be introduced. 
+Their relation to smooth Morse functions and persistent homology will be 
+discussed. Finally, the Reeb graph and its variants will be introduced with 
+algorithms for their computation as well as applications.
+        <br><br>
+        <a target="new" href="stuff/teaching/illustrationsMorseFunction.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/illustrationsMorseFunction.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/illustrationsMorseFunction.pdf_standard']);"
+        >
+        Illustration slides </a><br>
+        <a href="https://topology-tool-kit.github.io/persistentHomologyDummies.html" target="new">
+        Exercise package 3</a>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_tda_morseSmale.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="vectorFields">
+                        <a target='new'
+            href=""
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_visualization_vectorFields.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/tierny_visualization_vectorFields.pdf_standard']);"
+
+                >
+        <b>
+        Discrete Morse Theory and
+        Morse-Smale Complexes - J. Tierny
+        </b></a>
+        </a></a>
+        <br>
+        This lecture introduces a modern development of Morse theory within a 
+fully discrete setting. On top of its theoretical appeal, this development 
+recently became a necessary ingredient in practice for many topological 
+analysis tasks, in particular in low dimensions. 
+        The notion of Morse-Smale complex will be introduced as well as reasons 
+for the difficulty of its computation in the PL setting.
+        Next, the building blocks of Discrete Morse Theory will be introduced 
+and discussed (Discrete Morse function, discrete gradient field, V-paths). An 
+example of algorithm for discrete gradient field computation will be presented 
+and relations to the PL setting will be discussed. Algorithms for the 
+computation and simplification of the Morse-Smale complex will be described, 
+along with applications. Finally perspectives regarding topological data 
+analysis in low dimensions for scientific visualization applications will  be 
+discussed.
+        <br><br>
+        <a target="new" href="stuff/teaching/discreteMorseTheory.pdf"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/discreteMorseTheory.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/discreteMorseTheory.pdf_standard']);"
+        >
+        Illustration slides </a><br>
+        <a href="https://topology-tool-kit.github.io/persistentHomologyDummies.html" target="new">
+        Exercise package 4</a>
+        </td>
+      </tr>
+      
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_tda_reeb.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a name="scalarFields">
+<a target='new'
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/chazal_persistence.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/chazal_persistence.pdf_standard']);"
+
+                >
+        <b>
+        Statistical aspects of persistence and topological inference for 
+high-dimensional point clouds - F. Chazal
+        </b></a>
+        </a>
+        <br>
+This lecture will show how filtrations and persistence diagrams can be 
+constructed and computed from data to be used as multiscale topological 
+signatures describing relevant informations about the structure of data. The 
+statistical properties of these signatures will be presented and discussed.
+        <br>
+        <a 
+        href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+        target="new">
+        Exercise package 5</a>
+        </td>
+      </tr>
+
+      
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+          <img src='img/teaching_tda_applications.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+       <a name="tensorFields">
+<a target='new'
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+        onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/chazal_persistence.pdf']);
+          _gaq.push(['_trackPageview',
+     'stuff/papers/chazal_persistence.pdf_standard']);"
+
+                >
+        <b>
+        Towards kernels for persistence - F. Chazal
+        </b></a>
+        </a></a>
+        <br>
+This lecture will introduce and discuss various methods to turn persistence 
+diagram information into relevant features for further data processing. In 
+particular, 
+different  constructions of kernels from 
+persistence diagrams will be presented and discussed.
+        <br>
+        <a 
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+        target="new">
+        Exercise package 6</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+</table>
+
+
+
+There will be 6 practical sessions (2 hours each), where the students will 
+get concrete insights about the algorithms described in the class. Moreover, 
+students will be introduced to topological data analysis libraries, such as 
+Gudhi <a href="#ref29">[29]</a>
+or
+TTK <a href="#ref30">[30]</a>, as well as visualization systems (VTK <a 
+href="#ref26"> [27]</a> and ParaView <a href="#ref27"> [28]</a>).<br>
+
+A 
+<a target="new"
+href="https://www.virtualbox.org/">
+virtual box</a> image containing all the software packages required for the 
+practical exercises (TTK, etc.) can be downloaded 
+<a target="new"
+href="stuff/teaching/ttk_exerciseMachine.ova"
+>HERE</a>.
+
+<br>
+<br>
+
+<table>
+  <tr>
+    <td width='50%' align="center">
+      <img align='center' width="95%"src="img/teaching_vis_paraview.jpg">
+    </td>
+    <td width='50%' align="center">
+      <img align="center" width="95%" src="img/teaching_vis_vtk.jpg">
+    </td>
+  </tr>
+</table>
+
+<br>
+      These exercises will re-visit from a practical perspective the 
+topics covered during the lectures, including:<br>
+      &nbsp;&middot; Exercise 1: 
+      <a target="new" 
+      href="https://topology-tool-kit.github.io/bettiNumbers.html">
+      Betti numbers</a>;<br>
+      &nbsp;&middot; Exercise 2:
+      <a target="new" 
+href="http://geometrica.saclay.inria.fr/team/Fred.Chazal/MVA2018.html"
+>
+      Introduction to GUDHI</a>;<br>
+      &nbsp;&middot; Exercise 3:
+      <a target="new" href="https://topology-tool-kit.github.io/persistentHomologyDummies.html">
+      Interactive Topological Data Analysis with TTK</a>;<br>
+      &nbsp;&middot; Exercise 4:
+      <a target="new" href="https://topology-tool-kit.github.io/persistentHomologyDummies.html">
+      Interactive Topological Data Analysis with TTK (bis)</a>;<br>
+      &nbsp;&middot; Exercise 5:
+      <a target="new" href="topologicalDataAnalysisClass.html">
+      Topological Data Analysis with Gudhi</a>;<br>
+      &nbsp;&middot; Exercise 6:
+<a target="new" href="topologicalDataAnalysisClass.html">
+      Topological Data Analysis with Gudhi (bis)</a>;<br><br>
+
+
+By the end of this class, students will have gained theoretical insights on the 
+fundamental aspects of topological data analysis. Moreover, the practical 
+sessions will provide them a working knowledge of Gudhi, VTK, TTK, ParaView and 
+a practical understanding of such algorithms.
+
+
+
+
+
+    <h3 class="title">Personal work</h3>
+    The grading of this class is based on two evaluations:<br>
+    &nbsp;&middot; A written exam (last session of the class);<br>
+    &nbsp;&middot; A scientific seminar where each student presents a recent
+    scientific paper on topological data analysis for 10 minutes (last session of the 
+class);<br>
+<!--     &nbsp;&middot; Programming exercises (33% of the global grade);<br> -->
+<!--     Last year's average global grade for the class was: 14.07/20. -->
+<!--     <br> -->
+<!--      <h4 class="title">Programming exercises</h4>
+      Each programming exercise will be graded. 
+      At the beginning of each 
+      exercise session, students are expected to return their complete 
+      implementation   of the previous exercise session.<br>-->
+<!--       Last year's exercise average grade was: 13.66/20. -->
+
+      <h4 class="title">Seminar</h4>
+      &nbsp;&middot; 
+      At the beginning of the class, a list of recent scientific papers on
+      topological data analysis is presented to the students. Each student must 
+      select one paper to present. <br>
+      &nbsp;&middot; 
+      During the last session of the class, each student presents his/her paper,
+      explaining what the contributions of the paper are, what its
+      strengths and weaknesses are and why he/she personally chose to present
+      this paper.<br>
+      &nbsp;&middot; 
+      Each presentation is followed by a 5 minutes QA session. 
+      <br><br>
+      <a href="private/seminar_tda.html" target="new">
+      >>> Seminar webpage</a>.<br>
+<!--       Last year's seminar average grade was: 14.15/20.<br> -->
+      
+
+      <h4 class="title">Exam</h4>
+      A 30-minute written exam will be given at the beginning of the last
+      session of the class (multiple choice test).<br>
+<!--      <a href="stuff/teaching/tierny_vis_exam2013.pdf">
+      Last year's exam (pdf)</a>.<br>-->
+<!--       Last year's exam average grade was: 14.38/20. -->
+<br>
+
+<!--    <h3 class="title">Where?</h3>
+    This class takes place in the buildings of 
+    <a href="http://www.ensta-paristech.fr/en/home" target="new">
+    ENSTA ParisTech</a>.
+    
+    <h3 class="title">When?</h3>
+    The class takes place from early 
+    September to mid-October (6 weeks).
+ -->
+    <h3 class="title">References</h3>
+<a name="ref-mywhyu">
+[1]</a> MyWhyU:
+<a href="https://www.youtube.com/watch?v=p2ofJPh2yMw&list=PL09E9E697F585A58C"
+target="new">"A humorous look at the topology of curved space."</a>, MyWhyU 
+Youtube channel.<br>
+<a name="ref2">
+[2]</a> H. Edelsbrunner, J. Harer, "Computational Topology: An Introduction", 
+American Mathematical Society, 2010.<br>
+<a name="ref1">
+[3]</a> V. Pascucci, X. Tricoche, H. Hagen, J. Tierny, "Topological methods in 
+data 
+analysis and visualization", Springer, 2010.<br>
+<a name="ref3">
+[4]</a> P. Monasse, F. Guichard, "Scale-space from a level lines tree", Journal 
+of 
+Visual Communication and Image Representation, 2000.<br>
+<a name="ref4">
+[5]</a> P. Monasse, F. Guichard, "Fast computation of a contrast-invariant 
+image 
+representation". IEEE Transactions on Image Processing, 2000.<br>
+<a name="ref5">
+[6]</a> J. Tierny, A. Guylassy, E. Simon, V. Pascucci, "Loop surgery for 
+volumetric 
+meshes: Reeb graphs reduced to contour trees." IEEE Transactions on 
+Visualization and Computer Graphics, 2009.<br>
+<a name="ref6">
+[7]</a> V. Robins, P. Wood, A. Sheppard, "Theory and Algorithms for 
+Constructing 
+Discrete Morse Complexes from Grayscale Digital Images", IEEE Transactions on 
+Pattern Analysis and Machine Intelligence, 2011.<br>
+<a name="ref7">
+[8]</a> J. Tierny, V. Pascucci, "General topological simplification of scalar 
+fields on surfaces", IEEE Transactions on Visualization and Computer Graphics, 
+2012. <br>
+<a name="ref8">
+[9]</a> C. Li, M. Ovsjanikov, F. Chazal, "Persistence-based structural 
+recognition", IEEE CVPR 2014.<br>
+<a name="ref9">
+[10]</a> Y. Xu, E. Carlinet, T. Geraud, L. Najman, "Hierarchical Segmentation 
+Using 
+Tree-based Shape Spaces", IEEE Transactions on Pattern Recognition and Machine 
+Intelligence (PAMI), 2016.<br>
+<a name="ref10">
+[11]</a> D. Laney, T. Bremer, A. Mascarenhas, P. Miller, V. Pascucci, 
+"Understanding 
+the structure of the turbulent mixing layer in hydrodynamic instabilities", 
+IEEE Transactions on Visualization and Computer Graphics, 2006.<br>
+<a name="ref11">
+[12]</a> J. Kasten, J. Reininghaus, I. Hotz, H. Hege, "Two-dimensional 
+time-dependent vortex regions based on the acceleration magnitude", IEEE 
+Transactions on Visualization and Computer Graphics, 2011.<br>
+<a name="ref12">
+[13]</a> T. Sousbie, "The persistent cosmic web and its filamentary structure: 
+Theory and implementations", Royal Astronomical Society, 2011.<br>
+<a name="ref13">
+[14]</a> T. Bremer, G. Weber, J. Tierny, V. Pascucci, M. Day, J. Bell, 
+"Interactive 
+exploration and analysis of large scale simulations using topology-based data 
+segmentation", IEEE Transactions on Visualization and Computer Graphics, 2011. 
+<br>
+<a name="ref14">
+[15]</a> D. Gunther, R. Alvarez-Boto, J. Contreras-Garcia, J.P. Piquemal, J. 
+Tierny, "Characterizing molecular interactions in chemical systems" IEEE 
+Transactions on Visualization and Computer Graphics, 2014.<br>
+<a name="ref15">
+[16]</a> A. Guylassy, T. Bremer, R. Grout, H. Kolla, J. Chen, V. Pascucci, 
+"Stability of dissipation elements: a case study in combustion", Computer 
+Graphics Forum, 2014.<br>
+<a name="ref16">
+[17]</a> H. Carr, J. Snoeyink, U. Axen, "Computing contour trees in all 
+dimensions", ACM Symposium on Discrete Algorithms (SODA) 2000.<br>
+<a name="ref17">
+[18]</a> G. Carlsson, "Topology and Data", American Mathematical Society, 
+2009.<br>
+<a name="ref18">
+[19]</a> W. Harvey, "Understanding high-dimensional data using Reeb graphs", 
+Ph.D. 
+Thesis, Ohio State University, 2012.<br>
+<a name="ref19">
+[20]</a> F. Chazal, L. Guibas, S. Oudot, P. Skraba, "Persistence-based 
+clustering 
+in Riemannian manifolds", Journal of the ACM, 2013.<br>
+<a name="ref20">
+[21]</a> A. Glazer, O. Weissbrod, M. Lindenbaum, S. Markovitch, "Approximating 
+Hierarchical MV-sets for Hierarchical Clustering", Advances in Neural 
+Information Processing (NIPS) 2014.<br>
+<a name="ref21">
+[22]</a> B. Rieck, H. Leitte, "Persistent homology for the evaluation of 
+dimensionality reduction schemes", Computer Graphics Forum, 2015.<br>
+<a name="ref22">
+[23]</a> J. Eldridge, M. Belkin, Y. Wang,  "Beyond Hartigan Consistency: Merge 
+Distortion Metric for Hierarchical Clustering", Conference on Learning Theory 
+(COLT) 2015.<br>
+<a name="ref23">
+[24]</a> J. Reininghaus, S. Huber, U. Bauer, R. Kwitt, "A Stable Multi-scale 
+Kernel 
+for Topological Machine Learning", IEEE CVPR 2015.<br>
+<a name="ref24">
+[25]</a> S. Dasgupta, "A Cost function for similarity-based hierarchical 
+clustering", ACM Symposium on Theory of Computing (STOC) 2016.<br>
+<a name="ref25">
+[26]</a> 
+<a target="new" 
+href="http://www.kdnuggets.com/2015/01/interview-anthony-bak-ayasdi-toplogical-
+summaries.html">
+http://www.kdnuggets.com/2015/01/interview-anthony-bak-ayasdi-toplogical-
+summaries.html</a><br>
+<a name="ref26">
+[27]</a> 
+<a target="new" href="http://www.vtk.org">
+http://www.vtk.org</a><br>
+<a name="ref27">
+[28]</a>
+<a target="new" href="http://www.paraview.org">
+ http://www.paraview.org</a><br>
+<a name="ref29">
+[29]</a>
+ Gudhi - Geometry Understanding in Higher Dimensions -  
+<a target="new" href="http://gudhi.gforge.inria.fr/">
+http://gudhi.gforge.inria.fr/</a><br>
+<a name="ref30">
+[30]</a>
+ TTK - the Topology ToolKit -  
+<a target="new" href="https://topology-tool-kit.github.io/">
+https://topology-tool-kit.github.io/
+</a><br>
+
+
+<!--    <h3 class="title">Internships, Ph.D. Thesis</h3>
+    Each year, several research internships on visualization topics (topology 
+    analysis,
+    rendering, data-exploration) are proposed (either in academic or industrial
+    environments). These internships can usually be
+    followed by a Ph.D. thesis. Please contact the instructors for more
+    information.<br><br>
+    <a href="stuff/openPositions/internship2016a.html" target="new">
+    Open Master Internship 1</a><br>
+    <a href="stuff/openPositions/internship2016b.html" target="new">
+    Open Master Internship 2</a><br>
+    <a href="stuff/openPositions/internship2016c.html" target="new">
+    Open Master Internship 3</a><br>
+    <a 
+href="stuff/openPositions/2016_INRA-INRIA_3D_graphic_engineer_internship.pdf" 
+target="new">
+    Open Master Internship 4 (at INRIA)</a><br><br>
+    <a href="stuff/openPositions/tulane.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/tulane.pdf']);"">
+    Open Ph.D. position in New Orleans (at Tulane University)</a>
+    <br><br>
+    <a href="stuff/openPositions/postDocPosition2015.html" target="new">
+    Open Post-doctoral position</a><br>-->
+
+<h3 class="title">Internships, Ph.D. Thesis, permanent positions in data 
+analysis and
+visualization</h3>
+    Each year, several research internships on data analysis and visualization 
+topics 
+are proposed (either 
+in academic or industrial environments). These internships can usually be
+    followed by a Ph.D. thesis. Please contact the instructors for more
+    information.<br><br>
+    <h4 class="title">2018-2019</h4>
+    
+    <a href="stuff/openPositions/2019_cintoo1.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_cintoo1.pdf']);"">
+    Open research engineer position 1 at Cintoo (Nice, France) 
+    </a><br>
+    <a href="stuff/openPositions/2019_cintoo2.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_cintoo2.pdf']);"">
+    Open research engineer position 2 at Cintoo (Nice, France) 
+    </a><br><br>
+    
+     <a target="new" 
+href="stuff/openPositions/sysnav1.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/sysnav1.pdf']);""
+>
+    Open Master2 Internship 1 at Sysnav (Vernon, France)</a><br>
+     <a target="new" 
+href="stuff/openPositions/sysnav2.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/sysnav2.pdf']);""
+>
+    Open Master2 Internship 2 at Sysnav (Vernon, France)</a><br>
+     <a target="new" 
+href="stuff/openPositions/sysnav3.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/sysnav3.pdf']);""
+>
+    Open Master2 Internship 3 at Sysnav (Vernon, France)</a><br>
+     <a target="new" 
+href="stuff/openPositions/sysnav4.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/sysnav4.pdf']);""
+>
+    Open Master2 Internship 4 at Sysnav (Vernon, France)</a><br>
+     <a target="new" 
+href="stuff/openPositions/sysnav5.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/sysnav5.pdf']);""
+>
+    Open Master2 Internship 5 at Sysnav (Vernon, France)</a><br><br>
+    
+    
+    <a href="stuff/openPositions/engineer2019.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/engineer2019.pdf']);"">
+    Open research engineer position 
+    on topological data analysis and visualization at Sorbonne 
+    </a><br><br>
+    
+    <a href="stuff/openPositions/internship2019a.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019a.pdf']);"">
+    Open Master Internship 1 on topological data analysis at Sorbonne 
+    (with Ph.D. continuation)</a><br>
+    <a href="stuff/openPositions/internship2019b.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019b.pdf']);"">
+    Open Master Internship 2 on topological data analysis at Sorbonne 
+    (with Ph.D. continuation)</a><br>
+    <a href="stuff/openPositions/internship2019c.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019c.pdf']);"">
+    Open Master Internship 3 on topological data analysis at Sorbonne 
+    (with Ph.D. continuation)</a><br>
+    <a href="stuff/openPositions/internship2019d.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2019d.pdf']);"">
+    Open Master Internship 4 on topological data analysis at Sorbonne 
+    (with Ph.D. continuation)</a><br><br>
+    
+             <a href="stuff/openPositions/2019_total.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_total.pdf']);"">
+    Open Master2 Internship on topological data analysis and visualization of 
+3D scientific data at Total (Pau, France)</a><br>
+<br>
+     <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-1.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-1.pdf']);""
+>
+    Open Master2 Internship 1 on topological data analysis at BMW (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-2.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-2.pdf']);""
+>
+    Open Master2 Internship 2 on topological data analysis at BMW (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-3.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-3.pdf']);""
+>
+    Open Master2 Internship 3 on topological data analysis at BMW  (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-4.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-4.pdf']);""
+>
+    Open Master2 Internship 4 on topological data analysis at BMW  (Munchen, 
+Germany)</a><br>
+        <a target="new" 
+href="stuff/openPositions/bmw2019_TDAResearchProposal-5.pdf"
+onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/bmw2019_TDAResearchProposal-5.pdf']);""
+>
+    Open Master2 Internship 5 on topological data analysis at BMW  (Munchen, 
+Germany)</a><br><br>
+    <a href="stuff/openPositions/2019_cea.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/2019_cea.pdf']);"">
+    Open Master2 Internship on topological data analysis and visualization of 
+3D scientific data at CEA (Le Barp, France)</a><br>
+<br>
+    <a 
+href="https://krb-sjobs.brassring.com/TGnewUI/Search/Home/Home?partnerid=30080&
+siteid=6559#jobDetails=1184120_6559" target="new"
+ onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/total18']);"
+>
+  One permanent engineer position in 3D data analysis and 
+visualization at Total! (Saclay, France)
+</a><br>
+   
+    
+     <h4 class="title">2017-2018</h4>
+    <a href="stuff/openPositions/internship2018a.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018a.pdf']);"">
+    Open Master Internship 1 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018b.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018b.pdf']);"">
+    Open Master Internship 2 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018c.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018c.pdf']);"">
+    Open Master Internship 3 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018d.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018d.pdf']);"">
+    Open Master Internship 4 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018e.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018e.pdf']);"">
+    Open Master Internship 5 (at UPMC)</a><br>
+    <a href="stuff/openPositions/internship2018f.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/internship2018f.pdf']);"">
+    Open Master Internship 6 (at UPMC)</a><br>
+<!--    <a href="stuff/openPositions/internship2016b.html" target="new">
+    Open Master Internship 2</a><br>
+    <a href="stuff/openPositions/internship2016c.html" target="new">
+    Open Master Internship 3</a><br>-->
+    <a 
+href="stuff/openPositions/inria_aviz2017.pptx" 
+target="new">
+    Open Master Internship 7 (at INRIA, Aviz team)</a><br>
+<a 
+href="stuff/openPositions/iscd_2017_1.pdf" 
+target="new">
+    Open Master Internship 8 (at ISCD)</a><br>
+    <a 
+href="stuff/openPositions/iscd_2017_2.pdf" 
+target="new">
+    Open Master Internship 9 (at ISCD)</a><br>
+
+
+<br>
+    <a href="stuff/openPositions/tulane.pdf" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/tulane.pdf']);"">
+    Open Ph.D. position in New Orleans (at Tulane University)</a>
+    <br><br>
+<!--    <a href="stuff/openPositions/postDocPosition2015.html" target="new">
+    Open Post-doctoral position</a><br>-->
+<a href="https://www.kitware.fr/company/jobs" target="new"
+ onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/kitware']);"
+>
+  Five permanent software engineer positions in 3D data analysis and 
+visualization and HPC at Kitware! (Lyon, France)
+</a><br>
+<a href="stuff/openPositions/cea.pdf" target="new"
+ onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/cea']);"
+>
+  One permanent software engineer position in 3D data analysis and 
+visualization at CEA! (Bordeaux, France)
+</a><br>
+<a 
+href="http://www.coventor.com/careers/2d3d-modeling-software-engineer-for-cadcae
+-applications-paris-france/" target="new"
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/openPositions/coventor']);">
+One permanent software engineer position in 3D modeling and mesh generation at 
+Coventor (Paris, France)</a>
+    <br><br>
+
+    <br>
+    <div align="center">
+      Updated on February 26, 2019.
+    </div>
+
+  </body>
+
+</html>

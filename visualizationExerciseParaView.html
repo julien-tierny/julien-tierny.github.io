@@ -1,0 +1,735 @@
+<html>
+  <head>
+    <title> Julien Tierny - Visualization Tutorial Exercise - Visualization with ParaView
+</title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  <meta name="keywords" content="
+    VTK Tutorial, VTK Exercise, ParaView Tutorial, ParaView Exercise,
+      Visualization, Paris, France,
+        Scientific Visualization, Sorbonne Universites, UMPC, LIP6, 
+          Computational Topology, Topological Data Analysis, Morse Theory,
+            Scalar Field Topology, Reeb graph, Contour Tree, Scientific
+            Computing, 
+              Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+                Online classes, Online exercises" />
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <div id='teaser'>
+    <table width='100%' background="img/teaserVisualizationClass.png">
+        <tr>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Scientific Visualization</h1>
+            <br>
+            <h2 class="teaser">
+                Practical Tutorial Exercise:<br>
+              <b>Visualization with ParaView</b>
+              <br><br>
+              Corresponding lecture:<br>
+              <a href="visualizationClass.html" target="new"
+              class="teaser">
+              All!</a>
+              <br>
+              <br>
+              <a href="index.html" target='new' class="teaser">
+              Julien Tierny</a><br> 
+              <a class="teaser" href="mailto:julien dot tierny at lip6 dot fr">
+              julien dot tierny at lip6 dot fr</a>
+            </h2>
+          </td>
+          <td width='35%'>
+            <img src='img/alpha.png' width='100%'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+    <h3 class="title">Goals</h3>
+    The goal of this exercise is to experiment various existing algorithms for
+    the interactive visualization of complex data-sets. To do so, we will use 
+    one of the most widely used visualization system: 
+    <a href="http://www.paraview.org" target="new">
+    ParaView</a>.<br><br>
+
+    This exercise will help you have a concrete intuition and understanding of 
+    the techniques described throughout the class.<br>
+    After completing this exercise as well as the 
+    <a href="visualizationExerciseParaviewConversion.html" target="new">
+    exercise related to data conversion</a>, you will be able to import into
+    ParaView any data-set you generated in other classes or projects and to
+    produce insightful interactive visualizations.<br>
+
+    <br>
+    <!--<b>Duration:</b> 2 hours<br>-->
+
+    <h3 class="title">Software prerequisites</h3>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.paraview.org" target="new">ParaView</a> 
+    should be installed
+    (4.1 or higher).<br>
+
+    <br>
+    The remainder of this exercise instructions assumes that the employed 
+    operating system is Linux. 
+    However, this exercise can be achieved with any OS.
+    For non-Linux users, an easy alternative consists in installing a Linux 
+    system (such as 
+    <a href="http://www.kubuntu.org" target="new">Kubuntu</a>) within a 
+    virtual machine (such as 
+    <a href="http://www.virtualbox.org" target="new">VirtualBox</a>, 
+    a readily configured virtual machine is available 
+<a target="new"
+    href="stuff/teaching/ttk_exerciseMachine.ova"
+    >HERE</a> (md5sum: a59d9cf610ef5ddb7f0f6b338316df0a, password: ttk).
+<!--    <a 
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/teaching/tierny_exerciseMachine.ova'])"
+    href="stuff/teaching/tierny_exerciseMachine.ova">HERE</a>,
+    md5sum: 
+    a9a051e6381a13fcd1e3093d3a5c004f).-->
+
+    <h3 class="title">Documentation</h3>
+    &nbsp;&middot; ParaView tutorials and sample data sets can be found 
+    <a href="http://www.paraview.org/Wiki/The_ParaView_Tutorial" target="new">
+    HERE</a>.
+
+    <h3 class="title">Getting started</h3>
+
+    <h4 class="title">Data package</h4>
+    &nbsp;&middot; Download the data package 
+    <a href="stuff/teaching/tierny_visualizationExercise_paraView.zip"> 
+    HERE</a> and extract it under your home
+    directory.<br>
+
+    <h4 class="title">ParaView basic usage</h4>
+    ParaView is an open source multiple-plateform application for interactive
+    scientific visualization. It can be seen as a user-interface front-end to
+    the VTK library. Notable features of ParaView are its support for highly
+    parallelized and distributed processing as well as its remote visualization
+    capabilities.<br>
+
+    <br><br>
+    <a href="img/visualizationExercise_paraView1.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView1.jpg"></a>
+    <br><br>
+    As shown in the above screen-shot, the user interface is divided into
+    several panels:<br>
+    &nbsp;&middot; <i>Pipeline Browser</i> (top left): 
+    This panel lists the different
+    data-sets that have been loaded by the user as well as the filter effects
+    that have been applied to them;<br>
+    &nbsp;&middot; <i>Pipeline Browser</i> (middle left): 
+    This panel enables to interact with
+    the visualization properties of the selected item in the pipeline
+    browser;<br>
+    &nbsp;&middot; <i>Information</i> (bottom left): 
+    This panel displays statistics and
+    properties about the selected item in the pipeline browser;<br>
+    &nbsp;&middot; <i>Color Map Editor</i> (right): This panel enables to
+    interact with color maps;<br>
+    &nbsp;&middot; <i>Central View</i> (middle): This is where the actual
+    visualization happens! Note that several tabs can be opened, to alternate
+    between several visualizations.<br>
+    Along the interactions, other panels can optionally be displayed, for
+    instance to visualize and interact with planar layouts such as charts or 
+    histograms.<br><br>
+    ParaView follows VTK's <i>pipeline</i> philosophy.<br>
+    In this paradigm, a
+    visualization is obtained by applying a sequence of geometry processing
+    tasks on one or several data-sets. In VTK, geometry processing tasks are
+    materialized by <i>Filters</i>. Each filter takes some data on its input 
+    and delivers some data on its output. 
+    In the above example:<br> 
+    &nbsp;&middot; 1 data-set has been loaded (<i>disk_out_ref.ex2</i>);<br> 
+    &nbsp;&middot; 1 filter (called <i>Stream Tracer</i>) has been applied on 
+    the input, yielding a pipeline object named <i>StreamTracer1</i>;<br>
+    &nbsp;&middot; 2 filters have been applied on the pipeline object
+    <i>StreamTracer1</i>, yielding two new pipeline objects: <i>Glyph1</i> and
+    <i>Tube1</i>.<br>
+    Pipeline objects can be visualized or hidden by clicking on the eye icon on
+    the left of each object.<br><br>
+    Given a pipeline object, a large selection of filters can be applied to it.
+    In the following screen-shot, the list of default filters is displayed. Only
+    those that can be applied to the selected pipeline object are not shaded and
+    can consequently be executed.<br>
+    Note that with the menu <i>Filters -> Search...</i> you can easily search
+    for filters by typing a few letters contained in their name.
+
+    <br><br>
+    <a href="img/visualizationExercise_paraView2.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView2.jpg"></a>
+    <br><br>
+
+    To load a data-set in ParaView, use the following menu <i>File ->
+    Open</i>.<br>
+
+    To save your current pipeline, use the following menu 
+    <i>File -> Save State</i>. For each question, it is recommended to save the
+    pipeline once the question is completed.<br><br>
+
+    Now, let's get the exercise started.
+
+    <h3 class="title">Domain visualization</h3>
+    <h4>Question 1</h4>
+    &nbsp;&middot; Load the following volume data-set
+    <i>data/vectorFields/3-triangulation/output.vtu</i>;<br>
+    &nbsp;&middot; Initially, you should be visualizing the following thing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView3.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView3.jpg"></a>
+    <br><br>
+    This visualization shows the boundary of our volume.<br>
+
+    <h4>Question 2</h4>
+    To only consider as a pipeline object the actual boundary of our volume, one
+    can use the "Extract Surface" filter. Apply it to the input data-set.
+    At this point, you should visualize the same result as in the previous
+    question.<br>
+    What shading model is employed?
+    
+    <h4>Question 3</h4>
+    The shading of the surface could be automatically improved by ParaView.
+    However, it seems that some information is missing in the pipeline to
+    trigger a smooth shading. <br>
+    What is this missing information?
+
+    <h4>Question 4</h4>
+    Find and apply the appropriate filter to compute the missing information of
+    the previous question to trigger a smooth shading of the surface. 
+    <br>
+    If you
+    answered correctly this question, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView4.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView4.jpg"></a>
+    <br><br>
+
+    <h4>Question 5</h4>
+    Disable the visualization of your active pipeline object and enable the
+    visualization of the input data-set.
+    In many scenarios, it may be interesting to visually inspect the structure
+    of the mesh on which is defined our data.
+    In the <i>Properties</i> panel, adjust the right option to visualize the
+    mesh as a wire-frame on top of the surface.
+    <br>
+    If you
+    answered correctly this question, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView5.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView5.jpg"></a>
+    <br><br>
+
+    <h4>Question 6</h4>
+    The visualization in the previous question only enables to display the mesh
+    elements on the boundary of the volume. It is often useful to also inspect
+    the interior of the volume. To achieve this, ParaView provides selection
+    features, which enable users to interactively select regions of interest in
+    the geometry. This selection tool can be extremely useful in variety of
+    other visualization tasks.<br>
+    To use the selection tool, click on the "Select Cells Through" button at
+    the top of the visualization panel. 
+    This tool can also be accessed by hitting the key
+    "f".<br>
+    After selecting some parts of the geometry, you should see your selection
+    highlighted in colors as follows:
+    <br><br>
+    <a href="img/visualizationExercise_paraView6.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView6.jpg"></a>
+    <br><br>
+    
+    <h4>Question 7</h4>
+    Find and apply the appropriate filter to create a pipeline object that only
+    contains the selected cells. Further apply the necessary filters to obtain a
+    smooth shading of the resulting objects with a wire-frame representation on
+    top of the resulting surface.
+    <br>
+    If you
+    answered correctly this question, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView7.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView7.jpg"></a>
+    <br><br>
+
+    <a name="question8"></a>
+    <h4>Question 8</h4>
+    Apply the appropriate filters to visualize the boundary surface of our
+    input data-set in smooth shading and modify the appropriate properties to 
+    display it in transparency with a distinct color. Also, extract its feature
+    edges and represent them with tubular surfaces.
+    <br>
+    If you
+    answered correctly this question, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView8.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView8.jpg"></a>
+    <br><br>
+
+    <h4>Further notes</h4>
+    ParaView provides a few domain re-meshing features that might be of interest
+    to help further processing in terms of accuracy or robustness. For instance,
+    if the input domain is not a triangulation, it can be transformed into a
+    triangulation with the filter "Tetrahedralize".
+
+    <h3 class="title">Scalar field visualization</h3>
+
+    <h4>Question 9</h4>
+    Load the data-set <i>data/scalarFields/2-grid/output.vti</i>. By default,
+    ParaView triggers a color map visualization of the scalar field, as follows:
+    <br><br>
+    <a href="img/visualizationExercise_paraView9.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView9.jpg"></a>
+    <br><br>
+    Play with the color map editor to improve the contrast of the visualization,
+    in particular in between the canyon and the rims, to produce the following
+    effect:
+    <br><br>
+    <a href="img/visualizationExercise_paraView10.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView10.jpg"></a>
+    <br><br>
+
+    <h4>Question 10</h4>
+    ParaView allows you to review the actual values of the scalar field on a per
+    vertex basis. To trigger the spreadsheet view, click on the "Split
+    Horizontal" button (top of the visualization panel in the center) and click
+    on "Spreadsheet View". 
+    <br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView11.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView11.jpg"></a>
+    <br><br>
+    As discussed in the class, raw numbers are difficult to interpret, hence the
+    need for visualization. However, in certain tasks, it can provide useful
+    information. Use the manual selection tool to identify the values associated
+    with the dark red regions of the visualization.
+
+    <h4>Question 11</h4>
+    Find an apply the appropriate filter to generate out of this data-set a
+    surface embedded in 3D, such that for each point, one of its embedding 
+    component is equal to its scalar field value.<br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView25.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView25.jpg"></a>
+    <br><br>
+
+
+    <h4>Question 12</h4>
+    Load the data-set <i>data/scalarFields/3-triangulation/output.vtu</i> and
+    play with the color map editor to change the color palette according to your
+    preference. For instance:
+    <br><br>
+    <a href="img/visualizationExercise_paraView12.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView12.jpg"></a>
+    <br><br>
+    Color maps (which define a correspondence between scalar values and color)
+    are particularly useful for 2D domains but fall short for 3D domains. This
+    paradigm reaches one of the major bottlenecks of the visualization of 3D
+    data: occlusion. In particular since, the screen onto which the data-set is
+    projected is intrinsically 2D, some data is loss in the visualization during
+    the projection process.<br>
+    To investigate the evolution of the scalar field within the volume, 
+    use the same techniques as in <a href="#question8">Question 8</a> to obtain
+    the following visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView13.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView13.jpg"></a>
+    <br><br>
+
+    <h4>Question 13</h4>
+    As seen in the above screen-shot, the user selection tool enables the user
+    to select cells of the input domain. Hence, the boundary of the selection
+    appears unevenly cut. Find and apply a filter that precisely cut the
+    geometry along clipping planes. Also, adjust the color map to yield a better
+    contrast on the cuts of the volume to reproduce the following visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView14.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView14.jpg"></a>
+    <br><br>
+
+    <h4>Question 14</h4>
+    A limitation of the above visualization is that it conveys information about
+    the scalar field only along the clipping planes. An alternative is to only
+    show in the visualization 
+    regions of the domains for which the vertices take some value in a
+    user-prescribed range. This can be achieved in ParaView in two ways:<br>
+    &nbsp;&middot; By specifying an interval;<br>
+    &nbsp;&middot; By specifying an isovalue (for isosurface extraction).<br>
+    Find the two filters that achieve these effects and try to reproduce the
+    following visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView15.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView15.jpg"></a>
+    <br><br>
+   
+    <h4>Question 15</h4>
+    Try to display at the same time the isosurfaces of at least 4 distinct
+    isovalues. Use transparency and other effects (at your discretion) to try to
+    reproduce the following visualization (note that normals may have to be
+    computed for a better transparency rendering):<br>
+    <br><br>
+    <a href="img/visualizationExercise_paraView16.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView16.jpg"></a>
+    <br><br>
+    As can be seen on the above screen-shots, isosurface visualization still
+    suffer from major occlusion issues if many isovalues are considered. To
+    overcome this issue while still visualizing most of the isovalue range, one
+    needs to consider volume rendering.
+
+    <h4>Question 16</h4>
+    Load the data-set <i>data/scalarFields/3-grid/output.vti</i>.<br>
+    In the following questions, we will try to generate a volume rendering that
+    displays
+    several materials of a foot acquisition. In particular, we would like to:
+    <br>
+    &nbsp;&middot;Represent the skin of the foot in red, and with
+    enough transparency such that the inside of the foot could be visualized as
+    well;<br>
+    &nbsp;&middot;Represent the boundary of bones in white, with a bit of 
+    transparency;<br>
+    &nbsp;&middot;Represent the inside of the cortical bone in brown, with a
+    strong transparency.<br>
+    By isosurface extraction, identify the isovalues corresponding to these
+    materials and adjust the properties of the resulting isosurfaces to achieve
+    the color and opacity described above.
+    <br>
+    If you
+    answered correctly this question, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView18.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView18.jpg"></a>
+    <br><br>
+
+    <h4>Question 17</h4>
+    Delete the isosurfaces from you visualization pipeline and select the 
+    input data-set
+    in the <i>Pipeline Browser</i> panel. Adjust the right property in the 
+    <i>Properties</i> panel to trigger volume rendering.<br> 
+    <br><br>
+    <a href="img/visualizationExercise_paraView19.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView19.jpg"></a>
+    <br><br>
+
+    Adjusting a transfer function can be a very frustrating task for a novice
+    user. A standard strategy consists of the following steps:<br>
+    &nbsp;&middot;For each material, draw a step function in the transfer
+    function (<i>Color Map Editor</i> panel, cf the above screen-shot
+    example);<br>
+    &nbsp;&middot;Then adjust the width and the opacity of these steps 
+    functions.
+    Note that these parameters can be adjusted directly on the curve or in the
+    array below for more precision;<br>
+    &nbsp;&middot;Finally, smooth the steps functions by inserting more control
+    points.<br>
+    
+    After this transfer function tuning, you should be visualizing something
+    similar to this:
+    <br><br>
+    <a href="img/visualizationExercise_paraView17.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView17.jpg"></a>
+    <br><br>
+    Notice that the volume rendering is much smoother than the isosurface-based
+    rendering. Why is that so?
+
+    <h3 class="title">Vector field visualization</h3>
+
+    <h4>Question 18</h4>
+    Load the data-set <i>data/vectorFields/2-grid/output.vti</i>.<br>
+    By default, ParaView triggers a color map visualization of the data based on
+    the magnitude of the vector field, as follows:
+    <br><br>
+    <a href="img/visualizationExercise_paraView20.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView20.jpg"></a>
+    <br><br>
+    This data-set is a time-step of a time-varying computational fluid dynamics
+    simulation, where a fluid is continuously injected from the left to the
+    right in the presence of a fixed obstacle (left). Such a procedure is known
+    to yield vortices in the flow, organizing themselves with a very regular
+    pattern known as the Karman vortex street. <br>
+    In general, vortices are of
+    special interest in computational fluid dynamics. For instance, in
+    mechanical engineering, the appearance of vortices can reduce the efficiency
+    of fuel injection procedures. In this question, we will try to visualize and
+    enumerate the vortices of this data-set.<br>
+    &nbsp;&middot;What scalar quantity (derived from the input vector field)
+    could be useful to analyze vortices?<br>
+    &nbsp;&middot;Find and apply the appropriate filter that computes several
+    types of vector derivatives;<br>
+    &nbsp;&middot;The quantity we are interested in is given by the Z component
+    of the resulting vector field called "Vorticity". 
+    Note that this vector field is defined on a per cell basis.
+    Display this component
+    with a color map and increase its contrast to reveal and distinguish the
+    clockwise vortices from the counter-clockwise ones. 
+    <br>
+    If you got it right, you
+    should be visualizing something like this:
+    <br><br>
+    <a href="img/visualizationExercise_paraView21.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView21.jpg"></a>
+    <br><br>
+    &nbsp;&middot;Use the "Calculator" filter to extract an actual scalar field
+    from the Z component of the "Vorticity" vector field. 
+    The "Calculator" filter is an extremely useful filter, that enables to apply
+    arithmetic operations on top of one or several data-sets;<br>
+    &nbsp;&middot;Based on the thresholds you used for the contrast enhancement
+    of the color map, use the "Threshold" filter to extract the vortices and
+    display them on top of the original magnitude scalar field:
+    <br><br>
+    <a href="img/visualizationExercise_paraView22.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView22.jpg"></a>
+    <br><br>
+    Do vortices necessarily correspond to regions of the domain where the flow
+    has a high magnitude?
+
+    <h4>Question 19</h4>
+    A popular technique for the visualization of vector fields consists in using
+    "Glyphs", such as arrows, denoting the actual vector in specific points of 
+    the domain. Apply the "Glyph" filter and try to reproduce the following
+    visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView23.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView23.jpg"></a>
+    <br><br>
+
+    <h4>Question 20</h4>
+    Load the data-set <i>data/vectorFields/3-triangulation/output.vtu</i> and
+    try to reproduce the following glyph based visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView24.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView24.jpg"></a>
+    <br><br>
+    As it can be seen in the above screen-shot, glyph-based visualizations of
+    vector fields often fall short because of occlusion. It can even yield 
+    misleading visual insights. In this example, this glyph-based visualization
+    seems to indicate a general trend of the vector field to uniformly point 
+    downwards.<br>
+
+    <h4>Question 21</h4>
+    Find and apply the appropriate filters to:<br>
+    &nbsp;&middot;Extract streamlines;<br>
+    &nbsp;&middot;Enhance their rendering by using tubular surfaces.<br>
+    <br>
+    If you got it right, you
+    should be visualizing something like this:
+    <br><br>
+    <a href="img/visualizationExercise_paraView26.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView26.jpg"></a>
+    <br><br>
+
+    <h4>Question 22</h4>
+    To better estimate the depth of the streamline, trigger the volume rendering
+    of the magnitude of the vector field.
+    <br>
+    If you got it right, you
+    should be visualizing something like this:
+    <br><br>
+    <a href="img/visualizationExercise_paraView27.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView27.jpg"></a>
+    <br><br>
+    In the above screen-shot, thanks to the volume rendering, background 
+    streamlines can easily be distinguished from the foreground streamlines
+    due to the blue "fog".
+
+    <h4>Question 23</h4>
+    In the above screen shot, the direction of the vector can be visually
+    estimated thanks to the streamline and their depth can be estimated with the
+    volume rendering. However, the orientation of the vector field is this
+    region of space is an information that is lacking from this visualization.
+    Find and apply the appropriate filters to provide visual insights about the
+    orientation of the vector field in this region of space.
+    <br>
+    This could look as follows:
+    <br><br>
+    <a href="img/visualizationExercise_paraView28.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView28.jpg"></a>
+    <br><br>
+
+    <h4>Question 24</h4>
+    The magnitude of the vector field is also an information which is lacking
+    from the previous visualization. Adjust the appropriate properties to
+    provide visual insights about the magnitude of the vector field.
+    <br>
+    This could look as follows:
+    <br><br>
+    <a href="img/visualizationExercise_paraView29.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView29.jpg"></a>
+    <br><br>
+
+    <h4>Question 25</h4>
+    Load the data set <i>data/vectorFields/3-grid/output.vti</i>. Find and apply
+    the appropriate filters to generate the following visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView30.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView30.jpg"></a>
+    <br><br>
+    Note that ribbons, in contrast to tubes, enable to better illustrate
+    small-scale helicoidal trajectories (turbulent area in blue).
+
+    <h4>Question 26</h4>
+    Load the data-set <i>data/scalarFields/3-triangulation/output.vtu</i>.
+    Extract an isosurface for the isovalue 63.5.
+    <br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView35.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView35.jpg"></a>
+    <br><br>
+    Notice the little "tunnel" in the center of the above screen shot. As the
+    isovalue increases, this tunnel will collapse. To what kind of critical
+    point does it correspond?
+    
+    <h4>Question 27</h4>
+    Find and apply the right filter to generate the gradient vector field of
+    this data-set. Then seed streamlines exactly at the point where the tunnel
+    collapses. Make sure that the considered neighborhood
+    around the seed point is small enough (radius property). Use a distinct
+    color for forward and backward streamlines. 
+    <br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView34.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView34.jpg"></a>
+    <br><br>
+    This streamline layout is fairly specific to a special type of
+    topological event in vector fields. What kind of event are we visualizing?
+    What do the streamlines we extracted correspond to?
+
+    <h4>Question 28</h4>
+    Notice that in the above screen-shot, the red streamlines seem to stop
+    suddenly. Why is that so? In what situations does a streamline stop?
+    By extracting isosurfaces of the original data-set (and selecting the
+    appropriate components with "Extract Cells by Region" filter), display these
+    stopping areas.
+    <br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView33.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView33.jpg"></a>
+    <br><br>
+    To what topological event do they correspond to?
+
+    <h4>Question 29</h4>
+    Try to identify the most prominent saddles of the data-set and mark them
+    with a sphere colored according to their type. For each saddle, extract 
+    its separatrices.
+    <br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView32.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView32.jpg"></a>
+    <br><br>
+
+
+    <h4>Question 30</h4>
+    Compute streamlines (forward and backward)
+    at various seeds (with a sufficiently small neighborhood radius) 
+    within the data-set and display them
+    with one color per seed. 
+    <br>
+    If you got it right, here is what you should be visualizing:
+    <br><br>
+    <a href="img/visualizationExercise_paraView31.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView31.jpg"></a>
+    <br><br>
+    What does this visualization highlight?
+
+
+    <h3 class="title">Tensor field visualization</h3>
+    <h4>Question 31</h4>
+    Load the data set <i>data/tensorFields/3-triangualtion/output.vtu</i>.<br>
+    Apply a series of clipping, find and apply the appropriate filter to
+    display glyphs representing the eigenvalues and directions of the tensor
+    field and try to reproduce the following visualization:
+    <br><br>
+    <a href="img/visualizationExercise_paraView36.jpg" target="new">
+    <img align="center" width="100%" 
+      src="img/visualizationExercise_paraView36.jpg"></a>
+    <br><br>
+    Note that the option "Limit Scaling By Eigenvalues" should be checked and
+    that "Max Scale Factor" should be set to an appropriate value.
+
+
+    <br>
+      
+    <br>
+    <br>
+    <div align="center">
+      Updated on December 13th, 2017.
+    </div>
+

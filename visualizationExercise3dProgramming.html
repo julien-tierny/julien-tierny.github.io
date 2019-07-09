@@ -1,0 +1,653 @@
+<html>
+  <head>
+    <title> Julien Tierny - Visualization Exercise - 
+    An Introduction to 3D Programming
+</title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  <meta name="keywords" content="
+    VTK Tutorial, VTK Exercise, ParaView Tutorial, ParaView Exercise,
+      Visualization, Paris, France,
+        Scientific Visualization, Sorbonne Universites, UMPC, LIP6, 
+          Computational Topology, Topological Data Analysis, Morse Theory,
+            Scalar Field Topology, Reeb graph, Contour Tree, Scientific
+            Computing, 
+              Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+                Online classes, Online exercises" />
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <div id='teaser'>
+    <table width='100%' background="img/teaserVisualizationClass.png">
+        <tr>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Scientific Visualization</h1>
+            <br>
+            <h2 class="teaser">
+                Practical Exercise:<br>
+              <b>An Introduction to 3D Programming</b>
+              <br><br>
+              Corresponding lecture:<br>
+              <a href="visualizationClass.html#intro" target="new"
+              class="teaser">
+              Introduction to Visualization</a>
+              <br>
+              <br>
+              <a href="index.html" target='new' class="teaser">
+              Julien Tierny</a><br> 
+              <a class="teaser" href="mailto:julien dot tierny at lip6 dot fr">
+              julien dot tierny at lip6 dot fr</a>
+            </h2>
+          </td>
+          <td width='35%'>
+            <img src='img/alpha.png' width='100%'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+    <h3 class="title">Goals</h3>
+    The goal of this exercise is to experiment with C++ programming... in
+    3D!<br>
+    A secondary goal is to review  the notion of  <i>visualization
+    pipeline</i>  and to get familiar with  the key concepts of the 
+    <a href="http://www.vtk.org" target="new">
+    Visualization ToolKit</a> library.<br>
+    After having completed this exercise, you should know how to program your
+    own, interactive 3D applications.
+
+    <br>
+    <!--<b>Duration:</b> 2 hours<br>-->
+
+    <h3 class="title">Software prerequisites</h3>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.vtk.org" target="new">VTK</a> (runtime libraries
+    <i>and</i> headers) should be installed
+    (6.0 or higher);<br>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.cmake.org" target="new">CMake</a> should be installed
+    (2.8 or higher). <br>
+
+    <br>
+    The remainder of these exercise instructions assumes that the employed 
+    IDE is
+    <a href="http://www.kdevelop.org" target="new">KDevelop</a> 
+    (version 4.5 or higher) under
+    Linux. However, this exercise can be achieved with any IDE under any OS.
+    For non-Linux users, an easy alternative consists in installing a Linux 
+    system (such as 
+    <a href="http://www.kubuntu.org" target="new">Kubuntu</a>) within a 
+    virtual machine (such as 
+    <a href="http://www.virtualbox.org" target="new">VirtualBox</a>, 
+    a readily configured virtual machine is available 
+    <a target="new"
+    href="stuff/teaching/ttk_exerciseMachine.ova"
+    >HERE</a> (md5sum: a59d9cf610ef5ddb7f0f6b338316df0a, password: ttk).
+<!--    <a 
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/teaching/tierny_exerciseMachine.ova'])"
+    href="stuff/teaching/tierny_exerciseMachine.ova">HERE</a>, 
+    md5sum:
+    a9a051e6381a13fcd1e3093d3a5c004f).-->
+
+    <h3 class="title">Documentation</h3>
+    &nbsp;&middot; An up-to-date documentation of the VTK library can be found 
+    <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+    target="new">HERE</a>.<br>
+    &nbsp;&middot; A light-speed introduction to C++ programming can be found
+    <a href="stuff/teaching/tierny_visualization_introductionC++.pdf" 
+      target="new">HERE</a>.
+
+    <h3 class="title">Getting started</h3>
+    
+    <h4 class="title">Setting up a CMake project</h4>
+    In the following, we will create basic C++ and CMake files and import
+them in the IDE KDevelop. To do so, we will copy the content of the files 
+displayed in Figure 1 and Figure 2 of the 
+    <a href="stuff/teaching/tierny_visualization_introductionC++.pdf">
+    C++ introduction notes</a>.<br>
+    To do so, please use your favorite text editor, or proceed as follows:<br>
+    &nbsp;&middot; Open the IDE program KDevelop;<br>
+    &nbsp;&middot; Click on the "Filesystem" tab on the left banner;<br>
+    &nbsp;&middot; Create a new directory for our exercise: right click in the
+list, "Create New -> Folder...". Enter this directory (left click on it);<br>
+    &nbsp;&middot; Create a new *cpp file: "Create New -> Text File..." and name
+it "main.cpp";
+    &nbsp;&middot; Create a new file called "CMakeLists.txt";<br>
+    &nbsp;&middot; Left click the "CMakeLists.txt" entry you created. This file
+should open in the center panel. Enter the content of Figure 2 in it;<br>
+    &nbsp;&middot; Load this CMakeLists.txt file in your project: "Project ->
+Open / Import Project...", explore the file-system to select it (and press the
+subsequent "OK" and "Finish" buttons that will pop up);<br>
+    &nbsp;&middot; Enter the content of Figure 1 in your file "main.cpp";<br>
+    &nbsp;&middot; Click on the "Build" button. At this point, you should be
+seeing something like this:
+      <br>
+      <br>
+      <a href="img/visualizationExercise_intro1.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_intro1.jpg"></a>
+      <br><br>
+      If this is the case, congratulations! You just compiled your first C++
+program!<br><br>
+    &nbsp;&middot;Click on the "Execute" button. A new window will appear. Click
+on the "Add New..." button and select "Application". Close this window by
+clicking on its "Ok" button. At this point, if you got it right, you should be
+seeing something like this:
+      <br>
+      <br>
+      <a href="img/visualizationExercise_intro2.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_intro2.jpg"></a>
+      <br><br>
+    If this is the case, congratulations! You just wrote, compiled and executed
+your first C++ program!
+
+
+    <h3 class="title">C++ Programming for Dummies</h3>
+    Unless you already have some experience with C++ programming, it is highly
+recommended that you consider the following questions before moving on to 
+the
+<a href="#vtk">
+next section</a>. 
+If you are familiar with programming in general but not with C++,
+you might want to start with 
+<a href="#cplusplus">
+question 4</a>.
+
+    <h4>Question 1</h4>
+    In your file "main.cpp", enter the content of Figure 6 (C++ lecture notes).
+    Build your program and execute it.<br>
+    Modify the initial values of the variable "myIntegerVariable" and 
+build/execute again to observe the outcome.
+
+    <h4>Question 2</h4>
+    In your file "main.cpp", enter the content of Figure 7 (C++ lecture notes).
+    Build your program and execute it.<br>
+    Modify the initial values of the variables A and B and build/execute again
+to observe the outcome.
+   
+
+    <h4>Question 3</h4>
+    &nbsp;&middot;In your file "main.cpp", enter the content of Figure 10.
+Build/execute your code;<br>
+    &nbsp;&middot;Update your file to reproduce the code from Figure 11.
+Build/execute your code;<br>
+     &nbsp;&middot;Update your file to reproduce the code from Figure 12.
+Build/execute your code.<br>
+    Have you noticed any difference?
+   
+   
+    <a name="cplusplus"></a> 
+    <h4>Question 4</h4>
+    &nbsp;&middot; Generate the files "Computer.h" and "Computer.cpp" to
+reproduce the Figures 13, 14 and 15 
+of the lecture notes. Note that you will need to
+add the entry "Computer.cpp" right next to the "main.cpp" entry in your
+"CMakeLists.txt" file. You will also need to insert the following line in the
+beginning of this file:<br>
+&nbsp;<i>include_directories(".")</i><br>
+Build/execute your code. Modify the content of the
+internal variables in the constructor then build/execute again and observe the
+outcome.
+    <h4>Question 5</h4>
+    &nbsp;&middot; Generate the files "Laptop.h", "Laptop.cpp", "Desktop.h" and
+"Desktop.cpp" to reproduce the Figures 16, 17 and 18 of the lecture notes. Note
+that you will need to add the corresponding entries in your "CMakeLists.txt"
+file.
+Build/execute your code. Modify the content of the
+internal variables in the constructor then build/execute again and observe the
+outcome.
+
+    <h4>Question 6</h4>
+    &nbsp;&middot; Reproduce the code from the 
+Figure 19 of the lecture notes, to 
+get familiar with the STL <i>vector</i> container. Build/execute your code and
+observe the outcome.
+
+    <h4>Question 7</h4>
+    &nbsp;&middot; Reproduce the code from the Figures 20, 21 and 22 of the
+lecture notes, and use these functions from the <i>main()</i> function of
+main.cpp.
+
+    <h4>Correction</h4>
+    The correction for the above questions can be found 
+    <a href="stuff/teaching/Computer.zip">HERE</a>.
+
+      <a name="vtk"></a>
+      <h3 class="title">A quick introduction to 3D programming with VTK</h3>
+      In this section, we will develop a basic interactive 3D application with 
+VTK. This application will:<br>
+ &nbsp;&nbsp;&nbsp;&middot; Generate a triangulation with two tetrahedra;<br>
+&nbsp;&nbsp;&nbsp;&middot; Create a graphical window, attach it to a
+renderer and an interactor;<br>
+&nbsp;&nbsp;&nbsp;&middot; Create a scene object for the triangulation and
+attach it to the renderer;<br>
+&nbsp;&nbsp;&nbsp;&middot; Handle keyboard events to interact with the display
+properties of the triangulation;<br>
+&nbsp;&nbsp;&nbsp;&middot; Create a VTK pipeline to apply a sequence of basic
+geometry processing tasks on our triangulation prior to its rendering.<br>
+
+<br>
+In the remainder of this exercise, for simplicity, we will 
+enter all of our C++
+code into the function <i>main()</i> of the file "main.cpp".
+
+    <h4>Question 8</h4>
+    Modify your file "CMakeLists.txt" to make sure that your program builds and
+links with the VTK library. To do so, borrow inspiration from Figure 3 of the
+lecture notes.
+
+    <h4>Question 9</h4>
+    To get started, we will have our program generate a basic 3D object (made of
+2 tetrahedra) to
+visualize. First, we will create a set of 3D points, which will be later used by
+our triangulation. To do so, we will use the
+VTK class called <i>vtkPoints</i>.<br><br>
+
+      VTK uses its own memory allocation and management system. This means that
+      VTK objects <i>cannot</i> 
+      be declared directly. Instead, <i>pointers</i> to VTK
+      objects must be declared as follows:<br>
+      &nbsp;&nbsp;&nbsp;<i>vtkPoints *pointSet_ = NULL;</i><br>
+      Later, the memory for this object needs to be <i>dynamically</i> allocated with the following
+instruction:<br>
+      &nbsp;&nbsp;&nbsp;<i>pointSet_ = vtkPoints::New();</i><br>
+      The above lines declare a pointer to a 
+      <i>vtkPoints</i> object (named <i>pointSet_</i>) 
+      and allocate the necessary memory for it
+(with the call to the function
+      <i>New()</i>).<br><br>
+      <b>&nbsp;&middot;Warning!</b> Dynamic memory allocation requires some attention. Each
+      object which has been dynamically allocated must be de-allocated when it
+      is no longer used in order to free the corresponding memory. With VTK, 
+      for each dynamically allocated object,
+      one typically needs to free its memory
+      at the end of the function where it has been used (here at the end of
+      <i>main()</i>) with the following
+      instruction:<br>
+      &nbsp;&nbsp;&nbsp;
+      <i>(*pointSet_).Delete();</i><br><br>
+      <b>&nbsp;&middot;Important Note:</b> In the remainder of this exercise, it is recommended
+to <b>always</b> declare the pointers in the preamble of the file "main.cpp"
+(after the <i>#include</i> instructions). The corresponding memory allocation
+should happen within a valid function, such as <i>main()</i>.
+<br><br>
+
+      To refer to the specification of any VTK class that you use from your C++
+program, you should include the corresponding header file in the preamble of
+your source file, with the following pre-processor instruction:<br>
+<i>
+&nbsp;&nbsp;&nbsp;#include &lt;vtkPoints.h&gt;</i><br><br>
+
+
+    Declare and allocate a <i>vtkPoints</i> from your C++ code (and do not
+forget to delete the corresponding memory after usage).
+
+    <h4>Question 10</h4>
+    We will now insert 3D points in this object. In particular, we will consider
+the following points for instance:<br>
+&nbsp;&nbsp;&nbsp;&middot; (0, 0, 1)  <br>
+&nbsp;&nbsp;&nbsp;&middot; (0, 1, 0)  <br>
+&nbsp;&nbsp;&nbsp;&middot; (1, 0, 0)  <br>
+&nbsp;&nbsp;&nbsp;&middot; (0, 0, 0)  <br>
+&nbsp;&nbsp;&nbsp;&middot; (0, 0, -1)  <br>
+    To add these points to the <i>vtkPoints</i> object, we will use its function
+<i>InsertNextPoint()</i> for each of them. Please refer to the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkPoints" target="new">
+documentation of
+this class</a> to understand how to use this function. Note that this function
+will return a unique integer identifier that can be used later, to refer to a
+specific point among the set. Go ahead and insert these points in the point set.
+
+  <h4>Question 11</h4>
+  We will now create a list of point identifiers which describe a tetrahedron. 
+This
+list of point identifiers will be used to add this tetrahedron to our
+triangulation.<br>  
+
+Include the necessary header file, declare and allocate a
+<i>vtkIdList</i> object (and do not forget to delete the corresponding memory at
+the end of the program). 
+This object is meant to store the identifiers of the
+points we created for further usage. For the first 4 points of the previous
+question, insert their corresponding identifier in the list with the function
+<i>InsertNextId()</i> 
+(see the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkIdList" target="new">
+class documentation</a>).
+
+  <h4>Question 12</h4>
+  We will now create a data-structure to represent triangulations (sets of
+simplicies, such as tetrahedra).<br>
+  Include the necessary header file, declare and allocate a
+<i>vtkUnstructuredGrid</i> object (and do not forget to delete the corresponding memory at
+the end of the program). 
+This object is meant to store a triangulation (described in the 
+<a href="visualizationClass.html#domainRep" target="new">
+domain representations</a> class).<br><br>
+&nbsp;&middot;Link this object to the 3D point set with the function <i>SetPoints()</i> of the
+<i>vtkUnstructuredGrid</i> class.<br>
+&nbsp;&middot;Insert a cell of type <i>VTK_TETRA</i> in this data-structure with its function
+<i>InsertNextCell()</i> 
+(see the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkUnstructuredGrid" 
+target="new">class documentation</a>).<br>
+Build and execute your program. If you got it right, you just created a
+triangulation made of one tetrahedron. Congrats!
+
+  <h4>Question 13</h4>
+  Create a second <i>vtkIdList</i> object which contains the identifiers of the
+last point and the first 3 points of the point set.
+Insert this
+tetrahedron in the <i>vtkUnstructuredGrid</i> object.
+
+  <h4>Question 14</h4>
+  We will now create an empty graphical window, which will later contain a
+rendering of our triangulation.<br>
+  Include the necessary header file, declare and allocate a
+<i>vtkRenderWindow</i> object (and do not forget to delete the corresponding memory at
+the end of the program). 
+This object is meant to represent a graphical window in which a renderer will
+later be inserted. Before the deletion of the corresponding memory, call the
+function <i>Render()</i> of this object. Build and execute your code. What do
+you observe?
+
+  <h4>Question 15</h4>
+  We will now pull the rest of the VTK machinery to insert a representation of
+our triangulation within the visualization. 
+To do so, we will need to include the
+necessary header files, declare and allocate the following objects:<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkRenderer</i> (to perform the actual rendering
+tasks within the graphical window);<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkDataSetMapper</i> (to convert our triangulation
+into a set of graphics primitives that are "renderable");<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkActor</i> (to represent and interact with our
+triangulation in our visualization).<br><br>
+  &nbsp;&middot; Link the triangulation to the <i>vtkDataSetMapper</i> object with its function
+<i>SetInputData()</i> 
+(see the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkDataSetMapper" 
+target="new">class documentation</a>).<br>
+  &nbsp;&middot; Link the mapper to the <i>vtkActor</i> object with its function
+<i>SetMapper()</i>
+(see the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkActor" 
+target="new">class documentation</a>).<br>
+  &nbsp;&middot; Link the actor to the <i>vtkRenderer</i> object with its 
+function
+<i>AddActor()</i>
+(see the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkRenderer" 
+target="new">class documentation</a>).<br>
+  &nbsp;&middot; Link the renderer to the <i>vtkRenderWindow</i> object with its function
+<i>AddRenderer()</i>
+(see the 
+<a href="http://www.google.com/search?q=vtk+doc+nightly+vtkRenderWindow" 
+target="new">class documentation</a>).<br><br>
+Build/execute your code. What do you observe?
+
+  <h3 class="title">Making your 3D application interactive</h3>
+  <h4>Question 16</h4>
+  We will now pull the necessary VTK machinery to interact with our 3D
+visualization.
+Include the necessary header file, declare and allocate a
+<i>vtkRenderWindowInteractor</i> object (and do not forget to delete the corresponding memory at
+the end of the program). 
+This object is meant to provide interaction features.<br>
+&nbsp;&middot; Link the render window with the <i>vtkRenderWindowInteractor</i>
+with its function 
+<i>SetRenderWindow()</i>
+(see the 
+<a
+href="http://www.google.com/search?q=vtk+doc+nightly+vtkRenderWindowInteractor" 
+target="new">class documentation</a>).<br><br>
+&nbsp;&middot; Right after the call to the <i>Render()</i> function, call the
+function <i>Start()</i> on the interactor.<br> 
+Build/execute your code. What do you observe?
+<br>
+If you got it right, you should be visualizing something like this:
+<br><br>
+<a href="img/visualizationExercise_intro3.jpg" target="new">
+<img align="center" width="100%"  
+src="img/visualizationExercise_intro3.jpg"></a>
+<br><br>
+
+
+  <h4>Question 17</h4>
+  The default interactor type in VTK is not necessarily the most intuitive to
+use. Here, we will pull the necessary machinery to use a different interactor
+style.
+Include the necessary header file, declare and allocate a
+<i>vtkInteractorStyleTrackballCamera</i> object (and do not forget to delete the corresponding memory at
+the end of the program). 
+This object is meant to provide trackball-type interactions.<br>
+&nbsp;&middot; Link this interactor style with the interactor with its function
+<i>SetInteractorStyle()</i>
+(<a
+href="http://www.google.com/search?q=vtk+doc+nightly+vtkRenderWindowInteractor" 
+target="new">class documentation</a>).<br><br>
+Build/execute your code. What do you observe?
+
+  <h4>Question 18</h4>
+  In the following, we will try to interpret keyboard events to interact with
+keystrokes on our visualization. By default, VTK interactors have their own
+handling of keyboard events. 
+In our case, we would like to re-define/extend them. <br>What
+object oriented programming concept could we use to achieve this?
+
+  <h4>Question 19</h4>
+  Create a class <i>CustomInteractor</i> that inherits from
+<i>vtkInteractorStyleTrackballCamera</i>. The only two (public) functions that 
+need to be
+re-declared are:<br>
+&nbsp;&nbsp;&nbsp;<i>static CustomInteractor* New();</i><br>
+&nbsp;&nbsp;&nbsp;<i>void OnKeyPress();</i><br>
+
+In the preamble of your C++ file 
+(right before the <i>main()</i> function),
+insert the following line 
+to automatically pull the memory management
+machinery of VTK:<br>
+&nbsp;&nbsp;&nbsp;<i>vtkStandardNewMacro(CustomInteractor);</i><br><br>
+
+Now implement the function <i>void CustomInteractor::OnKeyPress()</i>  as
+follows:<br>
+<i>
+&nbsp;&nbsp;void CustomInteractor::OnKeyPress(){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string key = Interactor->GetKeySym();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Here we will insert our event processing (TODO)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Now we will refresh the display<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Assuming your vtkRenderWindow object is named 
+renderWindow_:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;renderWindow_->Render();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;vtkInteractorStyle::OnKeyPress();<br>
+&nbsp;&nbsp;}<br>
+</i>
+If the user hits a key, this function will be called and the string object
+<i>key</i> will contain the actual value of the key that has been pressed.
+
+  <h4>Question 20</h4>
+  If the user pressed the key "t", set the surface of our triangulation
+transparent. This can be done by calling the following function:<br>
+&nbsp;&nbsp;<i>GetProperty()->SetOpacity(0.5)</i><br>
+on the actor.<br>
+Build/execute your code. What do you observe?
+<br>
+If you got it right, you should be visualizing something like this:
+<br><br>
+<a href="img/visualizationExercise_intro4.jpg" target="new">
+<img align="center" width="100%"  
+src="img/visualizationExercise_intro4.jpg"></a>
+<br><br>
+
+
+  <h4>Question 21</h4>
+  Declare a boolean variable (source file preamble) named "isTransparent_" that
+is set to true if the object is transparent and to false otherwise.
+  Use this boolean variable to roll back the transparency if the user presses
+"t" several times (this can be achieved by setting the opacity to 1).<br>
+Build/execute your code. What do you observe?
+
+  <h4>Question 22</h4>
+  Modify your code, such that only the edges of our triangulation are
+displayed if the user hits the key "m" (for mesh). Such an effect can be
+achieved by calling the following function:<br>
+&nbsp;&nbsp;<i>GetProperty()->SetRepresentationToWireframe()</i><br>
+on the actor.<br>
+Build/execute your code. What do you observe?
+<br>
+If you got it right, you should be visualizing something like this:
+<br><br>
+<a href="img/visualizationExercise_intro5.jpg" target="new">
+<img align="center" width="100%"  
+src="img/visualizationExercise_intro5.jpg"></a>
+<br><br>
+Have a look at the 
+<a
+href="http://www.google.com/search?q=vtk+doc+nightly+vtkProperty" 
+target="new">property class documentation</a> 
+to see what function could be
+used to revert that effect.<br>
+
+  <h3 class="title">Setting up a visualization pipeline with VTK</h3>
+
+  VTK implements a <i>visualization pipeline</i> philosophy. 
+    In this paradigm, a
+    visualization is obtained by applying a sequence of geometry processing
+    tasks on one or several data-sets. In VTK, geometry processing tasks are
+    materialized by <i>Filters</i>. Each filter can be seen as a black box, 
+which takes some data on its input and delivers some data on its output.<br><br>
+
+    To connect two filters together in a sequence, one needs to plug the output
+port of the first filter to the input port of the second one. For instance, this
+can be done as follows:<br>
+&nbsp;&nbsp;<i>mySecondFilter->SetInputConnection(myFirstFilter->GetOutputPort());</i><br><br>
+    
+    A set of filters sequentially linked together then forms a <i>visualization
+pipeline</i>. The extremities of the pipeline should be handled
+specifically:<br>
+&nbsp;&nbsp;&middot;The first filter of the pipeline should obtain its input data from a
+source (in our exercise from some input data with the function
+<i>SetInputData()</i>);<br>
+&nbsp;&nbsp;&middot;The last filter should deliver its data to a consumer (in our
+example a mapper).<br><br>
+
+    The VTK visualization pipeline uses an on-demand data-driven execution 
+scheduling strategy. This means that all the filters can be plugged together 
+without being executed. The entire pipeline will be executed (or updated with
+partial computations) only when the
+calling program will ask for its output. 
+
+  <h4>Question 23</h4>
+  In the following questions, we will deploy a simple VTK pipeline that 
+extracts the salient
+edges of our 3D object and represent them with cylinders in the visualization.
+The filter in charge of this extraction in VTK is called <i>vtkFeatureEdges</i>
+. This filter takes as an input a surface representation of the data along with
+its normals. To obtain a surface representation out of our tetrahedral mesh, one
+needs to use the filter <i>vtkGeometryFilter</i>. From there, to obtain the
+surface with its normals, one needs to use the filter <i>vtkPolyDataNormals</i>.
+<br><br>
+    
+Include the
+necessary header files, declare and allocate the following objects:<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkGeometryFilter</i>;<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkPolyDataNormals</i>;<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkFeatureEdges</i>;<br>
+&nbsp;&nbsp;&nbsp;&middot;<i>vtkTubeFilter</i>.<br>
+
+Connect these filters together to form a visualization pipeline in the function
+<i>main()</i>. To get a nicer visualization, you may want to adjust some
+properties of the tube filters by calling the following functions on the tube
+filter:
+<br><i>
+&nbsp;&nbsp;SetRadius(0.025);<br>
+&nbsp;&nbsp;SetNumberOfSides(10);<br>
+</i>
+
+  <h4>Question 24</h4>
+  To insert the result of this pipeline in our visualization, one needs to
+declare a new actor as well as new mapper. Since the output of the
+<i>vtkTubeFilter</i> is a surface, declare and allocate a 
+<i>vtkPolyDataMapper</i>. Also, declare and allocate a new <i>vtkActor</i>.
+Finally, in the function <i>main()</i>, link this new actor to the renderer 
+(as done in a previous question).
+
+  <h4>Question 25</h4>
+  We will now trigger the execution of our visualization pipeline if the user
+pressed the key "g" (as in "go!").<br>
+  In the function <i>CustomInteractor::OnKeyPress()</i>, modify your code such
+that, if the user pressed the "g" key, our <i>vtkPolyDataMapper</i> object gets
+link to our tube actor (with the function <i>SetMapper()</i>).<br>
+
+Build/execute your code. What do you observe?
+<br>
+If you got it right, you should be visualizing something like this:
+<br><br>
+<a href="img/visualizationExercise_intro6.jpg" target="new">
+<img align="center" width="100%"  
+src="img/visualizationExercise_intro6.jpg"></a>
+<br><br>
+At the beginning of the function <i>CustomInteractor::OnKeyPressed()</i>, insert
+the following instruction (assuming your tube filter is named 
+<i>tubeFilter_</i>):<br>
+&nbsp;&nbsp;&nbsp;<i> cout &lt;&lt; "Tubes have now " 
+ &lt;&lt; tubeFilter_-&gt;GetOutput()-&gt;GetNumberOfPoints()
+ &lt;&lt; " points. "  &lt;&lt;endl;
+</i><br>
+Copy-paste this same line of code at the end of the function
+<i>CustomInteractor::OnKeyPressed()</i>, right after the call  to the
+<i>Render()</i> function.<br>
+Build/execute your code. What do you observe?
+ 
+    <h3 class="title">Acknowledgments</h3>
+    Some of the questions of this exercise are inspired or adapted from an 
+exercise originally written by Thierry Carrard. Thanks Thierry!
+      
+    <br>
+    <br>
+    <div align="center">
+      Updated on December 13th, 2017.
+    </div>
+

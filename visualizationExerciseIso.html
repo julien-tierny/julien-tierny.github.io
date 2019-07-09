@@ -1,0 +1,820 @@
+<html>
+  <head>
+    <title> Julien Tierny - Visualization Exercise - Isosurface Extraction 
+</title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  <meta name="keywords" content="
+    VTK Tutorial, VTK Exercise, ParaView Tutorial, ParaView Exercise,
+      Visualization, Paris, France,
+        Scientific Visualization, Sorbonne Universites, UMPC, LIP6, 
+          Computational Topology, Topological Data Analysis, Morse Theory,
+            Scalar Field Topology, Reeb graph, Contour Tree, Scientific
+            Computing, 
+              Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+                Online classes, Online exercises" />
+
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <div id='teaser'>
+    <table width='100%' background="img/teaserVisualizationClass.png">
+        <tr>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Scientific Visualization</h1>
+            <br>
+            <h2 class="teaser">
+                Practical Exercise:<br>
+              <b>Iso-surface extraction </b>
+              <br><br>
+              Corresponding lecture:<br>
+              <a href="visualizationClass.html#scalarFields" target="new"
+              class="teaser">
+              Scalar field visualization</a>
+              <br>
+              <br>
+              <a href="index.html" target='new' class="teaser">
+              Julien Tierny</a><br> 
+              <a class="teaser" href="mailto:julien dot tierny at lip6 dot fr">
+              julien dot tierny at lip6 dot fr</a>
+            </h2>
+          </td>
+          <td width='35%'>
+            <img src='img/alpha.png' width='100%'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+    <h3 class="title">Goals</h3>
+    The primary goal of this exercise is to re-visit from a practical 
+    perspective the topics covered during the lecture dedicated to 
+    <a href="visualizationClass.html#scalarFields" target="new">
+    scalar fields</a>, in particular iso-surface extraction on tetrahedral
+    meshes.<br>
+
+    A secondary goal is to get familiar with the VTK library,
+    especially with its core data-structures, its basic rendering features as
+    well as its pipeline philosophy.<br>
+   
+    The last, more childish, goal is to teach you how to write your own
+    isosurfacer implementation that even beats VTK in terms of running time!
+
+    <br>
+    <!--<b>Duration:</b> 2 hours<br>-->
+
+    <h3 class="title">Software prerequisites</h3>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.vtk.org" target="new">VTK</a> (runtime libraries
+    <i>and</i> headers) should be installed
+    (6.0 or higher);<br>
+    &nbsp;&middot; A recent version of 
+    <a href="http://www.cmake.org" target="new">CMake</a> should be installed
+    (2.8 or higher). <br>
+
+    <br>
+    The remainder of these exercise instructions assumes that the employed 
+    IDE is
+    <a href="http://www.kdevelop.org" target="new">KDevelop</a> 
+    (version 4.4 or higher) under
+    Linux. However, this exercise can be achieved with any IDE under any OS.
+    For non-Linux users, an easy alternative consists in installing a Linux 
+    system (such as 
+    <a href="http://www.kubuntu.org" target="new">Kubuntu</a>) within a 
+    virtual machine (such as 
+    <a href="http://www.virtualbox.org" target="new">VirtualBox</a>, 
+    a readily configured virtual machine is available 
+<a target="new"
+    href="stuff/teaching/ttk_exerciseMachine.ova"
+    >HERE</a> (md5sum: a59d9cf610ef5ddb7f0f6b338316df0a, password: ttk).
+    <!--<a 
+    onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/teaching/tierny_exerciseMachine.ova'])"
+    href="stuff/teaching/tierny_exerciseMachine.ova">HERE</a>,
+    md5sum: 
+    a9a051e6381a13fcd1e3093d3a5c004f).-->
+
+    <h3 class="title">Documentation</h3>
+    &nbsp;&middot; An up-to-date documentation of the VTK library can be found 
+    <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+    target="new">HERE</a>.<br>
+    &nbsp;&middot; A light-speed introduction to C++ programming can be found
+    <a href="stuff/teaching/tierny_visualization_introductionC++.pdf" 
+      target="new">HERE</a>.
+
+    <h3 class="title">Getting started</h3>
+
+      <h4 class="title">Exercise package</h4>
+      &nbsp;&middot; Download the exercise package 
+      <a href="stuff/teaching/tierny_visualizationExercise_IsoSurfaces.zip"> 
+      HERE</a> and extract it under your home
+      directory.
+
+      <h4 class="title">Importing the project in KDevelop</h4>
+      &nbsp;&middot; Import the CMake project: 
+      <i>Project</i> -> 
+      <i>Open / Import Project...</i> 
+      and select the file <i>CMakeLists.txt</i>.
+      <h4 class="title">Project basic configuration</h4>
+      &nbsp;&middot; Under
+      <i>Run</i> ->
+      <i>Configure Launches...</i><br>
+      &nbsp;&middot; Click on <i>visualizationExercise_IsoSurfaces</i>;<br>
+      &nbsp;&middot; Click on the <i>"Plus"</i> icon button;<br>
+      &nbsp;&middot; On the right,
+      <i>Project Target:</i> visualizationExercise_IsoSurfaces/isosurface;<br>
+      &nbsp;&middot; Under 
+      <i>Behaviour</i>, <i>Arguments</i>, enter: <i>-t data/post.vtu</i><br>
+      &nbsp;&middot; Under
+      <i>Behaviour</i>, <i>Working Directory</i>, enter the path to the
+      directory where the file <i>CMakeLists.txt</i> is located<br>
+      &nbsp;&middot; Click on the <i>OK</i> button.
+
+
+      <h4 class="title">KDevelop basic usage</h4>
+      &nbsp;&middot; To access the sources of the project, click on
+      <i>Projects</i> tab on the left. Double-click on a source file to open and
+      edit it;<br>
+      &nbsp;&middot; To compile the code, press <i>F8</i>;<br>
+      &nbsp;&middot; To run the code, press <i>Shift+F9</i>;<br>
+      &nbsp;&middot; To run the code in debug mode, press <i>F9</i> (to support
+      all the debug features, note that you will have to change the build type
+      from <i>Release</i> to <i>Debug</i> in <i>CMakeLists.txt</i>).<br>
+
+      <br>
+
+      <a href="img/visualizationExercise_IsoSurfaces1.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces1.jpg"></a>
+      <br><br>
+      If you followed the previous instructions, at this point, your screen 
+      should look like the above screen-shot.
+      <br>
+
+      <h4 class="title">Code skeleton</h4>
+      The code skeleton provided with the exercise package is composed of 3 main
+      classes:<br>
+      &nbsp;&middot; <i>Editor</i>: This class stores the actual data-structures
+      and drives the computations;<br>
+      &nbsp;&middot; <i>UserInterface</i>: This class is in charge of the
+      rendering management and of the processing of the user interactions;<br>
+      &nbsp;&middot; <i>IsoSurfacer</i>: This class is right now a place-holder
+      for your custom isosurfacer implementation.<br>
+      <br>
+      At this point, the code skeleton provides the following features:<br>
+      &nbsp;&middot; Loading of the input data-set (in our example
+      <i>post.vtu</i>, which is a simulation of liquid oxygen diffusion);<br>
+      &nbsp;&middot; Display of the boundary of the domain with a color map;<br>
+      &nbsp;&middot; Basic interactions with the scene (translations, rotations,
+      scaling);<br>
+      &nbsp;&middot; The rendering of the iso-surfaces to extract (TODO).<br>
+
+      <br>
+      Now, let's get the exercise started.
+
+    <h3 class="title">Iso-surface extraction with VTK</h3>
+      First, we will review iso-surface extraction using VTK. To do this, we
+      will use the VTK notion of <i>Filter</i>. <br>
+      In VTK, a filter is a
+      standardized processing unit that accepts data on its input 
+      (<i>SetInput()</i>) and delivers data on its output (<i>GetOutput()</i>)
+      after it has been triggered for execution (various parameters can also be
+      defined to tune the filter).<br>
+      In VTK, filters can be plugged to each other beforehand to form a 
+      <i>Pipeline</i>. Hence, a visualization program can be quickly put
+      together by simply connecting filters together and running the pipeline.
+      More information is available 
+      <a href="http://www.vtk.org/VTK/help/examplecode.html" target="new">
+      HERE</a>.<br>
+      To trigger the execution of a filter independently of a pipeline, its
+      function <i>Update()</i> should be called.<br>
+
+      <br>
+      
+
+      <h4>Question 1</h4>
+      &nbsp;&middot; 
+      Once the skeleton program is running, hitting the key
+      '<i>a</i>' will trigger the code for iso-surface extraction with VTK.
+      In the <i>UserInterface</i> class, where is this event
+      captured?
+
+      <h4>Question 2</h4>
+      &nbsp;&middot; From this point (capture of the <i>'a'</i> key event),
+      follow the function calls. Which is the function of the <i>Editor</i> 
+      class that is in charge of iso-surface extraction with VTK?
+      
+      <h4>Question 3</h4>
+      &nbsp;&middot; Complete the function identified in the previous question
+      to extract an iso-surface with VTK. Be careful and pay attention to what
+      this function returns and how its returned value is employed by the rest
+      of the code skeleton (don't hesitate to browse 
+      <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+      target="new">the VTK documentation</a>).<br>
+
+      If you correctly answered to the previous questions, you should now see 
+      the following result by pressing the key 'a'.<br><br>
+      <a href="img/visualizationExercise_IsoSurfaces2.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces2.jpg"></a>
+      <br><br>
+
+      At this point, with no further change to the code, most of the keystrokes
+      implemented in the code skeleton should be supported.
+      
+      <h4>Question 4</h4>
+      &nbsp;&middot; Go back to the function of the <i>UserInterface</i> class
+      capturing the key events (question 1). For each keystroke, follow the
+      corresponding function calls in order to understand the purpose of each
+      keystroke.<br>
+      
+      &nbsp;&middot; Then, try to reproduce the following visualization:
+     
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces3.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces3.jpg"></a>
+      <br><br>
+
+
+      <h4>Question 5</h4>
+      &nbsp;&middot;
+      Extract an isosurface for the isovalue 57.5 (on the same data-set as
+      before, <i>post.vtu</i>). Then move it up to isovalue
+      58. The isosurface changed its topology. What kind of topological change
+      is it? <br>
+      How many of these events occur when spanning the entire function range?
+
+      <h4>Question 6</h4>
+      &nbsp;&middot;
+      Same question as above for an isosurface extracted at the isovalues 63.5
+      and 64.
+
+      <h4>Question 7</h4>
+      &nbsp;&middot;
+      Regarding questions 5 and 6, what kind of critical point do 
+      these topological changes in the level sets 
+      correspond to?
+
+    <h3 class="title">Implementing your own isosurfacer</h3>
+
+      In the rest of the exercise, we'll move on to the implementation of your
+      own custom isosurfacer. To proceed, we'll implement a VTK filter. You will
+      find an initial skeleton for this filter in the <i>IsoSurfacer</i> class.
+      <br>
+
+      When running the program, to switch back and forth between the VTK
+      implementation and your custom implementation, hit the key <i>v</i>. 
+      The rest of the keystrokes work as before.
+      <br>
+      For the following questions, make sure you always execute your program
+      such that the custom implementation is selected (by hitting <i>v</i>
+      once).
+
+      <h4>Question 8</h4>
+      &nbsp;&middot;
+      In the <i>Editor</i> class, borrow inspiration from the function
+      <i>extractIsoSurfaceVTK()</i> to complete the function
+      <i>extractIsoSurface()</i>, 
+      which should be using your own VTK filter class,
+      called <i>IsoSurfacer</i>.<br>
+      If you get it right, without changing anything to the provided code 
+      skeleton for the <i>IsoSurfacer</i> class, you should have the following
+      message on the console output:
+
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces4.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces4.jpg"></a>
+      <br><br>
+      In the remainder of the exercise, we will implement an isosurface
+extraction algorithm in the
+class <i>IsoSurfacer</i>.
+
+      <br><br><br>
+      <h4 class="title">The naive way</h4>
+      The naive algorithm for isosurface extraction consists in:<br>
+      &nbsp;&middot; looping over the entire list of tetrahedra of the input 
+      tet-mesh, and for each tetrahedron:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&middot;
+      computing, if it exists, the polygon which 
+      intersects the tetrahedron along the level set;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&middot;
+      adding the vertices and the faces of that polygon to
+      the output isosurface.<br><br>
+      Have a look at <i>IsoSurfacer.h</i> to see how to access the input 
+      tet-mesh, the input scalar field
+      and the output surface from within the IsoSurfacer class. The
+      corresponding variables are already initialized for you in the code
+      skeleton.<br><br>
+
+      To implement this algorithm, we will proceed as follows:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&middot;We will implement a function
+<i>IsCellOnLevelSet()</i> that will check if a cell (or simplex) is intersected
+by the queried level set;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&middot;We will implement a function
+<i>ComputeEdgeIntersection()</i> that will compute for a given edge its
+intersection point with the queried level set;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&middot;We will implement a function
+<i>ComputerSimpleIntersection()</i>, that
+will
+apply for a given tetrahedron the above two functions to generate the polygon which intersects the
+input tetrahedron along the queried level-set;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&middot;We will implement a function
+<i>SimpleExtraction()</i>, that loops over the tetrahedra of the input mesh and
+apply the above function.<br>
+
+
+      <h4>Question 9</h4>
+      &nbsp;&middot;
+      In <i>IsoSurfacer.h</i>, complete the function
+      <i>IsCellOnLevelSet()</i>. This function returns true if the cell is
+      traversed by the level set and false otherwise. <br>
+      Warning, this function
+      takes as input the abstract notion of <i>vtkCell</i>, which is
+      dimension independent. In other words, this function should work if either
+      an edge or a tetrahedron is given as argument.<br>
+      Don't hesitate to have a look at the 
+      <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+      target="new">VTK documentation</a> to understand how to retrieve the
+      vertex Ids of a cell and to retrieve the corresponding scalar values from
+      the scalar field given the vertex Ids.
+
+      <h4>Question 10</h4>
+      &nbsp;&middot;
+      In <i>IsoSurfacer.h</i>, complete the function
+      <i>ComputeEdgeIntersection()</i>. Given an input edge expressed as a pair
+      of vertex Ids, this function returns the point where the level set
+      intersects the edge.
+
+      <h4>Question 11</h4>
+      &nbsp;&middot;
+      Complete the function <i>IsoSurfacer::ComputeSimpleIntersection()</i>.
+      Given a tetrahedron given as argument, this function computes the polygon
+      which intersects the tetrahedron along the level set and add it to the
+      output isosurface.<br><br>
+      In particular, this function should loop over all the edges of the
+      tetrahedron. If the current edge is intersected by the level set
+      (<i>IsCellOnLevelSet()</i>), its intersection point with the level set
+      should be computed (<i>ComputeEdgeIntersection()</i>).<br><br>
+      Once an intersection point is computed, to create the corresponding 
+      vertex in the output isosurface, use the following call (see the 
+      <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+      target="new">VTK documentation</a> for further details):
+      <i>Output->GetPoints()->InsertNextPoint()</i>.<br>
+      This function will return the vertex Id of the newly created vertex.
+      Finally, to create the intersection polygon, use the following code:
+      <i>Output->InsertNextCell(VTK_POLYGON, pointIds)</i> where
+      <i>pointIds</i> is a <i>vtkIdList</i> that you'll have to create to store
+      the vertex Ids of the new vertices you will have created.
+      <br><br>
+
+      As a reminder, the possible intersections of a tetrahedron by a level set
+      are summarized in the following figure:
+
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces5.png" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces5.png"></a>
+      <br><br>
+
+
+      <h4>Question 12</h4>
+      &nbsp;&middot;
+      Complete the function <i>IsoSurfacer::SimpleExtraction()</i>,
+      which loops over the set of tetrahedra of the input mesh. If a tetrahedron
+      is intersected by the level set (<i>IsCellOnLevelSet()</i>), then the
+      actual intersection polygon should be computed
+      (<i>ComputeSimpleIntersection()</i>).
+
+      <h4>Question 13</h4>
+      &nbsp;&middot;
+      If you got the answers right up to this point, 
+      here's what you should be visualizing if you
+      extract an isosurface with your own implementation:
+
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces6.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces6.jpg"></a>
+      <br><br>
+      This doesn't look great, right?<br>
+      What do you think went wrong?
+
+      <h4>Question 14</h4>
+      &nbsp;&middot;
+      To answer and correct the above question, complete the function 
+      <i>IsoSurfacer::ReOrderTetEdges()</i>, which given the list of the edges
+      of a tetrahedron which are crossed by the level set, re-order this list
+      such that the list describes a consistent winding around the
+      tetrahedron.<br>
+      Next, use this function appropriately from within the function 
+      <i>IsoSurfacer::ComputeSimpleIntersection()</i>.<br><br>
+      If you got the answer right to this question, your isosurface should no
+      longer exhibit the cracks shown in the previous illustration.
+
+      <h4>Question 15</h4>
+      &nbsp;&middot;
+      For this question, make sure you're compiling your code in <i>Release</i>
+      mode instead of <i>Debug</i> (in <i>CMakeLists.txt</i>).<br>
+      Now compare the timings, for a unique isovalue,  between your custom 
+      implementation and the VTK implementation (by hitting <i>v</i> to switch
+      between the two).<br>
+      Why is your code so slow?!!
+      
+      <br><br><br>
+      <h4 class="title">The appropriate way</h4>
+
+      A drawback of the naive approach you've just implemented is that the
+      isosurface is computed as a collection as individual polygons, which are
+      not connected to each other. Hence, the isosurfaces you computed were not
+      <i>manifold</i> surfaces.<br><br>
+
+      A simple fix to the previous algorithm would consist in visiting each
+      vertex you created in the isosurface and merge it with any other vertex
+      which is sufficiently close. <br>
+      This is a terrible fix, with a quadratic runtime complexity if no spatial
+      indexing structure is used.<br>
+
+      The appropriate fix would be to store the vertex Id of each created vertex
+      on the edge of the input tet-mesh where it has been created. 
+      <br>
+      In that way,
+      when computing the intersection polygon of a tetrahedron with the level
+      set, instead of re-computing all the intersection points (and vertices),
+      those already created by already visited neighbor tetrahedra could be
+      re-used directly. 
+      <br>
+      <br>
+      In the following example, the intersection of the first
+      tetrahedron by the level set will yield the creation of the vertices 
+      <i>v1</i>, <i>v2</i> and <i>v3</i> (and of the polygon <i>v1-v2-v3</i>),
+      while the intersection of the second, neighbor, tetrahedron, will only
+      yield the creation of the vertex <i>v4</i> and the vertices <i>v2</i> and
+      <i>v3</i> will be re-used to create the corresponding intersection polygon
+      (<i>v3-v2-v4</i>).
+
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces7.png" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces7.png"></a>
+      <br><br>
+
+      Unfortunately, the VTK data-structure <i>vtkUnstructuredGrid</i> does not
+      explicitly encode the edges with Ids, like it is done for vertices. A
+      slightly more memory-expensive workaround consists in storing the Ids of
+      the created vertices within each tetrahedron (in the above example, 
+      we will store for the first tetrahedron the vertices <i>v1</i>, 
+      <i>v2</i> and <i>v3</i>).
+
+      <h4>Question 16</h4>
+      &nbsp;&middot;
+      In <i>Editor::extractIsoSurface()</i>, call the following function
+      <i>IsoSurfacer::SetType()</i> with the variable <i>Editor::type_</i> as
+      argument, before the execution of the filter.<br>
+      This will enable you to switch between your naive isosurfacer
+      implementation and your new one at run time. Once the program is running,
+      hit
+      <i>s</i> to select the (simple) naive implementation, <i>Shift+s</i> to 
+      select
+      the (standard) appropriate implementation, and <i>x</i> to select the fast
+      implementation (todo).
+
+      
+      <h4>Question 17</h4>
+      &nbsp;&middot;
+      Given a tetrahedron, the query of its neighbor tetrahedra is quite
+      inefficient with VTK. Therefore, we will pre-compute these queries for
+      each tetrahedron once for all, as a pre-processing stage, during the 
+      loading of the input tet-mesh.<br>
+      At the end of the function <i>Editor::loadInputMesh()</i>, add the
+      necessary code to fill the vector <i>tetNeighbors_</i> 
+      (see <i>Editor.h</i>). This vector should have as many entries as the
+      number of tetrahedra in the input tet-mesh. The i-th entry of this vector,
+      corresponding to the tetrahedron with Id i, will be a vector composed of
+      the Ids of its neighbor tetrahedra.<br>
+      To retrieve the list of neighbor cells of a given cell, use the function
+      <i>vtkUnstructuredGrid::GetCellNeighbors()</i> (see
+      <a href="http://www.vtk.org/doc/nightly/html/annotated.html" 
+      target="new">the VTK documentation</a> for further details).<br>
+
+
+      <h4>Question 18</h4>
+      &nbsp;&middot;
+      Modify <i>IsoSurfacer.h</i> such that a pointer to
+      <i>Editor::tetNeighbors_</i> can be passed to the <i>IsoSurfacer</i> 
+      filter in the same manner the queried isovalue was passed to the filter.
+
+      <h4>Question 19</h4>
+      &nbsp;&middot;
+      Modify the function <i>Editor::extractIsoSurface()</i> to pass the
+      vector of tethedra neighborhoods to the <i>IsoSurfacer</i> filter, prior
+      to its execution.
+
+      <h4>Question 20</h4>
+      &nbsp;&middot;
+      In <i>IsoSurfacer.h</i>, complete the <i>EdgeIntersection</i> class, which
+      models the intersection of an edge of the input tet-mesh by the level set.
+      This class should contain the Ids of the vertices of the corresponding
+      edge, as well as the Id of the created vertex in the output isosurface.
+
+      <h4>Question 21</h4>
+      &nbsp;&middot;
+      Borrow inspiration from the function
+      <i>IsoSurfacer::ComputeSimpleIntersection()</i> to complete the function 
+      <i>IsoSurfacer::ComputePartialIntersection()</i>. 
+      Similarly to our previous implementation, this new function computes the
+      intersection polygon of a tetrahedron with a level-set. <br>
+      However, this new
+      implementation should store within the current tetrahedron the vertex Id 
+      of every vertex of the intersection polygon
+      and further re-use
+      this information when visiting neighbor tetrahedron.<br><br>
+      Once the program is running, to select this new implementation instead of
+      the naive one, hit <i>Shift+s</i>.
+
+      <h4>Question 22</h4>
+      &nbsp;&middot;
+      Borrow inspiration from the function 
+      <i>IsoSurfacer::SimpleExtraction()</i> to complete the function
+      <i>IsoSurfacer::StandardExtraction()</i>. This function should use your
+      new implementation (<i>IsoSurfacer::ComputePartialIntersection()</i>) 
+      instead of the naive one.<br>
+      If you got the answers right up to this point, you should have the
+      following vertex count for the isosurface at isovalue 50 (it should be
+      much smaller in comparison to the naive implementation): 
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces8.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces8.jpg"></a>
+      <br><br>
+
+      <h4>Question 23</h4>
+      &nbsp;&middot; 
+      As shown in the above screen-shot, the new implementation might be a
+      little faster than the naive one. Why is that so?
+
+
+      <h4 class="title">The fast way</h4>
+      We will now finally move on to a fast implementation of isosurface
+      extraction. In particular, in this implementation, we would like to avoid
+      looping over the entire set of tetrahedra of the input tet-mesh to compute
+      the isosurface, but only those that are good candidates for an
+      intersection with the level set.<br>
+
+      The nice way to do it would be to implement a self-balanced 
+      <a href="http://en.wikipedia.org/wiki/Interval_tree" target="new">
+      interval tree</a> and to store in this tree, in a pre-processing stage,
+      each tetrahedron according to its function span (to its function 
+      interval).<br><br>
+
+      A simpler implementation with comparable running times can be obtained
+      with an interval table. The construction of this data-structure needs to
+      happen in a pre-processing stage, at the end of 
+      <i>Editor::loadInputMesh()</i>. The construction process is summarized
+      with the following figure:<br>
+
+
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces9.png" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces9.png"></a>
+      <br><br>
+
+      The interval table is a vector of vectors of tetrahedron Ids. The size of
+      the table (represented by the width of the green array) is a parameter of
+      the table, that needs to be set in the construction of the table.<br>
+      To fill the table, all the tetrahedra of the input tet-mesh need to be
+      visited. For each tetrahedron, its function range should be identified
+      (tmin and tmax in the illustration). According to this function span, the
+      Id of the tetrahedron should be pushed in all the intervals in the
+      tetrahedra's function span.<br><br>
+
+      In the above example, the interval table has a size of 6, which means that
+      the entire function range (from Fmin to Fmax) is split in 6 intervals. If
+      the global minimum and the global maximum of the scalar field have value 0
+      and 60 respectively, these intervals, from left to right, will correspond
+      to the function spans [0, 10[, [10, 20[, [20, 30[, [30, 40[, [40, 50[,
+      [50, 60].<br>
+
+      Then, when adding a new tetrahedron (here with Id 18), according to its
+      minimum and maximum values, its Id will pushed in the appropriate vectors
+      (3 in the middle in this example).<br><br>
+
+      At run time, when computing an isosurface, given the isovalue, the
+      interval table will identify which interval should be considered, and
+      only the tetrahedron in this interval should be visited for isosurface
+      extraction. This will drastically reduce the number of visited tetrahedra
+      per isosurface extraction, hence yield a faster extraction.
+
+      <h4>Question 24</h4>
+      &nbsp;&middot; 
+      A placer holder for your interval table is located in
+      <i>IsoSurfacer.h</i> (the class <i>TetIndex</i>). Declare the appropriate
+      variables as protected member.
+
+      <h4>Question 25</h4>
+      &nbsp;&middot;
+      Implement the function <i>TetIndex::setBounds()</i>, which will be called
+      in a pre-processing stage and which will store the global function range
+      (global and minimum and maximum) passed as argument.
+
+      <h4>Question 26</h4>
+      &nbsp;&middot;
+      Implement the function <i>TetIndex::setResolution()</i>, which will be
+      called in a pre-processing stage and which sets the size of the table
+      (passed as argument).
+
+      <h4>Question 27</h4>
+      &nbsp;&middot; 
+      Implement the following function <i>TetIndex::addTet()</i> which will be
+      called in a pre-processing stage and which, given
+      the function span and the Id of a tetrahedron (passed as arguments), 
+      stores the tet Id in the table.
+
+      <h4>Question 28</h4>
+      &nbsp;&middot; 
+      Implement the following function <i>TetIndex::getCandidates()</i> which
+      given an isovalue, returns a pointer to the corresponding interval 
+      (returns a pointer of a vector of tetrahedron Ids).
+
+      <h4>Question 29</h4>
+      &nbsp;&middot;
+      At the end of <i>Editor::loadInputMesh()</i>, add the necessary code to
+      use the functions you implemented in the previous questions, in order to
+      fill the interval table (using the variable <i>Editor::tetIndex_</i>).
+      <br>
+      A reasonable value for the resolution of the interval table is 500.
+
+
+      <h4>Question 30</h4>
+      &nbsp;&middot;
+      Modify <i>IsoSurfacer.h</i> such that a pointer to
+      <i>Editor::tetIndex_</i> can be passed to the <i>IsoSurfacer</i> filter in
+      the same manner the queried isovalue was passed to the filter.
+
+      <h4>Question 31</h4>
+      &nbsp;&middot; 
+      Borrow inspiration from the function 
+      <i>IsoSurfacer::StandardExtraction()</i> to complete the function 
+      <i>IsoSurfacer::FastExtraction()</i>. This function should make use of the
+      interval table to only traverse a limited number of tetrahedra.
+      Complete the function <i>IsoSurfacer::FastExtraction()</i>.<br><br>
+      If you got the answers right up to this point, you should observe a
+      reduction in running time, in comparison to the VTK implementation, 
+      similar to the one shown in the following figure:
+
+      <br><br>
+      <a href="img/visualizationExercise_IsoSurfaces10.jpg" target="new">
+      <img align="center" width="100%" 
+        src="img/visualizationExercise_IsoSurfaces10.jpg"></a>
+      <br><br>
+
+      If this is the case, congratulations! You've just beaten VTK!
+
+    <h3 class="title">Extra questions</h3>
+    For those who found this exercise a little boring, here's a few more bonus
+    questions that will help you implement the fastest algorithm for isosurface
+    extraction.
+
+    <h4 class="title">Yes we can!</h4>
+    We can go even faster, in particular by making the extraction algorithm only
+    visit the exact set of tetrahedra which are crossed by the level set.
+
+    <h4>Extra question 1</h4>
+    &nbsp;&middot;
+    Implement a function <i>IsoSurfacer::ExtractContour()</i>.
+    This function takes as argument the Id of a tetrahedron that is known to be
+    crossed by the queried isovalue (<i>IsoSurfacer::Value</i>). The function
+    then extracts
+    the connected component of level-set (called <i>contour</i>) which passes 
+    through this tetrahedron.<br>
+    In particular, this function should handle a queue (<i>std::queue</i>) of 
+    tetrahedron Ids
+    (containing initially only the input tetrahedron). Each time the
+    intersection of a tetrahedron by the level set is computed (with 
+    <i>ComputePartialIntersection()</i>), the current tetrahedron should be
+    popped out of the queue and its neighbors whose function span is intersected
+    by the isovalue (and which haven't been visited before) should be added to 
+    the queue. This process should be iterated until the queue is empty.
+
+    <h4>Extra question 2</h4>
+    &nbsp;&middot;
+    We recall that in a PL scalar field, a minimum (respectively a maximum) is a
+    vertex such that all its neighbors have a higher (respectively lower) 
+    function value. A regular vertex is a vertex such that 
+    the group of its
+    direct neighbors with lower function value forms a single connected
+    component
+    AND that 
+    the group of its
+    direct neighbors with higher function value forms a single connected
+    component too. Any other configuration is called a <i>saddle</i>.<br>
+    Implement a function in the <i>Editor</i> class that identifies all the
+    saddles of the field.
+
+    <h4>Extra question 3</h4>
+    &nbsp;&middot;
+    Implement a function <i>Editor::partitionMesh()</i>
+    which segments the mesh along EACH contour of EACH saddle. Each resulting 
+    partition should be stored as a <i>std::set</i> of pairs (vertex Ids -
+    vertex function value). An
+    <i>std::set</i>  is a readily available implementation of self-balanced
+    binary search trees. Make sure to configure this class properly, such that
+    the vertices get ordered by function value.
+    <br>
+    To create a partition,
+    grow a region starting from a regular vertex and add each of its neighbors 
+    to the
+    partition if the
+    corresponding edge crosses no saddle contour. Re-iterate the process until
+    the current region cannot be grown anymore. 
+    Re-iterate the entire process until all
+    the regular vertices of the mesh are associated with a partition.
+
+    <h4>Extra question 4</h4>
+    &nbsp;&middot;
+    Borrow inspiration from the <i>TetIndex</i> class to create a
+    <i>PartitionIndex</i> class. Similarly, this class should implement an 
+    interval table, but for partitions (not tetrahedra).
+
+    <h4>Extra question 5</h4>
+    &nbsp;&middot;
+    Modify the <i>Editor</i> class to build your partitions and your partition
+    index at the end of <i>Editor::loadInputMesh()</i>. The pre-processing we
+    implemented so far in these extra questions is not the best algorithm out
+    there, but it's by far the simplest to implement.<br>
+    Modify also the <i>IsoSurfacer</i> class to be able to pass it a reference
+    to the partition index prior to the isosurface extraction.
+
+    <h4>Extra question 6</h4>
+    &nbsp;&middot;
+    Implement a function <i>IsoSurfacer::OptimalExtraction()</i> to extract a
+    level set. This function should query the partition index to retrieve all
+    the partitions that are intersected by the level set.<br>
+    By construction, the restriction of the level set to each intersected
+    partition should be a single connected component.<br>
+    Thus, once valid partition(s) have been found, for each partition, 
+    the vertex which has the 
+    closest function value with the queried isovalue should be identified in the
+    partition (use the function <i>std::set::lower_bound()</i>). 
+    We will call this vertex a <i>seed vertex</i>.<br>
+    <br>
+    Given a <i>seed vertex</i>, among the tetrahedra which contains this
+    vertex, there has to be at least one tetrahedron which is intersected by the
+    level set (<i>IsoSurfacer::IsCellOnLevelSet()</i>). 
+    Let's pick arbitrarily one of these
+    and call it a <i>seed tetrahedron</i>.<br>
+    Last, for all the <i>seed tetrahedra</i> that have been identified up to
+    this point, run the function <i>IsoSurfacer::ExtractContour()</i>.<br><br>
+
+    As a result, this algorithm will ONLY visit the tetrahedra which are indeed
+    intersected by the level set, hence yielding an optimal run-time
+    complexity for isosurface extraction.<br>
+
+
+    <br>
+    <br>
+    <div align="center">
+      Updated on December 13th, 2017.
+    </div>
+

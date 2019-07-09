@@ -1,0 +1,2803 @@
+<html>
+  <head>
+    <title> Julien Tierny - Home Page </title>
+    <link rel='stylesheet' href='style.css' type='text/css' />
+  <meta name="keywords" content="Visualization, Paris, France,
+  Scientific Visualization, Sorbonne Universites, UPMC, LIP6, 
+  Computational Topology, Topological Data Analysis, Morse Theory,
+  Scalar Field Topology, Reeb graph, Contour Tree, Scientific Computing, 
+  Uncertainty Visualization, Isosurface, Panorama, Parameterization,
+  Online classes, Online exercises" />
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-3022193-1', 'auto');
+ga('require', 'linkid', 'linkid.js');
+ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  var pluginUrl =
+  '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-3022193-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type =
+      'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+      : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics -->
+
+  </head>
+
+  <body>
+    <table width="800px" align='center'>
+    <tr>
+    <td>
+    <script type='text/javascript'>
+      var randomNumber = Math.floor(Math.random()*23);
+    </script>
+    <div id='teaser'>
+    <script type='text/javascript'>
+      var fileName = "dynamic/teaserImage";
+      fileName = fileName + randomNumber + ".png";
+      document.write("<table width='100%' background=");
+      document.write(fileName);
+      document.write(">");
+    </script>
+    <noscript>
+      <table width='100%'>
+    </noscript>
+        <tr>
+          <td align='left' width="200px">
+            <img src='img/me2018.jpg' alt='Photo'/>
+          </td>
+          <td width='9px'/>
+          <td >
+            <h1 class="teaser">Julien Tierny</h1><br>
+            <h2 class="teaser">
+              <a class="teaser" 
+                href="http://www.cnrs.fr/index.php" target='new'>
+                CNRS</a> -
+              <a class="teaser"
+                href="https://www.sorbonne-universite.fr/en" target="new">
+              Sorbonne Université
+              </a> <br>
+               <a class="teaser" 
+                href="http://www.lip6.fr/?LANG=en" 
+                target='new'>
+                Computer Science Department (LIP6)</a>
+                <br><br>
+              <a class="teaser" 
+              href="mailto:julien_dot_tierny_@_sorbonne-universite_dot_fr">
+              julien dot  tierny at sorbonne-universite dot fr</a><br><br>
+              4, Place Jussieu, 75005 Paris, France.<br>
+              Office: 314, Hall 25-26<br>
+              Phone: (+33) 1 44 27 88 25
+            </h2>
+          </td>
+          <script type='text/javascript'>
+            var link = "dynamic/teaserLink";
+            link = link + randomNumber + ".pdf";
+            document.write("<td width='35%'>");
+            document.write("<a target='new' ");
+            document.write(" href='");
+            if(randomNumber != 2)
+              document.write(link);
+            else
+            document.write("http://www.springerlink.com/content/978-3-642-15013-5#section=818510&page=1");
+            document.write("'> ");
+            document.write("<img src='img/alpha.png'");
+            document.write(" width='100%'/></a>");
+            document.write("</td>");
+          </script>
+        </tr>
+      </table>
+    </div>
+
+<br>   
+
+    <div>
+    I joined the <a href="http://www.cnrs.fr/index.php" target='new'>CNRS</a> 
+    as a 
+    permanent researcher in October 2010. 
+    Since September 2014, I am a faculty member of the
+              <a  
+                href="http://www.lip6.fr/?LANG=en" 
+                target='new'>Computer Science Department (LIP6</a>, 
+                <a target="new"
+                href="http://www.lip6.fr/recherche/team.php?id=750">
+                APR team</a>) of
+              <a 
+                href="https://www.sorbonne-universite.fr/en" target="new">
+              Sorbonne Université</a>.
+    From 2010 to 2014, I was a faculty
+    member of the 
+    <a href="http://perso.telecom-paristech.fr/~bloch/tii/staff.html" 
+    target="new">
+    TII Team</a>
+    of the 
+    <a href="http://www.ltci.telecom-paristech.fr/" target="new">LTCI
+    </a>&nbsp;lab
+    at <a target="new"
+    href="http://www.telecom-paristech.fr/eng/home.html">Telecom ParisTech</a>.
+    Prior to my CNRS tenure, I held a postdoctoral research associate position 
+    at the
+    <a target="new" href="http://www.sci.utah.edu/">Scientific Computing and
+    Imaging Institute</a> at the <a
+    href="http://www.utah.edu/portal/site/uuhome/" target="new">University of
+    Utah</a>. I
+    defended my Ph.D. thesis in October 2008 at the 
+    <a target="new" href="http://ci.univ-lille1.fr/english_version/index.htm">
+    University of Lille</a>.<br>
+    My research interests include Topological Data Analysis and its 
+applications in scientific data analysis and visualization.<br>
+<!--     Topological Data Analysis, -->
+<!--     Computational Topology, -->
+<!--     Morse Theory,  -->
+<!--     Uncertainty, -->
+<!--     etc.<br> -->
+    I'm always looking for talented and motivated students to work with. Feel
+    free to send me internship applications.<br>
+    <div align="right">
+      <nobr><a href="stuff/tierny_curriculum_vitae.pdf" target='new'
+      onClick="javascript:_gaq.push(['_trackPageview',
+      'stuff/tierny_curriculum_vitae.pdf']);"
+      >
+                   >>> Full curriculum</a></nobr></div>
+
+
+<br>
+
+
+
+    <div class="news">
+      <h2><span >&nbsp;&nbsp;&nbsp;News</span></h2>
+
+      <table width="99.5%">
+      <tr>
+          <td align="left">
+            &nbsp;&middot;
+            Check out our early results on 
+            <a href="stuff/papers/gueunet_egpgv19.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_egpgv19.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_egpgv19.pdf_news']);"
+        >
+            parallel Reeb graph computation</a>. Accepted to 
+            EGPGV 2019.
+          </td>
+          <td align="right">
+            [May 3, 2019]
+          </td>
+        </tr>
+      <tr>
+          <td align="left">
+            &nbsp;&middot;
+            Our paper on 
+            <a href="stuff/papers/gueunet_tpds19.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_tpds19.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_tpds19.pdf_news']);"
+        >
+            task-based contour tree computation</a> 
+            has been accepted to IEEE TPDS!
+          </td>
+          <td align="right">
+            [Jan 24, 2019]
+          </td>
+        </tr>
+              <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on
+            <a href="https://topology-tool-kit.github.io/ieeeVisTutorial.html" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web']);_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web_news']);"
+        >critical point variability in ensembles</a>
+        has been certified 
+        <a href="http://www.replicabilitystamp.org/" target="new">
+        replicable</a>!
+          </td>
+          <td align="right">
+            [Nov 30, 2018]
+          </td>
+        </tr>
+      <tr>
+          <td align="left">
+            &nbsp;&middot;
+            We are recruiting a 
+            <a href="stuff/openPositions/engineer2019.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/engineer019.pdf']);"
+            >research engineer</a> to work on Topological Data Analysis in 
+TTK! 
+          </td>
+          <td align="right">
+            [Nov 21, 2018]
+          </td>
+        </tr>
+            <tr>
+          <td align="left">
+            &nbsp;&middot;
+            We have several open internship positions (<b>master2</b> level, with 
+            possible <b>Ph.D.</b> follow-up):
+            <a href="stuff/openPositions/internship2019a.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2019a.pdf']);"
+            >1</a>, 
+            <a href="stuff/openPositions/internship2019b.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2019b.pdf']);"
+            >2</a>, 
+            <a href="stuff/openPositions/internship2019c.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2019c.pdf']);"
+            >3</a>, 
+            <a href="stuff/openPositions/internship2019d.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2019d.pdf']);"
+            >4</a> 
+          </td>
+          <td align="right">
+            [Nov 14, 2018]
+          </td>
+        </tr>
+      <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Join us on Sunday afternoon at IEEE VIS for our 
+            <a href="https://topology-tool-kit.github.io/ieeeVisTutorial.html" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web']);_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web_news']);"
+        >TTK tutorial</a>. Bring your laptop!
+          </td>
+          <td align="right">
+            [October 19, 2018]
+          </td>
+        </tr>
+       <tr>
+          <td align="left">
+            &nbsp;&middot;
+            Our 
+            <a href="https://arxiv.org/pdf/1808.05870" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/soler_ldav18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/soler_ldav18.pdf_news']);"
+        >IEEE LDAV 2018 paper</a>
+            has been awarded the
+            <a target="new"
+        href="img/honorableMention_ldav18.png"
+        >
+            Best Paper Honorable Mention Award!</a>
+          </td>
+          <td align="right">
+            [Oct 11, 2018]
+          </td>
+        </tr>
+              <tr>
+          <td align="left">
+            &nbsp;&middot;
+            Check out the 
+            <a target="new"
+        onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/soler_ldav18_demo']);_gaq.push(['_trackPageview',
+              'stuff/soler_ldav18_demo']);"
+        href="https://madblade.github.io/assignment-examples/">
+            online demo
+            </a> of our 
+            <a href="https://arxiv.org/pdf/1808.05870" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/soler_ldav18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/soler_ldav18.pdf_news']);"
+        >algorithm
+            for optimal transport between persistence 
+diagrams! </a>
+          </td>
+          <td align="right">
+            [Sep 7, 2018]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot;
+            Our paper on 
+            <a href="https://arxiv.org/pdf/1808.05870" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/soler_ldav18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/soler_ldav18.pdf_news']);"
+        >
+            optimal transport based singularity tracking</a> 
+            has been accepted to IEEE LDAV 2018
+          </td>
+          <td align="right">
+            [Aug 27, 2018]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            I'll give an 
+            invited talk
+            at <a href="https://s2018.siggraph.org/session/?sess=sess311" 
+target="new">ACM SIGGRAPH 2018</a> on 
+            <a href="https://topology-tool-kit.github.io/" target="new">TTK</a>
+          </td>
+          <td align="right">
+            [Jul 30, 2018]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on
+            <a href="https://topology-tool-kit.github.io/ieeeVisTutorial.html" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web']);_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web_news']);"
+        >critical point variability in ensembles</a>
+        has been accepted to IEEE VIS 2018!
+          </td>
+          <td align="right">
+            [Jul 13, 2018]
+          </td>
+        </tr>
+<!--        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our
+            <a href="https://topology-tool-kit.github.io/ieeeVisTutorial.html" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web']);_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18_web_news']);"
+        >TTK tutorial</a> 
+        has been accepted to IEEE VIS 2018!
+          </td>
+          <td align="right">
+            [May 30, 2018]
+          </td>
+        </tr>-->
+<!--          <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/soler_pv18.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/soler_pv18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/soler_pv18.pdf_news']);"
+        >
+            topology aware lossy compression</a> 
+            has been accepted to IEEE PacificVis 2018
+          </td>
+          <td align="right">
+            [Jan 26, 2018]
+          </td>
+        </tr>
+<tr>
+          <td align="left">
+            &nbsp;&middot; 
+            My 
+            <a target='new'
+        
+href="http://www.springer.com/us/book/9783319715063"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_book18.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_book18.pdf_news']);"
+            >
+            new book on Topological Data Analysis 
+            </a>
+            is now available!
+          </td>
+          <td align="right">
+            [Jan 21, 2018]
+          </td>
+        </tr>-->
+<!--      <tr>
+          <td align="left">
+            &nbsp;&middot;
+            We have several open internship positions (master2 level):
+            <a href="stuff/openPositions/internship2018a.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2018a.pdf']);"
+            >1</a>, 
+            <a href="stuff/openPositions/internship2018b.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2018b.pdf']);"
+            >2</a>, 
+            <a href="stuff/openPositions/internship2018c.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2018c.pdf']);"
+            >3</a>, 
+            <a href="stuff/openPositions/internship2018d.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2018d.pdf']);"
+            >4</a>, 
+            <a href="stuff/openPositions/internship2018e.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2018e.pdf']);"
+            >5</a>, 
+            <a href="stuff/openPositions/internship2018f.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/openPositions/internship2018f.pdf']);"
+            >6</a>
+          </td>
+          <td align="right">
+            [Nov 13, 2017]
+          </td>
+        </tr>-->
+<!--          <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/gueunet_ldav17.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav17.pdf_news']);"
+        >
+            task-based merge tree computation</a> 
+            has been accepted to IEEE LDAV 2017
+          </td>
+          <td align="right">
+            [Aug 7, 2017]
+          </td>
+        </tr>-->
+<!--        <tr>
+           <td align="left">
+            &nbsp;&middot;
+            <a href="https://topology-tool-kit.github.io/" target="new">
+            TTK</a> was awarded the 
+            <a target="new"
+ href="img/honorableMention_vis2017.jpg">
+            Best Paper Honorable Mention Award at IEEE VIS 2017</a>!
+          </td>
+          <td align="right">
+            [Jul 14, 2017]
+          </td>
+        </tr>-->
+        <!--<tr>
+           <td align="left">
+            &nbsp;&middot; 
+            ACM Computing Reviews selected my paper on 
+<a href="stuff/papers/tierny_vis16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf_news']);"
+        >
+            bivariate Reeb spaces </a>
+            among its yearly 
+            <a target="new"
+href="http://www.computingreviews.com/recommend/bestof/notableitems.cfm?bestYear
+=2016">
+            notable articles</a>!
+          </td>
+          <td align="right">
+            [Jul 5, 2017]
+          </td>
+        </tr>-->
+<!--<tr>
+           <td align="left">
+            &nbsp;&middot; 
+            O'Reilly selected 
+            <a href="https://topology-tool-kit.github.io/" target="new">TTK</a>
+            among its daily <a 
+href=https://www.oreilly.com/ideas/four-short-links-3-april-2017 
+target="new">Four short links!</a>
+          </td>
+          <td align="right">
+            [Apr 3, 2017]
+          </td>
+        </tr>
+<tr>
+          <td align="left">
+            &nbsp;&middot; 
+            We are excited to announce the open-source release of the 
+            <a href="https://topology-tool-kit.github.io/" target="new">Topology
+            ToolKit</a>!
+          </td>
+          <td align="right">
+            [Apr 1, 2017]
+          </td>
+        </tr>
+<tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/summa_eurovis17.pdf" target="new">
+            graph cuts uncertainty</a> has been accepted to 
+EuroVis</a>
+          </td>
+          <td align="right">
+            [Mar 19, 2017]
+          </td>
+        </tr>
+<tr>
+          <td align="left">
+            &nbsp;&middot; 
+            The February issue of the
+            <a 
+href="https://www.computer.org/web/computingnow/archive/snapshot-visualization-
+trends-february-2017-introduction" target="new">
+            IEEE Computing Now</a> magazine discusses
+            my work on 
+            <a href="stuff/papers/tierny_vis16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf_news']);"
+        >bivariate Reeb spaces!</a>
+          </td>
+          <td align="right">
+            [Feb 3, 2017]
+          </td>
+        </tr>-->
+<!--        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            I received the
+<a 
+onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/award_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/award_vis16.pdf_news']);"
+href="img/bestPaper_vis2016.jpg" 
+target="new">
+            Best Paper Award at IEEE VIS 2016
+            </a> for my work on 
+            <a href="stuff/papers/tierny_vis16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf_news']);"
+        >bivariate Reeb spaces!</a>
+          </td>
+          <td align="right">
+            [September 1st, 2016]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our 
+            <a href="stuff/papers/favelier_scivizContest16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          
+'stuff/papers/favelier_scivizContest16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/favelier_scivizContest16.pdf_news']);"
+        > IEEE SciViz contest entry</a> was awarded 
+        <a href="img/honorableMention_visContest16.jpg" target="new">
+        an honorable mention!</a>
+          </td>
+          <td align="right">
+            [September 1st, 2016]
+          </td>
+        </tr>-->
+<!--        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/gueunet_ldav16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav16.pdf_news']);"
+        >
+            multi-threaded contour tree computation</a> 
+            has been accepted to IEEE LDAV 2016
+          </td>
+          <td align="right">
+            [August 19th, 2016]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/tierny_vis16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf_news']);"
+        >
+            bivariate Reeb spaces</a> 
+            has been accepted to IEEE VIS 2016
+          </td>
+          <td align="right">
+            [June 6th, 2016]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/klacansky_tvcg16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/klacansky_tvcg16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/klacansky_tvcg16.pdf_news']);"
+        >
+            fast and exact fiber surfaces</a> 
+            has been selected for presentation at IEEE VIS 2016
+          </td>
+          <td align="right">
+            [May 16th, 2016]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; 
+            Our paper on 
+            <a href="stuff/papers/klacansky_tvcg16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/klacansky_tvcg16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/klacansky_tvcg16.pdf_news']);"
+        >
+            fast and exact fiber surfaces</a> has been accepted to IEEE
+            Trans. on Viz. and Comp. Graph.
+          </td>
+          <td align="right">
+            [May 13th, 2016]
+          </td>
+        </tr>-->
+        <!--<tr>
+          <td align="left">
+            &nbsp;&middot; We have one master2-level 
+            <a href="stuff/openPositions/internship2017.html" target="new">
+            open internship position</a>.
+          </td>
+          <td align="right">
+            [May 13th, 2016]
+          </td>
+        </tr>-->
+<!--        <tr>
+          <td align="left">
+            &nbsp;&middot; I successfully defended my 
+            habilitation 
+            thesis! Here is the 
+            <a href="stuff/papers/tierny_habilitation_thesis.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+ 'stuff/papers/tierny_habilitation_thesis.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_habilitation_thesis.pdf_news']);">
+          manuscript</a>.
+          </td>
+          <td align="right">
+            [May 3rd, 2016]
+          </td>
+        </tr>-->
+<!--        <tr>
+          <td align="left">
+            &nbsp;&middot; We are hiring a 
+<a href='stuff/openPositions/postDocPosition2015.html' target='new'>
+post-doctoral researcher</a> in scientific visualization!
+          </td>
+          <td align="right">
+            [October 9th, 2015]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; We have 3 master2-level internship positions:
+            <a href="stuff/openPositions/internship2016a.html" target="new">
+            Open Internship 1</a>,
+            <a href="stuff/openPositions/internship2016b.html" target="new">
+            Open Internship 2</a>,
+            <a href="stuff/openPositions/internship2016c.html" target="new">
+            Open Internship 3</a>.
+          </td>
+          <td align="right">
+            [October 13th, 2015]
+          </td>
+        </tr>-->
+
+<!--
+        <tr>
+          <td align="left">
+            &nbsp;&middot; We have 3 master2-level internship positions: 
+            <a href="stuff/openPositions/internship2014_b.html" target="new">
+            Open Internship 1</a>,
+            <a href="stuff/openPositions/internship2015.html" target="new">
+            Open Internship 2</a>,
+            <a href="stuff/openPositions/internshipEDF_2014.pdf" target="new">
+            Open Internship 3</a>.
+          </td>
+          <td align="right">
+            [November 7th, 2014]
+          </td>
+        </tr>
+-->       
+<!--
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/philip_egpgv13.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/philip_egpgv13.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/philip_egpgv13.pdf_news']);"
+            >"Scalable Seams (...)"</a> 
+            got the Best Paper Award at EGPGV 2013
+          </td>
+          <td align="right">
+            [May 5th, 2013]
+          </td>
+        </tr>
+
+
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/tierny_vis12.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/tierny_vis12.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/tierny_vis12.pdf_news']);"
+            >"Generalized Topological Simplification (...)"</a> 
+            has been accepted to
+            IEEE VIS
+          </td>
+          <td align="right">
+            [July 15th, 2012]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/thiery_cgf12.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/thiery_cgf12.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/thiery_cgf12.pdf_news']);"
+            >"CageR: Cage-based Reverse Engineering (...)"</a> 
+            has been accepted to
+            Computer Graphics Forum
+          </td>
+          <td align="right">
+            [June 14th, 2012]
+          </td>
+        </tr>
+
+
+        <tr>
+          <td align="left">
+            &nbsp;&middot; The <a target='new'
+            href="http://visu2012.imag.fr"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/visu2012.html']);"
+            >Visu 2012 website</a> is up!
+          </td>
+          <td align="right">
+            [June 1st, 2012]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/summa_siggraph12.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/summa_siggraph12.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/summa_siggraph12.pdf_news']);"
+            >"Panorama Weaving (...)"</a> 
+            has been accepted to
+            ACM SIGGRAPH 
+          </td>
+          <td align="right">
+            [May 9th, 2012]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/tierny_tvcg11.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/tierny_tvcg11.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/tierny_tvcg11.pdf_news']);"
+            >"Interactive quadrangulation with Reeb Atlases (...)"</a> 
+            has been accepted to
+            IEEE TVCG           
+          </td>
+          <td align="right">
+            [October 15th, 2011]
+          </td>
+        </tr>
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/tierny_spm11.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/tierny_spm11.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/tierny_spm11.pdf_news']);"
+            >"Inspired quadrangulation"</a> has been accepted to
+            ACM SPM           
+          </td>
+          <td align="right">
+            [July 22nd, 2011]
+          </td>
+        </tr>
+
+        <tr>
+          <td align="left">
+            &nbsp;&middot; The <a target='new'
+            href="http://visu2011.imag.fr"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/visu2011.html']);"
+            >Visu 2011 website</a> is up!
+          </td>
+          <td align="right">
+            [July 6th, 2011]
+          </td>
+        </tr>
+
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/etiene_techrep10.pdf" 
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/etiene_techrep10.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/etiene_techrep10.pdf_news']);"
+            >"Topology verification for isosurface extraction"</a> has been 
+            accepted to IEEE TVCG
+          </td>
+          <td align="right">
+            [April 23rd, 2011]
+          </td>
+        </tr> 
+
+        <tr>
+          <td align="left">
+            &nbsp;&middot; The book <a target="new"
+            
+href="http://www.springer.com/mathematics/numerical+and+computational+
+mathematics/book/978-3-642-15013-5"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/pascucci_book10']);_gaq.push(['_trackPageview',
+            'stuff/papers/pascucci_book10_news']);"
+            >"Topological
+            Methods in Data Analysis and Visualization"</a> is now available!
+          </td>
+          <td align="right">
+            [November 29th, 2010]
+          </td>
+        </tr>
+
+        <tr>
+          <td align="left">
+            &nbsp;&middot; Our paper <a target="new"
+            href="stuff/papers/bremer_tvcg10.pdf"
+            onClick="javascript:_gaq.push(['_trackPageview',
+            'stuff/papers/bremer_tvcg10.pdf']);_gaq.push(['_trackPageview',
+            'stuff/papers/bremer_tvcg10.pdf_news']);"
+            >
+            "Interactive Exploration and Analysis (...)"</a> 
+            has been accepted to IEEE TVCG
+          </td>
+          <td align="right">
+            [October 15th, 2010]
+          </td>
+        </tr>-->
+
+
+      </table>
+
+  
+      </div>
+   </div>
+
+<!-- <br> -->
+<br><br>
+
+    <table width='583px' align='right'>
+      <tr>
+        <td width='30%'>
+          <h3 class="highlight">Research</h3>
+        </td>
+        <td><h3 class="highlight" width="3%">|</h3>
+        </td>
+        <td width='30%'>
+          <h3 class="normal"><a class="teaser" 
+href="teaching.html">Teaching</a></h3>
+        </td>
+        <td><h3 class="highlight" width="3%">|</h3>
+        </td>
+        <td width='30%'>
+          <h3 class="normal"><a class="teaser" href="misc.html">Misc</a></h3>
+        </td>
+        <td><h3 class="highlight" width="3">|</h3>
+        </td>
+      </tr>
+    </table>
+
+<!-- <br> -->
+<!-- <br><br> -->
+
+
+    <table width='800px'>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a 
+href="stuff/papers/gueunet_egpgv19.pdf" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/gueunet_egpgv19.pdf']);_gaq.push(['_trackPageview',
+          'stuff/gueunet_egpgv19.pdf_mini']);"
+        >
+          <img src='img/gueunet_egpgv19_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="stuff/papers/gueunet_egpgv19.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/gueunet_egpgv19.pdf']);_gaq.push(['_trackPageview',
+              'stuff/gueunet_egpgv19.pdf']);"
+                >
+        Task-based Augmented Reeb Graphs with Dynamic ST-Trees
+        </a><br>
+        <br>
+        Charles Gueunet, Pierre Fortin, Julien Jomier, Julien Tierny
+        <br><br>
+        Proc. of Eurographics Symposium on Parallel Graphics and Visualization 2019<br>
+        <br>
+         <a target='new' 
+href="stuff/software/gueunet_egpgv19_code.md"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/software/gueunet_egpgv19_code']);"
+        >Code</a> - 
+        <a target='new' 
+href="stuff/data/gueunet_egpgv19_data.tar"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/software/gueunet_egpgv19_data']);"
+        >Data</a>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a 
+href="stuff/papers/falk_topoInVis2019.pdf" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/falk_topoInVis2019.pdf']);_gaq.push(['_trackPageview',
+          'stuff/falk_topoInVis2019.pdf_mini']);"
+        >
+          <img src='img/falk_topoInVis2019_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="stuff/papers/falk_topoInVis2019.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/falk_topoInVis2019.pdf']);_gaq.push(['_trackPageview',
+              'stuff/falk_topoInVis2019.pdf']);"
+                >
+        An Overview of the Topology ToolKit
+        </a><br>
+        <br>
+        Martin Falk, Guillaume Favelier, Charles Gueunet, Pierre Guillou, Adhitya Kamakshidasan, Pavol Klacansky, Joshua Levine, Jonas Lukasczyk, Daisuke Sakurai, Maxime Soler, Julien Tierny, Will Usher, Jules Vidal, Michal Wozniak
+        <br><br>
+        Accepted for presentation at TopoInVis 2019 (under major revision for the book).<br>
+        <br>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a 
+href="stuff/papers/gueunet_tpds19.pdf" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/gueunet_tpds19.pdf']);_gaq.push(['_trackPageview',
+          'stuff/gueunet_tpds19.pdf_mini']);"
+        >
+          <img src='img/gueunet_tpds19_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="stuff/papers/gueunet_tpds19.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/gueunet_tpds19.pdf']);_gaq.push(['_trackPageview',
+              'stuff/gueunet_tpds19.pdf']);"
+                >
+        Task-based Augmented Contour Trees with Fibonacci Heaps
+        </a><br>
+        <br>
+        Charles Gueunet, Pierre Fortin, Julien Jomier, Julien Tierny
+        <br><br>
+        <b>IEEE Transactions on Parallel and Distributed Systems</b><br>
+        Accepted, 2019.<br>
+        <br>
+         <a target='new' 
+href="stuff/software/gueunet_tpds19.tgz"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/software/gueunet_tpds19_code']);"
+        >Code</a> 
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a 
+href="stuff/papers/favelier_vis18.pdf" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/favelier_vis18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/favelier_vis18.pdf_mini']);"
+        >
+          <img src='img/favelier_vis18_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="stuff/papers/favelier_vis18.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/favelier_vis18.pdf']);_gaq.push(['_trackPageview',
+              'stuff/favelier_vis18.pdf']);"
+                >
+        Persistence Atlas for Critical Point Variability in Ensembles
+        </a><br>
+        <br>
+        Guillaume Favelier, Noura Faraj, Brian Summa, Julien Tierny
+        <br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics</b><br>
+        Proc. of IEEE VIS 2018.<br>
+        <br>
+        <a target='new' href="https://youtu.be/baobnnA0Fcc"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/favelier_vis18_video']);"
+        >Video</a> - 
+         <a target='new' 
+href="stuff/software/favelier_vis18.zip"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/software/favelier_vis18_code']);"
+        >Code</a> - 
+        <a target="new" href="http://www.replicabilitystamp.org/">
+        Replicability stamp</a>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a 
+href="https://arxiv.org/pdf/1808.05870" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/soler_ldav18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/soler_ldav18.pdf_mini']);"
+        >
+          <img src='img/soler_ldav18_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="https://arxiv.org/pdf/1808.05870"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/soler_ldav18.pdf']);_gaq.push(['_trackPageview',
+              'stuff/soler_ldav18.pdf']);"
+                >
+        Lifted Wasserstein Matcher for Fast and Robust Topology Tracking
+        </a><br>
+        <br>
+        Maxime Soler, Melanie Plainchault, Bruno Conche, Julien Tierny
+        <br><br>
+        Proc. of IEEE Symposium on Large Data Analysis and Visualization 2018.
+        <br>
+        <a target="new"
+        href="img/honorableMention_ldav18.png"
+        >Best Paper Honorable Mention 
+Award</a>
+        <br><br>
+        <a target="new"
+        onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/soler_ldav18_demo']);_gaq.push(['_trackPageview',
+              'stuff/soler_ldav18_demo']);"
+        href="https://madblade.github.io/assignment-examples/">
+        Online demo of the core algorithm
+        </a>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a 
+href="https://topology-tool-kit.github.io/stuff/ttk_tutorial_vis18.pdf" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/ttk_tutorial_vis18.pdf_mini']);"
+        >
+          <img src='img/favelier_visTutorial18_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="https://topology-tool-kit.github.io/stuff/ttk_tutorial_vis18.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/ttk_tutorial_vis18.pdf']);_gaq.push(['_trackPageview',
+              'stuff/ttk_tutorial_vis18.pdf']);"
+                >
+        Topological Data Analysis Made Easy with the Topology ToolKit
+        </a><br>
+        <br>
+        Guillaume Favelier, Charles Gueunet, Attila Gyulassy, Julien Jomier, 
+Joshua Levine, Jonas Lukasczyk, Daisuke Sakurai, Maxime Soler, Julien Tierny, 
+Will Usher, Qi Wu
+        <br><br>
+        IEEE VIS Tutorials 2018.<br>
+        <br>
+         <a target='new' 
+            
+href="https://topology-tool-kit.github.io/ieeeVisTutorial.html"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/ttk_tutorial_vis18_web']);"
+        >Tutorial web page</a>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a href="stuff/papers/soler_pv18.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/soler_pv18.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/soler_pv18.pdf_mini']);"
+        >
+          <img src='img/soler_pv18_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/soler_pv18.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/soler_pv18.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/soler_pv18.pdf_standard']);"
+                >
+        Topologically Controlled Lossy Compression
+        </a><br>
+        <br>
+        Maxime Soler, Mélanie Plainchault, Bruno Conche, Julien Tierny<br><br>
+        Proc. of IEEE PacificVis 2018.<br>
+        <br>
+         <a target='new' 
+            
+href="https://github.com/julien-tierny/Scientific-Visualization/raw/master/
+tarballs/soler_pv18.zip?raw=true"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/soler_pv18_code']);"
+        >Code</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a 
+href="http://www.springer.com/us/book/9783319715063" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_book18']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_book18_mini']);"
+        >
+          <img src='img/tierny_book18_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        
+href="http://www.springer.com/us/book/9783319715063"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_book18.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_book18.pdf_standard']);"
+
+        >Topological Data Analysis for Scientific Visualization
+        </a><br>
+        <br>
+        Julien Tierny
+        <br><br>
+        Springer, 2018 (ISBN 978-3-319-71507-0).
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a href="https://topology-tool-kit.github.io/stuff/ttk.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis17.pdf_mini']);"
+        >
+          <img src='img/tierny_vis17_mini7.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="https://topology-tool-kit.github.io/stuff/ttk.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/tierny_vis17.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis17.pdf_standard']);"
+                >
+        The Topology ToolKit
+        </a><br>
+        <br>
+        Julien Tierny, Guillaume Favelier, Joshua Levine, Charles 
+Gueunet and Michael Michaux<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics</b><br>
+        Proc. of IEEE VIS 2017.
+<br>
+<a 
+onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/award_vis17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/award_vis17.pdf_news']);"
+ href="img/honorableMention_vis2017.jpg"
+target="new">Best Paper Honorable Mention Award
+</a>
+        <br><br>
+        <a target='new' href="https://youtu.be/Hn8w0V-jHgw"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis17_video']);"
+        >Video</a> - 
+         <a target='new' 
+            
+href="https://topology-tool-kit.github.io/"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis17_code']);"
+        >Code</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a href="stuff/papers/summa_eurovis17.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/summa_eurovis17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/summa_eurovis17.pdf_mini']);"
+        >
+          <img src='img/summa_eurovis17_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/summa_eurovis17.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/summa_eurovis17.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/summa_eurovis17.pdf_standard']);"
+                >
+        Visualizing the Uncertainty of Graph-based 2D Segmentation
+with Min-path Stability
+        </a><br>
+        <br>
+        Brian Summa, Julien Tierny, Valerio Pascucci<br><br>
+        <b>Computer Graphics Forum.</b><br>
+        Proc. of EuroVis 2017.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/gueunet_ldav17.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav17.pdf_mini']);"
+        >
+          <img src='img/gueunet_ldav17_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/gueunet_ldav17.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/gueunet_ldav17.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/gueunet_ldav17.pdf_standard']);"
+                >
+        Task-based Augmented Merge Trees with Fibonacci Heaps
+        </a><br>
+        <br>
+        Charles Gueunet, Pierre Fortin, Julien Jomier, Julien Tierny<br><br>
+        Proc. of IEEE Symposium on Large Data Analysis and Visualization 
+2017.<br>
+        <br>
+         <a target='new' 
+            
+href="https://github.com/julien-tierny/Scientific-Visualization/raw/master/
+tarballs/gueunet_ldav17_code.zip?raw=true"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/gueunet_ldav17_code']);"
+        >Code</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a href="stuff/papers/vintescu_eg17.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/vintescu_eg17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/vintescu_eg17.pdf_mini']);"
+        >
+          <img src='img/vintescu_eg17_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/vintescu_eg17.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/vintescu_eg17.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/vintescu_eg17.pdf_standard']);"
+                >
+        Conformal Factor Persistence for Fast Hierarchical Cone Extraction
+        </a><br>
+        <br>
+        Ana Vintescu, Florent Dupont, Guillaume Lavoue, Pooran Memari, Julien 
+Tierny<br><br>
+        Proc. of Eurographics 2017 (short papers).
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+<tr>
+        <td width='25%'>
+        <a href="https://hal.archives-ouvertes.fr/hal-01547522/document" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/vintescu_wscg17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/vintescu_wscg17.pdf_mini']);"
+        >
+          <img src='img/vintescu_wscg17_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/vintescu_wscg17.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/vintescu_wscg17.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/vintescu_wscg17.pdf_standard']);"
+                >
+        Least Squares Affine Transitions for Global Paramterization
+        </a><br>
+        <br>
+        Ana Vintescu, Florent Dupont, Guillaume Lavoue, Pooran Memari, Julien 
+Tierny<br><br>
+        Proc. of WSCG 2017.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="https://hal.archives-ouvertes.fr/hal-01547523/document" 
+target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/lukasczyk_pmvmsp17.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/lukasczyk_pmvmsp17.pdf_mini']);"
+        >
+          <img src='img/lukasczyk_pmvmsp17_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="https://hal.archives-ouvertes.fr/hal-01547523/document"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/lukasczyk_pmvmsp17.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/lukasczyk_pmvmsp17.pdf_standard']);"
+                >
+        Viscous Fingering: A Topological Visual Analytic Approach</a><br>
+        <br>
+        Jonas Lukasczyk, Garrett Aldrich, Michael Steptoe,
+        Guillaume Favelier, Charles Gueunet, Julien Tierny,
+        Ross Maciejewski, Bernd Hamann, and Heike Leitte
+<br><br>
+        Proc. of Conference on Physical Modeling for Virtual Manufacturing 
+Systems and Processes 2017.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_vis16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis16.pdf_mini']);"
+        >
+          <img src='img/tierny_vis16_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/tierny_vis16.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/tierny_vis16.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis16.pdf_standard']);"
+                >
+        Jacobi Fiber Surfaces for Bivariate Reeb Space Computation
+        </a><br>
+        <br>
+        Julien Tierny and Hamish Carr<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics</b><br>
+        Proc. of IEEE VIS 2016.
+<br>
+<a 
+onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/award_vis16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/award_vis16.pdf_news']);"
+href="img/bestPaper_vis2016.jpg" 
+target="new">Best Paper Award
+</a>
+        <br><br>
+        <a target='new' href="https://youtu.be/6OUXha3_eRA"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis16_video']);"
+        >Video</a> - 
+         <a target='new' 
+            
+href="https://github.com/julien-tierny/Scientific-Visualization/raw/master/
+tarballs/tierny_vis16_code.zip?raw=true"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis16_code']);"
+        >Code</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/klacansky_tvcg16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/klacansky_tvcg16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/klacansky_tvcg16.pdf_mini']);"
+        >
+          <img src='img/klacansky_techRep15_mini4.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/klacansky_tvcg16.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/klacansky_tvcg16.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/klacansky_tvcg16.pdf_standard']);"
+                >
+        Fast and Exact Fiber Surfaces for Tetrahedral Meshes
+        </a><br>
+        <br>
+        Pavol Klacansky, Julien Tierny, Hamish Carr, Zhao Geng<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics</b><br>
+        Accepted, to be presented at IEEE VIS 2016.
+        <br><br>
+        <a target='new' href="https://youtu.be/E6sVkgdEXtI"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/klacansky_techRep15_video']);"
+        >Video</a> - 
+         <a target='new' 
+href="https://github.com/julien-tierny/Scientific-Visualization/blob/master/
+tarballs/klacansky_techRep15.zip?raw=true"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/klacansky_techRep15_code']);"
+        >Code</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/gueunet_ldav16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gueunet_ldav16.pdf_mini']);"
+        >
+          <img src='img/gueunet_ldav16_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/gueunet_ldav16.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/gueunet_ldav16.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/gueunet_ldav16.pdf_standard']);"
+                >
+        Contour Forests: Fast Multi-threaded Augmented Contour Trees
+        </a><br>
+        <br>
+        Charles Gueunet, Pierre Fortin, Julien Jomier, Julien Tierny<br><br>
+        Proc. of IEEE Symposium on Large Data Analysis and Visualization 
+2016.<br>
+        <br>
+         <a target='new' 
+            
+href="https://github.com/julien-tierny/Scientific-Visualization/raw/master/
+tarballs/gueunet_ldav16_code.zip?raw=true"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/gueunet_ldav16_code']);"
+        >Code</a>
+        </td>
+      </tr>
+
+<tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/favelier_scivizContest16.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          
+'stuff/papers/favelier_scivizContest16.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/favelier_scivizContest16.pdf_mini']);"
+        >
+          <img src='img/favelier_scivizContest16_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/favelier_scivizContest16.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              
+'stuff/papers/favelier_scivizContest16.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/favelier_scivizContest16.pdf_standard']);"
+                >
+        Visualizing Ensembles of Viscous Fingers
+        </a><br>
+        <br>
+        Guillaume Favelier, Charles Gueunet, Julien Tierny<br><br>
+        IEEE VIS Scientific Visualization Contest 2016.<br>
+        <a href="img/honorableMention_visContest16.jpg" target="new">
+        Honorable Mention Award</a><br>
+        <br>
+         <a target='new' 
+            
+href="https://youtu.be/u6UCYKQGRJE"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/favelier_scivizContest16_video']);"
+        >Video</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_habilitation_thesis.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+    'stuff/papers/tierny_habilitation_thesis.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_habilitation_thesis.pdf_mini']);"
+        >
+          <img src='img/teaching_vis_scalarFields_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' 
+href="stuff/papers/tierny_habilitation.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+'stuff/papers/tierny_habilitation.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_habilitation.pdf_standard']);"
+                >Habilitation Thesis (HDR):<br>
+        Contributions to Topological Data Analysis for Scientific Visualization
+        </a><br>
+        <br>
+        Julien Tierny<br><br>
+        Sorbonne Universites UPMC.<br>
+        April 2016.<br><br>
+        Committee:<br>
+        <a href="http://perso.telecom-paristech.fr/~bloch/" 
+          target="new">I. Bloch</a> (President),
+        <a href="http://www.aviz.fr/~fekete/" 
+          target="new">J.-D. Fekete</a> (Examiner),
+        <a href="https://www.ljll.math.upmc.fr/frey/" 
+          target="new">P. Frey</a> (Examiner),
+        <a href="http://www-hagen.cs.uni-kl.de/?page_id=8&memberID=6" 
+          target="new">H. Hagen</a> (Reviewer),
+        <a href="https://www.cs.utah.edu/~crj/" 
+          target="new">C. Johnson</a> (Reviewer),
+        <a href="http://alice.loria.fr/index.php/bruno-levy.html" 
+          target="new">B. Lévy</a> (Reviewer),
+        <a href="" target="new">P. Ricoux</a> (Examiner),
+        <a href="http://www.kitware.com/company/team/schroeder.html" 
+          target="new">W. Schroeder</a> (Examiner).
+        </td>
+      </tr>
+
+      
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/carr_eurovis15.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/carr_eurovis15.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/carr_eurovis15.pdf_mini']);"
+        >
+          <img src='img/carr_eurovis15_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/carr_eurovis15.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/carr_eurovis15.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/carr_eurovis15.pdf_standard']);"
+                >
+        Fiber Surfaces: Generalizing Isosurfaces to Bivariate Data
+        </a><br>
+        <br>
+        Hamish Carr, Zhao Geng, Julien Tierny, Amit Chattopadhyay, Aaron 
+Knoll<br><br>
+        <b>Computer Graphics Forum.</b><br>
+        Proc. of EuroVis 2015, accepted.
+        <br><br>
+        <a target='new' href="stuff/videos/carr_eurovis15_video.m4v"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/carr_eurovis15_video.m4v']);"
+        >Video</a> 
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/philip_tvcg14.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/philip_tvcg14.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/philip_tvcg14.pdf_mini']);"
+        >
+          <img src='img/tvcg14_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/philip_tvcg14.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/philip_tvcg14.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/philip_tvcg14.pdf_standard']);"
+                >
+        Distributed Seams for Gigapixel Panoramas
+        </a><br>
+        <br>
+        Sujin Philip, Brian Summa, Julien Tierny, Peer-Timo Bremer, Valerio 
+Pascucci<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b><br>
+        Accepted.
+        <br><br>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/gyulassy_vis14.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gyulassy_vis14.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gyulassy_vis14.pdf_mini']);"
+        >
+          <img src='img/vis14_gyulassy_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/gyulassy_vis14.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/gyulassy_vis14.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/gyulassy_vis14.pdf_standard']);"
+                >
+        Conforming Morse-Smale Complexes
+        </a><br>
+        <br>
+        Attila Gyulassy, David Guenther, Joshua Levine, Julien Tierny, Valerio 
+Pascucci<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b><br>
+        Proc. of IEEE VIS 2014, accepted.
+        <br><br>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/chemistry_vis14.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/chemistry_vis14.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/chemistry_vis14.pdf_mini']);"
+        >
+          <img src='img/vis14_chemistry_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/chemistry_vis14.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/chemistry_vis14.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/chemistry_vis14.pdf_standard']);"
+                >
+        Characterizing Molecular Interactions in Chemical Systems
+        </a><br>
+        <br>
+        David Guenther, Roberto Alvarez Boto, Julia Contreras-Garcia, 
+Jean-Philip Piquemal, Julien Tierny<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b><br>
+        Proc. of IEEE VIS 2014, accepted.
+        <br><br>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_eurovis14.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_eurovis14.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_eurovis14.pdf_mini']);"
+        >
+          <img src='img/eurovis14_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/tierny_eurovis14.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_eurovis14.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_eurovis14.pdf_standard']);"
+                >
+        Mandatory Critical Points of 2D Uncertain Scalar Fields
+        </a><br>
+        <br>
+        David Guenther, Joseph Salmon, Julien Tierny<br><br>
+        <b>Computer Graphics Forum.</b><br>
+        Proc. of EuroVis 2014, accepted.
+        <br><br>
+        <a target='new' href="stuff/videos/tierny_eurovis14_video.mov"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/tierny_eurovis14_video.mov']);"
+        >Video</a>  
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/summa_techRep13.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/summa_techRep13.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/summa_techRep13.pdf_mini']);"
+        >
+          <img src='img/summa_techRep13_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/summa_techRep13.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/summa_techRep13.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/summa_techRep13.pdf_standard']);"
+                >
+        Active Stitching: Beyond Batch Processing of Panoramas
+        </a><br>
+        <br>
+        Brian Summa, Julien Tierny, Peer-Timo Bremer, Giorgio Scorzelli, and
+        Valerio Pascucci<br><br>
+        Technical Report, September 2013.<br>
+        <br>
+        <a target='new' href="stuff/videos/summa_techRep13_video.mov"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/summa_techRep13_video.mov']);"
+        >Video</a>  
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/thiery_vc13.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_vc13.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_vc13.pdf_mini']);"
+        >
+          <img src='img/thiery_vc13_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/thiery_vc13.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_vc13.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_vc13.pdf_standard']);"
+                >
+        Jacobians and Hessians of Mean Value Coordinates for Closed Triangular
+        Meshes
+        </a><br>
+        <br>
+        Jean-Marc Thiery, Julien Tierny, and Tamy Boubekeur<br><br>
+        <b>The Visual Computer Journal.</b><br>
+        Accepted, 2013.<br>
+        <br>
+        <a target='new' href="stuff/videos/thiery_vc13_video.avi"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/thiery_vc13_video.avi']);"
+        >Video</a> - 
+         <a target='new' href="stuff/software/thiery_vc13_code.zip"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/software/thiery_vc13_code.zip']);"
+        >Code</a> -
+        <a target='new' href="stuff/papers/thiery_vc13_appendix.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_vc13_appendix.pdf']);"
+        >Appendix</a>
+        </td>
+      </tr>
+
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/philip_egpgv13.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/philip_egpgv13.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/philip_egpgv13.pdf_mini']);"
+        >
+          <img src='img/philip_egpgv13_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/philip_egpgv13.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/philip_egpgv13.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/philip_egpgv13.pdf_standard']);"
+                >
+        Scalable Seams for Gigapixel Panoramas
+        </a><br>
+        <br>
+        Sujin Philip, Brian Summa, Julien Tierny, Peer-Timo Bremer, Valerio
+        Pascucci<br><br>
+        Proc. of Eurographics Symposium on Parallel Graphics and 
+        Visualization 2013.<br>
+        <b>Best Paper Award.</b><br>
+        <br>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_techRep13.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_techRep13.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_techRep13.pdf_mini']);"
+        >
+          <img src='img/tierny_techRep13_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/tierny_techRep13.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_techRep13.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_techRep13.pdf_standard']);"
+                >
+        Optimal General Simplification of Scalar Fields on Surfaces
+        </a><br>
+        <br>
+        Julien Tierny, David Guenther, and Valerio Pascucci<br><br>
+        Topological and Statistical Methods for Complex Data, Accepted.<br>
+        <br>
+        </td>
+      </tr>
+
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/gargouri_isbi13.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/gargouri_isbi13.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/gargouri_isbi13.pdf_mini']);"
+        >
+          <img src='img/gargouri_isbi13_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/gargouri_isbi13.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/gargouri_isbi13.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/gargouri_isbi13.pdf_standard']);"
+                >
+        Accurate and robust shape descriptors for the identification of rib cage
+        structures in CT-images with Random Forests
+        </a><br>
+        <br>
+        Mariem Gargouri, Julien Tierny, Erwan Jolivet, Philippe Petit, Elsa
+        Angelini<br><br>
+        Proc. of IEEE ISBI 2013.<br>
+        <br>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/michelin_ssg13.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/michelin_ssg13.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/michelin_ssg13.pdf_mini']);"
+        >
+          <img src='img/michelin_ssg13_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/michelin_ssg13.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/michelin_ssg13.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/michelin_ssg13.pdf_standard']);"
+                >
+        Quality Evaluation of 3D City Building Models with Automatic Error
+        Diagnosis
+        </a><br>
+        <br>
+        Jean-Christophe Michelin, Julien Tierny, Florence Tupin, Clement
+        Mallet, and Nicolas Paparoditis<br><br>
+        Proc. of ISPRS Conference on SSG 2013.<br>
+        <br>
+        </td>
+      </tr>
+
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_vis12.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis12.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis12.pdf_mini']);"
+        >
+          <img src='img/tierny_vis12_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/tierny_vis12.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis12.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis12.pdf_standard']);"
+                >
+        Generalized Topological Simplification of Scalar Fields on Surfaces
+        </a><br>
+        <br>
+        Julien Tierny and Valerio Pascucci <br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b><br>
+        Proc. of IEEE VIS 2012, accepted.<br>
+        <br>
+        <a target='new' href="stuff/videos/tierny_vis12_video.mov"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/tierny_vis12_video.mov']);"
+        >Video</a> - 
+         <a target='new' href="stuff/software/tierny_vis12_code.zip"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/software/tierny_vis12_code.zip']);"
+        >Code</a> 
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/summa_siggraph12.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/summa_siggraph12.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/summa_siggraph12.pdf_mini']);"
+        >
+          <img src='img/summa_siggraph12_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/summa_siggraph12.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/summa_siggraph12.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/summa_siggraph12.pdf_standard']);"
+                >
+        Panorama Weaving: Fast and Flexible Seam Processing</a><br>
+        <br>
+        Brian Summa, Julien Tierny and Valerio Pascucci <br><br>
+        <b>ACM Transactions on Graphics.</b><br>
+        Proc. of ACM SIGGRAPH 2012, accepted.<br>
+        <br>
+        <a target='new' href="stuff/videos/summa_siggraph12_video.mov"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/summa_siggraph12_video.mov']);"
+        >Video</a> 
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/thiery_cgf12.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_cgf12.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_cgf12.pdf_mini']);"
+        >
+          <img src='img/thiery_cgf12_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/thiery_cgf12.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_cgf12.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_cgf12.pdf_standard']);"
+                >
+        CageR: Cage-based Reverse Engineering of Animated 3D Shapes</a><br>
+        <br>
+        Jean-Marc Thiery, Julien Tierny and Tamy Boubekeur<br><br>
+        <b>Computer Graphics Forum.</b><br>
+        Accepted 2012, Presented at Eurographics 2013.<br>
+        <br>
+        <a target='new' href="stuff/videos/thiery_cgf12_video.avi"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/videos/thiery_cgf12_video.avi']);"
+        >Video</a>
+        -
+        <a target='new' href="stuff/papers/thiery_siggraphTalk12.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_siggraphTalk12.pdf']);"
+        >SIGGRAPH 2012 Talk</a>
+
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/thiery_pg12.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_pg12.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_pg12.pdf_mini']);"
+        >
+          <img src='img/thiery_pg12_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/thiery_pg12.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_pg12.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_pg12.pdf_standard']);"
+                >
+        Analytic Curve Skeletons for 3D Surface Modeling and Processing</a><br>
+        <br>
+        Jean-Marc Thiery, Bert Buchholz, Julien Tierny and 
+        Tamy Boubekeur<br><br>
+        <b>Computer Graphics Forum.</b><br>
+        Proc. of Pacific Graphics 2012, accepted.<br>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_spm11.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_spm11.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_spm11.pdf_mini']);"
+        >
+          <img src='img/tierny_spm11_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/tierny_spm11.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_spm11.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_spm11.pdf_standard']);"
+                >
+        Inspired quadrangulation</a><br>
+        <br>
+        Julien Tierny, Joel Daniels II, Luis Gustavo Nonato, Valerio Pascucci
+        and Claudio Silva<br><br>
+        <b>Computer Aided Design.</b>
+        <br>Proc. of ACM SPM 2011, accepted.
+        <br><br>
+        <a target='new' href="stuff/videos/tierny_spm11_video.mp4"
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/videos/tierny_spm11_video.mp4']);"
+          >Video</a>
+        -
+        <a target='new' href="stuff/papers/tierny_spm11_appendix.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_spm11_appendix.pdf']);"
+        >Appendix</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/etiene_techrep10.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/etiene_techrep10.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/etiene_techrep10.pdf_mini']);"
+        >
+          <img src='img/etiene_techrep10_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/etiene_techrep10.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/etiene_techrep10.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/etiene_techrep10.pdf_standard']);"
+                >
+        Topology verification for isosurface extraction</a><br>
+        <br>
+        Tiago Etiene, Luis Gustavo Nonato, Carlos Scheidegger, 
+        Julien Tierny, Thomas Peters, 
+        Valerio Pascucci,
+        Mike Kirby and Claudio Silva<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b>
+        <br>Accepted 2011, Presented at IEEE VIS 2011.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+<!--      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/thiery_techrep11.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_techrep11.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/thiery_techrep11.pdf_mini']);"
+        >
+          <img src='img/thiery_techrep11_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/thiery_techrep11.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_techrep11.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/thiery_techrep11.pdf_standard']);"
+                >
+        Jacobians and hessians of mean value coordinates for closed triangular
+        meshes</a><br>
+        <br>
+        Jean-Marc Thiery, Julien Tierny, Tamy Boubekeur<br><br>
+        Technical Report, 2011 (CNRS LTCI)<br>
+        </td>
+      </tr>-->
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_tvcg11.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_tvcg11.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_tvcg11.pdf_mini']);"
+        >
+          <img src='img/tierny_techrep10_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+                <a target='new' href="stuff/papers/tierny_tvcg11.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_tvcg11.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_tvcg11.pdf_standard']);"
+                >
+        Interactive
+        quadrangulation with Reeb atlases and connectivity textures
+        </a><br>
+        <br>
+        Julien Tierny, Joel Daniels II, Luis Gustavo Nonato, Valerio Pascucci
+        and Claudio Silva<br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b>
+        <br>Accepted, 2011.
+        <br><br>
+        <a target='new' href="stuff/videos/tierny_techrep10.mov"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_techrep10_video']);"
+        >Video</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="http://www.springer.com/mathematics/numerical+and+computational+mathematics/book/978-3-642-15013-5" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/pascucci_book10']);_gaq.push(['_trackPageview',
+          'stuff/papers/pascucci_book10_mini']);"
+        >
+          <img src='img/pascucci_book10_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="http://www.springer.com/mathematics/numerical+and+computational+mathematics/book/978-3-642-15013-5"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/pascucci_book10.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/pascucci_book10.pdf_standard']);"
+
+        >Topological
+        methods in data analysis and visualization</a><br>
+        <br>
+        Valerio Pascucci,
+        Xavier Tricoche, Hans Hagen and Julien Tierny
+        (Editors)<br><br>
+        Springer, 2010 (ISBN 978-3-642-15013-5).
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/bremer_tvcg10.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/bremer_tvcg10.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/bremer_tvcg10.pdf_mini']);"
+        >
+          <img src='img/bremer_tvcg10_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new' href="stuff/papers/bremer_tvcg10.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/bremer_tvcg10.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/bremer_tvcg10.pdf_standard']);"
+
+        >Interactive
+        exploration and analysis of large scale simulations using topology-based
+        data segmentation</a><br>
+        <br>
+        Peer-Timo Bremer, Gunther Weber, Julien Tierny,
+        Valerio Pascucci, Marcus Day and John Bell<br><br>
+
+        <b>IEEE Transactions on Visualization and Computer Graphics.</b><br>
+        Accepted, 2010.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='24%'>
+        <a href="stuff/papers/tierny_vis09.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis09.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_vis09.pdf_mini']);"
+        >
+          <img src='img/tierny_vis09_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new' href="stuff/papers/tierny_vis09.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis09.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis09.pdf_standard']);"
+
+        >
+        Loop surgery for volumetric meshes: Reeb graphs reduced to contour
+        trees</a><br>
+        <br>
+        Julien Tierny, 
+        Attila Gyulassy,
+        Eddie Simon
+        and 
+        Valerio Pascucci
+        <br><br>
+        <b>IEEE Transactions on Visualization and Computer Graphics, Vol 15,
+        2009.</b><br>
+        Proc. of IEEE VIS 2009.
+        <br><br>
+        <a target='new'
+        href="http://www.sci.utah.edu/gallery2/v/sci/volume_rendering/loop_surgery/2009_Loop_Surgery_Bitorus-H_264_960x540.mov.html"
+        target='new'
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_vis09_video']);"
+
+        >Videos</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+    
+      <tr>
+        <td width='24%'>
+        <a href="stuff/papers/tierny_cgf09.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_cgf09.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_cgf09.pdf_mini']);"
+        >
+          <img src='img/tierny_cgf09_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new' href="stuff/papers/tierny_cgf09.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_cgf09.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_cgf09.pdf_standard']);"
+
+        >
+        Partial 3D shape retrieval by Reeb pattern unfolding</a><br>
+        <br>
+        Julien Tierny, 
+        Jean-Philippe Vandeborre
+        and
+        Mohamed Daoudi<br><br>
+        <b>Computer Graphics Forum, Vol 28, 2009.</b>
+        <br><br>
+        <a target='new'
+        href="sinamis.html"
+        target='new'>Binaries</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/santos_escience09.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/santos_escience09.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/santos_escience09.pdf_mini']);"
+
+        >
+          <img src='img/santos_escience09_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new' href="stuff/papers/santos_escience09.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/santos_escience09.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/santos_escience09.pdf_standard']);"
+
+        >
+        Enabling advanced visualization tools in a web-based simulation
+        monitoring system
+        </a><br>
+        <br>
+        Emanuele Santos, Julien Tierny,
+        Ayla Khan, Brad Grimm, Lauro Lins, Juliana Freire, 
+        Valerio Pascucci, Claudio Silva, Scott Klasky, Roselyne Barreto,, 
+        Norbert Podhorszki<br><br>
+        Proc. of IEEE eScience 2009.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/bremer_escience09.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/bremer_escience09.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/bremer_escience09.pdf_mini']);"
+
+        >
+          <img src='img/bremer_escience09_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new' href="stuff/papers/bremer_escience09.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/bremer_escience09.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/bremer_escience09.pdf_standard']);"
+
+        >
+        A topological framework for the interactive exploration of large scale
+        turbulent combustion
+        </a><br>
+        <br>
+        Peer-Timo Bremer, Gunther Weber, Julien Tierny,
+        Valerio Pascucci, Marcus Day and John Bell<br><br>
+        Proc. of IEEE eScience 2009.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a href="stuff/papers/tierny_phd_thesis08.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_phd_thesis08.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_phd_thesis08.pdf_mini']);"
+
+        >
+          <img src='img/tierny_phd08_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new' href="stuff/papers/tierny_phd_thesis08.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_phd_thesis08.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_phd_thesis08.pdf_standard']);"
+
+        >
+        Reeb graph based 3D shape modeling and applications
+        </a><br>
+        <br>
+        Julien Tierny <br><br>
+        Ph.D. Thesis, LIFL, University of Lille.<br>
+        October 2008.<br><br>
+        Committee: 
+						<a href='http://liris.cnrs.fr/atilla.baskurt/'
+						target='new'>A. Baskurt</a>,
+						<a target='new'
+						href='http://alice.loria.fr/index.php/bruno-levy.html'>
+						B. Lévy</a>,
+						<a target='new'
+						href='http://www.inria.fr/personnel/Claude.Labit.en.html'>
+						C. Labit</a>,
+						<a target='new' href='http://stat.fsu.edu/~anuj/'>
+						A. Srivastava</a>,
+						<a target='new'
+						href='http://www2.lifl.fr/~tison/index.eng.html'>
+						S. Tison</a>.<br>
+						Advisors: <a
+						href='http://www.telecom-lille1.eu/people/vandeborre/'
+						target='new'>J.P.
+						Vandeborre</a>, 
+						<a
+						href='http://www.telecom-lille1.eu/people/daoudi/'
+						target='new'>
+							M. Daoudi</a>.
+        <br><br>
+        <a target='new' href="stuff/papers/tierny_phd_defense08.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_phd_defense08.pdf']);"
+
+        >Slides</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="http://www.wiley-vch.de/publish/en/books/bySubjectEE00/forthcomingTitles/0-470-06542-7/?sID=" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/berretti_book08']);_gaq.push(['_trackPageview',
+          'stuff/papers/berretti_book08_mini']);"
+
+        >
+          <img src='img/berretti_book08_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="http://www.wiley-vch.de/publish/en/books/bySubjectEE00/forthcomingTitles/0-470-06542-7/?sID="
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/berretti_book08.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/berretti_book08.pdf_standard']);"
+
+        >
+        3D object indexing
+        </a><br>
+        <br>
+        Stefano Berretti, Mohamed Daoudi, Alberto del Bimbo, Tarik
+        Filali-Ansary, Pietro Pala, Julien Tierny and Jean-Philippe
+        Vandeborre<br><br>
+        Chapter of "3D object processing: compression, indexing and
+        watermarking".<br> Wiley, 2008.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_tvc08.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_tvc08.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_tvc08.pdf_mini']);"
+
+        >
+          <img src='img/tierny_tvc08_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_tvc08.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_tvc08.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_tvc08.pdf_standard']);"
+
+        >
+        Enhancing 3D mesh topological skeletons with discrete contour
+        constrictions
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        <b>The Visual Computer, Vol 24, 2008.</b>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_icpr08.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_icpr08.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_icpr08.pdf_mini']);"
+
+        >
+          <img src='img/tierny_icpr08_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_icpr08.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_icpr08.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_icpr08.pdf_standard']);"
+
+        >
+        Fast and precise kinematic skeleton extraction of 3D dynamic meshes
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        Proc. of IEEE ICPR 2008.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_eg07.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_eg07.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_eg07.pdf_mini']);"
+
+        >
+          <img src='img/tierny_eg07_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_eg07.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_eg07.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_eg07.pdf_standard']);"
+
+        >
+        Reeb chart unfolding based 3D shape signatures
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        Proc. of Eurographics 2007 (short paper).
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_smi07.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_smi07.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_smi07.pdf_mini']);"
+
+        >
+          <img src='img/tierny_smi07_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_smi07.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_smi07.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_smi07.pdf_standard']);"
+
+        >
+        Topology driven 3D mesh hierarchical segmentation
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        Proc. of IEEE SMI 2007 (short paper).<br><br>
+        <a target='new' href="stuff/videos/tierny_smi07.avi"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_smi07_video']);"
+
+        >Video</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_delos07.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_delos07.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_delos07.pdf_mini']);"
+
+        >
+          <img src='img/delos_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_delos07.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_delos07.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_delos07.pdf_standard']);"
+
+        >
+        Geometry flavored topological skeletons: applications to shape handling,
+        segmentation and retrieval
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        Proc. of Second DELOS Conference on Digital Libraries (invited paper),
+        2007.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="http://www.springerlink.com/content/wt752457m0180455/" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/daoudi_delos07.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/daoudi_delos07.pdf_mini']);"
+
+        >
+          <img src='img/delos_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="http://www.springerlink.com/content/wt752457m0180455/"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/daoudi_delos07.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/daoudi_delos07.pdf_standard']);"
+
+        >
+        3D mesh models: view-based indexing and structural analysis
+        </a><br>
+        <br>
+        Mohamed Daoudi, Tarik Filali-Ansary, Julien Tierny and Jean-Philippe
+        Vandeborre<br><br>
+        Proc. of DELOS Conference on Digital Libraries (invited paper)<br>
+        Lecture Notes in Computer Science, 2007.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_pg06.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_pg06.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_pg06.pdf_mini']);"
+
+        >
+          <img src='img/tierny_pg06_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_pg06.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_pg06.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_pg06.pdf_standard']);"
+
+        >
+        3D mesh skeleton extraction using topological and geometrical analyses
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        Proc. of Pacific Graphics 2006.<br><br>
+        <a target='new' href="stuff/videos/tierny_pacific06.avi"
+                onClick="javascript:_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_pg06_video']);"
+
+        >Video</a>
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+      <tr>
+        <td width='25%'>
+        <a
+        href="stuff/papers/tierny_3dpvt06.pdf" target='new'
+          onClick="javascript:_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_3dpvt06.pdf']);_gaq.push(['_trackPageview',
+          'stuff/papers/tierny_3dpvt06.pdf_mini']);"
+
+        >
+          <img src='img/tierny_3dpvt06_mini.png' width="100%"/></a>
+        </td>
+        <td width="2%" />
+        <td width="77%">
+        <a target='new'
+        href="stuff/papers/tierny_3dpvt06.pdf"
+                onClick="javascript:_gaq.push(['_trackPageview',
+                'stuff/papers/tierny_3dpvt06.pdf']);_gaq.push(['_trackPageview',
+              'stuff/papers/tierny_3dpvt06.pdf_standard']);"
+
+        >
+        Invariant high level Reeb graphs of 3D polygonal meshes
+        </a><br>
+        <br>
+        Julien Tierny, Jean-Philippe Vandeborre and Mohamed Daoudi<br><br>
+        Proc. of IEEE 3DPVT 2006.
+        </td>
+      </tr>
+
+      <tr height="30pt"/>
+
+
+    </table>
+
+  <div align="right">
+      <nobr><a href="stuff/tierny_publicationList.pdf" target='new'
+      onClick="javascript:_gaq.push(['_trackPageview',
+      'stuff/tierny_publicationList.pdf']);"
+      >
+                   >>> Full publication list</a></nobr></div>
+
+    <br>
+    <br>
+    <div align="center">
+      Updated on June 7, 2019.
+    </div>
+    </tr>
+    </table>
+
+  </body>
+
+</html>
