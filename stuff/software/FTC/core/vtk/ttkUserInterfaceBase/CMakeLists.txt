@@ -1,4 +1,0 @@
-ttk_add_vtk_library(ttkUserInterfaceBase
-	SOURCES ttkUserInterfaceBase.cpp
-	HEADERS ttkUserInterfaceBase.h
-	LINK ttkProgramBase ttkTextureMapFromField)

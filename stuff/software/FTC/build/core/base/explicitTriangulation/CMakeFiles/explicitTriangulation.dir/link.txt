@@ -1,2 +1,0 @@
-/usr/bin/ar qc libexplicitTriangulation.a  CMakeFiles/explicitTriangulation.dir/ExplicitTriangulation.cpp.o
-/usr/bin/ranlib libexplicitTriangulation.a

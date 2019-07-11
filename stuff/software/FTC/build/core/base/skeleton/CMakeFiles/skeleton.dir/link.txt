@@ -1,2 +1,0 @@
-/usr/bin/ar qc libskeleton.a  CMakeFiles/skeleton.dir/ZeroSkeleton.cpp.o CMakeFiles/skeleton.dir/OneSkeleton.cpp.o CMakeFiles/skeleton.dir/TwoSkeleton.cpp.o CMakeFiles/skeleton.dir/ThreeSkeleton.cpp.o
-/usr/bin/ranlib libskeleton.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libftcTree.a  CMakeFiles/ftcTree.dir/FTCTree.cpp.o CMakeFiles/ftcTree.dir/FTCTree_CT.cpp.o CMakeFiles/ftcTree.dir/FTCTree_MT.cpp.o CMakeFiles/ftcTree.dir/Segmentation.cpp.o
-/usr/bin/ranlib libftcTree.a
