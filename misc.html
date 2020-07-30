@@ -49,7 +49,7 @@ ga('send', 'pageview');
     <tr>
     <td>
     <script type='text/javascript'>
-      var randomNumber = Math.floor(Math.random()*25);
+      var randomNumber = Math.floor(Math.random()*26);
     </script>
     <div id='teaser'>
     <script type='text/javascript'>
@@ -96,10 +96,12 @@ ga('send', 'pageview');
             document.write("<td width='35%'>");
             document.write("<a target='new' ");
             document.write(" href='");
-            if(randomNumber != 2)
+            if(randomNumber == 2)
+              document.write("https://www.springer.com/gp/book/9783642150135");
+            else if(randomNumber == 25)
+              document.write("https://arxiv.org/pdf/2007.14766");
+            else
               document.write(link);
-            else            
-            document.write("http://www.springerlink.com/content/978-3-642-15013-5#section=818510&page=1");
             document.write("'> ");
             document.write("<img src='img/alpha.png'");
             document.write(" width='100%'/></a>");
